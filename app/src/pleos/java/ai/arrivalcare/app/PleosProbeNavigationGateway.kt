@@ -20,6 +20,7 @@ class PleosProbeNavigationGateway(private val context:Context):NavigationGateway
     @Volatile private var sdk:NaviHelper?=null
     @Volatile private var closed=false
     private var connected=false
+    private var foreground=true
     private var status="연결 확인 중"
     private var epoch=0L
     private var callback:((Long,String,Boolean,String)->Unit)?=null
@@ -35,7 +36,7 @@ class PleosProbeNavigationGateway(private val context:Context):NavigationGateway
     private fun io(task:()->Unit){if(!closed)runCatching{worker.execute{if(!closed)runCatching(task).onFailure{e->handler.post{if(!closed){status="SDK 호출 실패: "+e.javaClass.simpleName;finish(false,status)}}}}}}
     private fun report(value:String){status=value;Log.i("ArrivalCareSDK","NaviHelper "+value)}
     private var listener:NaviHelperEventListener?=null
-    private val locationPoll=object:Runnable{override fun run(){if(!closed){if(connected&&permission("NAVI_ROUTE"))io{sdk?.getCurrentLocationInfo()};handler.postDelayed(this,5000)}}}
+    private val locationPoll=object:Runnable{override fun run(){if(!closed&&foreground){if(connected&&permission("NAVI_ROUTE"))io{sdk?.getCurrentLocationInfo()};handler.postDelayed(this,5000)}}}
     init{connect()}
     private fun connect(){
         val generation=++epoch;connected=false;report("연결 확인 중")
@@ -68,6 +69,8 @@ class PleosProbeNavigationGateway(private val context:Context):NavigationGateway
         if(pending!=null)return
         liveMode=enabled;position=null
     }
+    override fun onForeground(){foreground=true;handler.removeCallbacks(locationPoll);handler.post(locationPoll)}
+    override fun onBackground(){foreground=false;position=null;handler.removeCallbacks(locationPoll)}
     override fun request(request:RouteRequest,result:(Long,String,Boolean,String)->Unit){
         if(!liveMode){mock.request(request,result);return}
         val reason=LiveRoutePolicy.rejection(request.target,permission("NAVI_ROUTE_SEARCH")&&permission("NAVI_ROUTE"),connected)

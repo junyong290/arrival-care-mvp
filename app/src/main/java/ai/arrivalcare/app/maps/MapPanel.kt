@@ -83,7 +83,7 @@ class MapPanel(context:Context,private val onPoint:(Waypoint?)->Unit,private val
         catch(_:Exception){fallback("지도 연결 오류 · 동선도로 계속 안내해요")}
     }
     private fun updateCaption(){
-        badge.text=if(realMapReady)"카카오 지도" else if(scene.venue.simulated)"시연 동선" else "시설 정보"
+        badge.text=if(realMapReady)"카카오 지도" else if(BuildConfig.KAKAO_INCLUDED)"대체 화면 · 지도 연결 확인" else if(scene.venue.simulated)"시연 동선" else "시설 정보"
         caption.text=if(scene.venue.simulated)"가상 D/P/M · 차량 위치 시뮬레이션" else if(realMapReady)"공식 대표 위치 · D/P/M 확인 필요" else "지도 미연결 · 대표 위치 정보만 표시"
     }
     private fun fallback(reason:String){

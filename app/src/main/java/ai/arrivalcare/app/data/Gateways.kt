@@ -10,6 +10,8 @@ interface NavigationGateway {
     val currentPosition:GeoPoint? get()=null
     val simulator:MockNavigationGateway? get()=null
     fun setLiveMode(enabled:Boolean) {}
+    fun onForeground() {}
+    fun onBackground() {}
     fun request(request: RouteRequest, result: (Long, String, Boolean, String) -> Unit)
     fun close()
 }

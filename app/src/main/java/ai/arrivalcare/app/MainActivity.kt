@@ -64,10 +64,10 @@ class MainActivity:Activity(){
         }})
         refresh()
     }
-    override fun onResume(){super.onResume();resumed=true;if(ready){mapPanel.resume();vehicle.onForeground();refresh()}}
+    override fun onResume(){super.onResume();resumed=true;if(ready){mapPanel.resume();vehicle.onForeground();navigation.onForeground();refresh()}}
     override fun onPause(){
         resumed=false
-        if(ready){content.animate().cancel();mapPanel.pause();vehicle.onBackground();journey.checkParked(false);journey.checkExited(false);journey.checkDoorsManually(false)}
+        if(ready){content.animate().cancel();mapPanel.pause();vehicle.onBackground();navigation.onBackground();journey.checkParked(false);journey.checkExited(false);journey.checkDoorsManually(false)}
         super.onPause()
     }
     override fun onSaveInstanceState(outState:Bundle){if(ready){SessionState.save(journey.state,outState);outState.putBoolean("accessibilityAvailable",accessibilityAvailable)};super.onSaveInstanceState(outState)}

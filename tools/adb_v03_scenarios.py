@@ -6,7 +6,7 @@ import argparse,json,pathlib,re,struct,subprocess,time,xml.etree.ElementTree as 
 p=argparse.ArgumentParser()
 p.add_argument('--adb',default='adb');p.add_argument('--serial',required=True)
 p.add_argument('--package',default='ai.arrivalcare.app.demo');p.add_argument('--out',required=True)
-p.add_argument('--only',choices=['all','happy','markers','rotate'],default='all')
+p.add_argument('--only',choices=['all','happy','markers','rotate','movie'],default='all')
 p.add_argument('--orientation',choices=['portrait','landscape','current'],default='portrait')
 p.add_argument('--tap-tape',help='Save observed taps/swipes for replay on the SAME emulator geometry')
 p.add_argument('--start-at',type=int,default=0,help='Resume all cases at a zero-based index; preserves earlier results')
@@ -59,6 +59,7 @@ def rotate(value):
     adb('shell','settings','put','system','accelerometer_rotation','0')
     adb('shell','settings','put','system','user_rotation',str(value));time.sleep(1.5)
 def start():
+    remember(['start'])
     adb('shell','am','force-stop',a.package)
     adb('shell','am','start','-W','-n',a.package+'/ai.arrivalcare.app.MainActivity')
     time.sleep(1.2)
@@ -183,12 +184,18 @@ def no_implicit_route():
     sim('도어 열림');sim('도어 닫힘');find('확인하고 주차장 안내',False)
     expect('모두 내렸나요')
 
+def movie():
+    happy()
+    start();setup_change('휠체어 이용자','별도 보호자 없음');sim('접근성 정보 누락 시연')
+    find('도착 계획 보류',False);shot('21-movie-accessibility')
+    start();retry();shot('22-movie-retry-recovered')
+
 original={k:adb('shell','settings','get','system',k).strip() for k in ['accelerometer_rotation','user_rotation']}
 results=json.loads((out/'ui-results.json').read_text(encoding='utf-8')) if a.start_at and (out/'ui-results.json').exists() else []
 cases=[('parents_hospital_end_to_end',happy),('sole_caregiver_skips_dropoff',alone),('door_cycle_never_auto_completes',doors),
        ('disconnected_door_manual_fallback',missing),('driving_restriction',driving),('navigation_retry',retry),
        ('late_callback_ignored',late),('mall_wheelchair_conditions',wheelchair),('marker_details',markers),('window_configuration_preserves_unconfirmed_stage',rotation),('missing_accessibility_holds_plan',missing_accessibility),('real_venue_has_no_invented_DPM',actual_venue),('dark_light_theme',night),('background_requires_fresh_safety_checks',background),('route_requires_explicit_consent',no_implicit_route)]
-selected=cases[a.start_at:] if a.only=='all' else [cases[{'happy':0,'markers':8,'rotate':9}[a.only]]]
+selected=cases[a.start_at:] if a.only=='all' else ([('three_scenario_movie',movie)] if a.only=='movie' else [cases[{'happy':0,'markers':8,'rotate':9}[a.only]]])
 try:
     if a.orientation!='current':rotate(0 if a.orientation=='portrait' else 1)
     metadata={}
