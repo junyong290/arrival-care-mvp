@@ -264,6 +264,54 @@ def tap(label):
     time.sleep(.7)
 
 
+def arrive(arrival_label, confirmation_label):
+    """Retry only an explicit demo-arrival tap proven lost by fresh observations."""
+    allowed = {
+        '[시연] 하차 지점 도착': '확인하고 주차장 안내',
+        '[시연] 주차장 도착': '주차 완료 · 만남 장소 보기',
+    }
+    assert allowed.get(arrival_label) == confirmation_label, 'Unsupported arrival transition'
+
+    def completed(root):
+        confirmation = lookup(root, confirmation_label)
+        if confirmation is None:
+            return False
+        assert confirmation.get('enabled') == 'false', (confirmation_label, 'enabled', confirmation.get('enabled'))
+        return True
+
+    for attempt in range(1, 4):
+        if attempt == 1:
+            button = find(arrival_label, True)
+        else:
+            # Recheck immediately before a retry, never reuse a previous tap position.
+            root = tree()
+            if completed(root):
+                return
+            button = lookup(root, arrival_label)
+            if button is None or button.get('enabled') != 'true':
+                find(confirmation_label, False)
+                return
+        x1, y1, x2, y2 = rect(button)
+        adb('shell', 'input', 'tap', str((x1 + x2) // 2), str((y1 + y2) // 2))
+        result.setdefault('arrival_tap_attempts', []).append({
+            'arrival_label': arrival_label, 'confirmation_label': confirmation_label,
+            'attempt': attempt, 'retry_only_after_two_fresh_old_button_observations': attempt > 1,
+        })
+        time.sleep(.7)
+        for observation in range(2):
+            root = tree()
+            if completed(root):
+                return
+            old = lookup(root, arrival_label)
+            if old is None or old.get('enabled') != 'true':
+                # A transition or unknown screen is not permission to tap again.
+                find(confirmation_label, False)
+                return
+            if observation == 0:
+                time.sleep(1)
+    raise AssertionError('Arrival did not transition after three observed taps: ' + arrival_label)
+
+
 def start():
     adb('shell', 'am', 'force-stop', package)
     launch = adb('shell', 'am', 'start', '-W', '-n', package + '/ai.arrivalcare.app.MainActivity', timeout=90)
@@ -291,8 +339,7 @@ def happy():
     video_mark('arrival_plan')
     tap('이 계획으로 안내 시작')
     tap('동의하고 시연 경로 요청')
-    tap('[시연] 하차 지점 도착')
-    find('확인하고 주차장 안내', False)
+    arrive('[시연] 하차 지점 도착', '확인하고 주차장 안내')
     screenshot(current, '02-exit-unconfirmed')
     video_mark('exit_confirmation_required')
     tap('안전하게 정차·주차했어요')
@@ -307,8 +354,7 @@ def happy():
     screenshot(current, '03-parking-approval')
     video_mark('parking_route_approval')
     tap('동의하고 시연 경로 요청')
-    tap('[시연] 주차장 도착')
-    find('주차 완료 · 만남 장소 보기', False)
+    arrive('[시연] 주차장 도착', '주차 완료 · 만남 장소 보기')
     video_mark('parking_confirmation_required')
     tap('주차를 마치고 안전하게 내릴 수 있어요')
     tap('주차 완료 · 만남 장소 보기')
@@ -332,7 +378,7 @@ def together():
     tap('이 계획으로 안내 시작')
     find('모두 함께 주차해요')
     tap('동의하고 시연 경로 요청')
-    tap('[시연] 주차장 도착')
+    arrive('[시연] 주차장 도착', '주차 완료 · 만남 장소 보기')
     tap('주차를 마치고 안전하게 내릴 수 있어요')
     tap('주차 완료 · 만남 장소 보기')
     find('함께 여기로 이동해요')

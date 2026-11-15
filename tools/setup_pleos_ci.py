@@ -65,10 +65,11 @@ def download(url, path, size, algorithm, expected):
             time.sleep(3)
 
 
-def download_parallel(url, path, size, algorithm, expected, chunk_size=128 * 1024 ** 2):
+def download_parallel(url, path, size, algorithm, expected, chunk_size=16 * 1024 ** 2):
     """Four bounded Range transfers, then verify the complete pinned artifact.
 
-    Complete parts survive another part's transient retry, only in this invocation.
+    Complete and partial parts survive transient retries only in this invocation.
+    A retry requests only the suffix after the bytes already written to disk.
     An HTTP 200 probe means Range is unsupported; other errors never fall back.
     """
     etag = '"' + expected + '"'
@@ -122,10 +123,16 @@ def download_parallel(url, path, size, algorithm, expected, chunk_size=128 * 102
             if stopped.is_set():
                 raise RuntimeError('Another part failed; transfer stopped')
             try:
-                total = 0
-                with urllib.request.urlopen(request(start, end), timeout=60) as response:
-                    validate(response, start, end)
-                    with pending.open('wb') as target:
+                total = pending.stat().st_size if pending.exists() else 0
+                if total > length:
+                    raise RuntimeError('Partial file exceeds requested part')
+                if total == length:
+                    pending.replace(complete)
+                    return length
+                offset = start + total
+                with urllib.request.urlopen(request(offset, end), timeout=60) as response:
+                    validate(response, offset, end)
+                    with pending.open('ab') as target:
                         while total < length:
                             if stopped.is_set():
                                 raise RuntimeError('Another part failed; transfer stopped')
@@ -144,10 +151,10 @@ def download_parallel(url, path, size, algorithm, expected, chunk_size=128 * 102
                 # Do not retry authentication, rate limits, or other HTTP denials.
                 raise
             except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead, EOFError) as error:
-                pending.unlink(missing_ok=True)
                 if attempt == 2 or stopped.is_set():
                     raise
-                print(f'{path.name}: part {index + 1}/{len(ranges)} network retry {attempt + 1}: {type(error).__name__}', flush=True)
+                received = pending.stat().st_size if pending.exists() else 0
+                print(f'{path.name}: part {index + 1}/{len(ranges)} network retry {attempt + 1}, resume at byte {start + received}: {type(error).__name__}', flush=True)
                 time.sleep(2)
 
     executor = ThreadPoolExecutor(max_workers=4)
