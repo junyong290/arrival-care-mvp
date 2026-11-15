@@ -29,7 +29,7 @@ jobs:
       - name: Install emulator graphics runtime dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y libpulse0 libnss3 libnspr4 libxcomposite1 libxcursor1 libxi6 libxdamage1 libxtst6 libxrandr2 libx11-xcb1 libxkbcommon0 libxkbcommon-x11-0 libxcb-cursor0 libglu1-mesa
+          sudo apt-get install -y libpulse0 libnss3 libnspr4 libxcomposite1 libxcursor1 libxi6 libxdamage1 libxtst6 libxrandr2 libx11-xcb1 libxkbcommon0 libxkbcommon-x11-0 libxcb-cursor0 libglu1-mesa ffmpeg
       - name: Verify the signed submission APK from this commit
         run: |
           python3 - <<'PY'
@@ -47,7 +47,7 @@ jobs:
         run: python3 tools/setup_pleos_ci.py --out ci-evidence/pleos
       - name: Verify installed APK bytes and run actual Pleos UI
         run: |
-          python3 tools/verify_pleos_runtime.py --adb "$ANDROID_HOME/platform-tools/adb" --serial emulator-5554 --apks "$RUNNER_TEMP/pleos-apks" --out ci-evidence/pleos --boot-timeout 900 --version 0.3.1 --variant pleos
+          python3 tools/verify_pleos_runtime.py --adb "$ANDROID_HOME/platform-tools/adb" --serial emulator-5554 --apks "$RUNNER_TEMP/pleos-apks" --out ci-evidence/pleos --boot-timeout 900 --version 0.3.1 --variant pleos --record
       - name: Stop task emulator
         if: always()
         run: timeout 15s "$ANDROID_HOME/platform-tools/adb" -s emulator-5554 emu kill || true

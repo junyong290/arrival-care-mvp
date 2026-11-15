@@ -22,11 +22,14 @@ p.add_argument('--boot-timeout', type=int, default=900)
 p.add_argument('--version', default='0.3.0')
 p.add_argument('--variant', choices=['all', 'pleos', 'demo'], default='all')
 p.add_argument('--settle-seconds', type=int, default=120)
+p.add_argument('--record', action='store_true', help='Record the actual happy-path screen and validate the MP4')
 a = p.parse_args()
 out = pathlib.Path(a.out)
 out.mkdir(parents=True, exist_ok=True)
 base = [a.adb, '-s', a.serial]
 result = {'emulator': 'Pleos Connect 2.1.0', 'apk_version': a.version, 'variants': [], 'success': False}
+recording = None
+recording_started = None
 
 
 def save():
@@ -57,6 +60,85 @@ def screenshot(folder, name):
     data = adb('exec-out', 'screencap', '-p', binary=True, timeout=45)
     assert data.startswith(b'\x89PNG\r\n\x1a\n'), 'Invalid screenshot'
     (folder / (name + '.png')).write_bytes(data)
+
+
+def video_mark(stage):
+    if recording is not None and recording_started is not None:
+        recording['timeline'].append({'stage': stage, 'elapsed_seconds': round(time.monotonic() - recording_started, 3)})
+
+
+def start_video(folder, item):
+    global recording, recording_started
+    remote = f'/sdcard/arrivalcare-pleos-{time.time_ns()}.mp4'
+    recording = {'scope': 'Raw Android screenrecord of this exact installed APK on Pleos',
+                 'apk_sha256': item['installed_sha256'], 'verified': False, 'timeline': [],
+                 'remote_path': remote, 'requested_size': '1920x1080', 'time_limit_seconds': 180}
+    item['video'] = recording
+    # Fixed command and generated numeric filename; keep the owned recorder PID.
+    command = f'screenrecord --size 1920x1080 --bit-rate 4000000 --time-limit 180 {remote} > {remote}.log 2>&1 < /dev/null & echo $!'
+    pid = adb('shell', command).strip()
+    assert pid.isdigit(), 'No owned screenrecord PID: ' + pid
+    recording['pid'] = int(pid)
+    recording_started = time.monotonic()
+    time.sleep(1)
+    cmdline = adb('shell', 'cat', f'/proc/{pid}/cmdline')
+    assert 'screenrecord' in cmdline and remote in cmdline, 'Recorder process ownership mismatch'
+    video_mark('recording_started')
+
+
+def finish_video(folder):
+    global recording, recording_started
+    if recording is None:
+        return
+    try:
+        pid = recording.get('pid')
+        remote = recording['remote_path']
+        if pid:
+            try:
+                cmdline = adb('shell', 'cat', f'/proc/{pid}/cmdline')
+            except RuntimeError:
+                cmdline = ''  # May already have reached screenrecord's 180-second limit.
+            if cmdline:
+                assert 'screenrecord' in cmdline and remote in cmdline, 'Recorder PID was reused; will not signal it'
+                adb('shell', 'kill', '-2', str(pid))
+                for _ in range(20):
+                    time.sleep(1)
+                    try:
+                        if not adb('shell', 'cat', f'/proc/{pid}/cmdline'):
+                            break
+                    except RuntimeError:
+                        break
+                else:
+                    raise RuntimeError('Owned screenrecord did not finalize after SIGINT')
+        target = folder / f'arrivalcare-pleos-{a.version}-actual-raw.mp4'
+        adb('pull', remote, str(target), timeout=90)
+        try:
+            (folder / 'screenrecord-log.txt').write_text(adb('shell', 'cat', remote + '.log'), encoding='utf-8')
+        except RuntimeError:
+            pass
+        probe = subprocess.run(['ffprobe', '-v', 'error', '-show_format', '-show_streams', '-of', 'json', str(target)], capture_output=True, text=True, timeout=30)
+        (folder / 'video-ffprobe.json').write_text(probe.stdout, encoding='utf-8')
+        assert probe.returncode == 0, 'ffprobe: ' + probe.stderr
+        details = json.loads(probe.stdout)
+        streams = [stream for stream in details['streams'] if stream.get('codec_type') == 'video']
+        assert streams and streams[0]['width'] == 1920 and streams[0]['height'] == 1080
+        duration = float(details['format']['duration'])
+        assert duration > 1, 'Empty recording'
+        decode = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(target), '-f', 'null', '-'], capture_output=True, text=True, timeout=120)
+        (folder / 'video-decode.txt').write_text(decode.stdout + decode.stderr, encoding='utf-8')
+        assert decode.returncode == 0 and not decode.stderr.strip(), 'Video decode failed: ' + decode.stderr
+        completed = [mark for mark in recording['timeline'] if mark['stage'] == 'journey_complete']
+        assert completed, 'No observed completed journey in recording timeline'
+        assert duration < 179 and duration >= completed[-1]['elapsed_seconds'] - 2, 'Recording may be truncated at time limit'
+        recording.update({'file': target.name, 'bytes': target.stat().st_size,
+                          'sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
+                          'duration_seconds': duration, 'verified': True, 'edited': False})
+    except Exception as error:
+        recording['error'] = str(error)
+    finally:
+        (folder / 'video-timeline.json').write_text(json.dumps(recording, ensure_ascii=False, indent=2), encoding='utf-8')
+        recording = None
+        recording_started = None
 
 
 def park_virtual_vehicle():
@@ -183,11 +265,13 @@ def start():
 def happy():
     find('목적지 변경')
     screenshot(current, '01-plan')
+    video_mark('arrival_plan')
     tap('이 계획으로 안내 시작')
     tap('동의하고 시연 경로 요청')
     tap('[시연] 하차 지점 도착')
     find('확인하고 주차장 안내', False)
     screenshot(current, '02-exit-unconfirmed')
+    video_mark('exit_confirmation_required')
     tap('안전하게 정차·주차했어요')
     tap('보호자와 동승자가 모두 내렸어요')
     # The extra confirmation can be below the visible region in a Pleos window.
@@ -198,17 +282,23 @@ def happy():
     tap('확인하고 주차장 안내')
     find('동의하고 시연 경로 요청')
     screenshot(current, '03-parking-approval')
+    video_mark('parking_route_approval')
     tap('동의하고 시연 경로 요청')
     tap('[시연] 주차장 도착')
     find('주차 완료 · 만남 장소 보기', False)
+    video_mark('parking_confirmation_required')
     tap('주차를 마치고 안전하게 내릴 수 있어요')
     tap('주차 완료 · 만남 장소 보기')
     find('여기서 다시 만나요')
     find('1층 안내데스크 옆 대기공간')
     screenshot(current, '04-reunion')
+    video_mark('reunion')
     tap('만남 장소 확인했어요')
     find('도착을 함께 마쳤어요')
     screenshot(current, '05-complete')
+    video_mark('journey_complete')
+    if a.record:
+        time.sleep(4)
 
 
 def together():
@@ -285,11 +375,22 @@ try:
             (current / 'package.txt').write_text(adb('shell', 'dumpsys', 'package', package), encoding='utf-8')
             start()
             screenshot(current, '00-launch')
-            happy()
+            if a.record:
+                try:
+                    start_video(current, item)
+                except Exception as e:
+                    item.setdefault('video', {})['error'] = str(e)
+            try:
+                happy()
+            finally:
+                if a.record:
+                    finish_video(current)
             item['checks'].append('parents_dropoff_parking_reunion_complete')
             item['checks'].append('no_exit_or_parking_without_explicit_confirmation')
             together()
             item['checks'].append('sole_caregiver_skips_dropoff')
+            if a.record:
+                assert item.get('video', {}).get('verified'), 'Requested actual recording failed: ' + item.get('video', {}).get('error', 'No video')
             item['success'] = True
         except Exception as e:
             item['error'] = str(e)
