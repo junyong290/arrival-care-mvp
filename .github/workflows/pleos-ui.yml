@@ -1,0 +1,49 @@
+name: Pleos 2.1.0 APK runtime verification
+on:
+  push:
+    paths:
+      - '.github/workflows/pleos-ui.yml'
+      - 'tools/setup_pleos_ci.py'
+      - 'tools/verify_pleos_runtime.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pleos-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect runner capacity and enable KVM
+        run: |
+          df -h "$RUNNER_TEMP"
+          free -h
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          test -r /dev/kvm && test -w /dev/kvm
+      - name: Download and verify existing signed Release APKs
+        run: |
+          mkdir -p "$RUNNER_TEMP/pleos-apks"
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/pleos-apks/arrivalcare-demo-offline-0.3.0.apk" https://github.com/junyong290/arrival-care-mvp/releases/download/v0.3.0/arrivalcare-demo-offline-0.3.0.apk
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/pleos-apks/arrivalcare-pleos-offline-0.3.0.apk" https://github.com/junyong290/arrival-care-mvp/releases/download/v0.3.0/arrivalcare-pleos-offline-0.3.0.apk
+          echo "bfd4384dcd391e888021febb8d61c89ccd44ee0144e3ae96ce4fdcdfb31734e3  $RUNNER_TEMP/pleos-apks/arrivalcare-demo-offline-0.3.0.apk" | sha256sum --check
+          echo "8d0471a1196776d212c752a27222e4555107db0536356b10f94241fdddcf509a  $RUNNER_TEMP/pleos-apks/arrivalcare-pleos-offline-0.3.0.apk" | sha256sum --check
+      - name: Prepare official Pleos image and start cold-boot emulator
+        run: python3 tools/setup_pleos_ci.py --out ci-evidence/pleos
+      - name: Verify installed APK bytes and run actual Pleos UI
+        run: |
+          python3 tools/verify_pleos_runtime.py --adb "$ANDROID_HOME/platform-tools/adb" --serial emulator-5554 --apks "$RUNNER_TEMP/pleos-apks" --out ci-evidence/pleos --boot-timeout 900
+      - name: Stop task emulator
+        if: always()
+        run: timeout 15s "$ANDROID_HOME/platform-tools/adb" -s emulator-5554 emu kill || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pleos-2.1.0-signed-apk-runtime-evidence
+          path: |
+            ci-evidence/**
+            !ci-evidence/**/*.apk
+            !ci-evidence/**/*.img
+            !ci-evidence/**/*.qcow2
+          if-no-files-found: warn
