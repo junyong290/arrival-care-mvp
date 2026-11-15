@@ -88,7 +88,7 @@ def happy():
     expect('동의하고 시연 경로 요청');shot('03-parking-approval');tap('동의하고 시연 경로 요청');time.sleep(1);shot('03-parking-route')
     tap('[시연] 주차장 도착');tap('주차를 마치고 안전하게 내릴 수 있어요');tap('주차 완료 · 만남 장소 보기')
     expect('여기서 다시 만나요');expect('1층 안내데스크 옆 대기공간');shot('04-reunion')
-    tap('만남 장소 확인했어요');expect('도착을 함께 마쳤어요');shot('05-done')
+    tap('만남 장소 확인했어요');expect('도착을 함께 마쳤어요');shot('05-done');remember(['checkpoint','parents-done'])
     tap('새로운 도착 계획 만들기');expect('목적지 변경')
 
 def layout():
@@ -206,12 +206,12 @@ def no_implicit_route():
 def movie():
     happy()
     start();setup_change('휠체어 이용자','별도 보호자 없음');sim('접근성 정보 누락 시연')
-    find('도착 계획 보류',False);shot('21-movie-accessibility')
+    find('도착 계획 보류',False);shot('21-movie-accessibility');remember(['checkpoint','accessibility-hold'])
     start();retry();shot('22-movie-retry-recovered')
     tap('[시연] 하차 지점 도착');sim('도어 신호 누락')
     tap('안전하게 정차·주차했어요');tap('보호자와 동승자가 모두 내렸어요')
     find('확인하고 주차장 안내',False);tap('모든 문이 닫힌 것을 직접 확인했어요')
-    find('확인하고 주차장 안내',True);shot('23-movie-door-recovered')
+    find('확인하고 주차장 안내',True);shot('23-movie-door-recovered');remember(['checkpoint','manual-door-recovered'])
 
 original={k:adb('shell','settings','get','system',k).strip() for k in ['accelerometer_rotation','user_rotation']}
 results=json.loads((out/'ui-results.json').read_text(encoding='utf-8')) if a.start_at and (out/'ui-results.json').exists() else []
