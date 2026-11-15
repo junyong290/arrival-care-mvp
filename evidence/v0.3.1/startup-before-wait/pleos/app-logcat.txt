@@ -1,0 +1,53 @@
+--------- beginning of main
+11-15 05:53:03.912  5526  5526 I ArrivalCare: 도어: UNKNOWN
+11-15 05:53:03.912  5526  5526 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 05:53:03.920  5526  5526 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 05:53:03.929  5526  5526 I ArrivalCare: 입력 제한: moving=false ready=true
+11-15 05:53:03.929  5526  5526 I ArrivalCareSDK: Car UX manager connected
+11-15 05:53:03.967  5526  5526 I ArrivalCare: 도어: UNKNOWN
+11-15 05:53:03.972  5526  5526 I ArrivalCare: STAGE SETUP mode=null
+11-15 05:53:06.131  5526  5526 I ArrivalCareSDK: Vehicle 초기화 요청 반환 · 신호 검증 대기
+11-15 05:53:10.477  5526  5526 I ArrivalCare: 도어: UNKNOWN
+11-15 05:53:10.478  5526  5526 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 05:53:10.478  5526  5526 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 05:53:10.581  5526  5526 I ArrivalCare: 입력 제한: moving=false ready=true
+11-15 05:53:10.581  5526  5526 I ArrivalCareSDK: Car UX manager connected
+11-15 05:53:11.260  5526  5526 I ArrivalCare: STAGE SETUP mode=null
+11-15 05:53:11.288  5526  5526 I ArrivalCareSDK: Vehicle 초기화 요청 반환 · 신호 검증 대기
+11-15 05:53:12.352  5526  5526 I ArrivalCare: 도어: UNKNOWN
+11-15 05:53:12.392  5526  5526 I ArrivalCare: 도어: UNKNOWN
+11-15 05:53:12.392  5526  5526 I ArrivalCare: 도어: UNKNOWN
+11-15 05:53:14.314  5526  5526 I ArrivalCare: 도어: CLOSED
+11-15 05:53:14.314  5526  5526 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 05:53:17.466  5526  5526 I ArrivalCare: 도어: CLOSED
+11-15 05:53:17.474  5526  5526 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 05:53:19.977  5526  5526 I ArrivalCare: 도어: UNKNOWN
+--------- beginning of crash
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: FATAL EXCEPTION: DefaultDispatcher-worker-5
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: Process: ai.umos.inputmethod, PID: 6631
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: java.lang.IllegalArgumentException: Failed requirement.
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at u1.d.invokeSuspend(Unknown Source:64)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at u1.d.invoke(Unknown Source:15)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invokeSuspend(Unknown Source:36)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:2)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:1)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at c5.b.b(Unknown Source:7)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at kotlinx.coroutines.i.c(Unknown Source:53)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at kotlinx.coroutines.g.d(Unknown Source:0)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k$s.invokeSuspend(Unknown Source:74)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:1)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:2)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.C.e(Unknown Source:95)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k.B(Unknown Source:10)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k.u(Unknown Source:179)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k.j(Unknown Source:0)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at androidx.datastore.core.k$g.invokeSuspend(Unknown Source:12)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at kotlin.coroutines.jvm.internal.a.resumeWith(Unknown Source:10)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at kotlinx.coroutines.V.run(Unknown Source:128)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at kotlinx.coroutines.internal.l$a.run(Unknown Source:3)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at d5.k.run(Unknown Source:2)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at d5.a.F(Unknown Source:0)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at d5.a$c.d(Unknown Source:14)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at d5.a$c.p(Unknown Source:28)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	at d5.a$c.run(Unknown Source:0)
+11-15 05:53:30.452  6631  6741 E AndroidRuntime: 	Suppressed: kotlinx.coroutines.internal.h: [I0{Cancelling}@2c3fd65, Dispatchers.IO]

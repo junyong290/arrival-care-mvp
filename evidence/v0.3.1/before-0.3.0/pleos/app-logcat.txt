@@ -1,0 +1,90 @@
+--------- beginning of crash
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: FATAL EXCEPTION: DefaultDispatcher-worker-2
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: Process: ai.umos.inputmethod, PID: 2015
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: java.lang.IllegalArgumentException: Failed requirement.
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at u1.d.invokeSuspend(Unknown Source:64)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at u1.d.invoke(Unknown Source:15)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invokeSuspend(Unknown Source:36)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:2)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:1)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at c5.b.b(Unknown Source:7)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at kotlinx.coroutines.i.c(Unknown Source:53)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at kotlinx.coroutines.g.d(Unknown Source:0)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$s.invokeSuspend(Unknown Source:74)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:1)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:2)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.C.e(Unknown Source:95)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k.B(Unknown Source:10)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k.u(Unknown Source:118)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k.j(Unknown Source:0)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$w.invokeSuspend(Unknown Source:34)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$w.l(Unknown Source:8)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.k$w.invoke(Unknown Source:4)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at androidx.datastore.core.B$b.invokeSuspend(Unknown Source:86)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at kotlin.coroutines.jvm.internal.a.resumeWith(Unknown Source:10)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at kotlinx.coroutines.V.run(Unknown Source:128)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at kotlinx.coroutines.internal.l$a.run(Unknown Source:3)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at d5.k.run(Unknown Source:2)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at d5.a.F(Unknown Source:0)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at d5.a$c.d(Unknown Source:14)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at d5.a$c.p(Unknown Source:28)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	at d5.a$c.run(Unknown Source:0)
+11-15 05:27:55.253  2015  2291 E AndroidRuntime: 	Suppressed: kotlinx.coroutines.internal.h: [I0{Cancelling}@cb920, Dispatchers.IO]
+--------- beginning of main
+11-15 05:28:02.671  5629  5629 I ArrivalCareSDK: NaviHelper 연결 확인 중
+11-15 05:28:02.733  5629  5629 I ArrivalCare: 도어: UNKNOWN
+11-15 05:28:02.733  5629  5629 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 05:28:02.733  5629  5629 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 05:28:02.738  5629  5629 I ArrivalCare: 입력 제한: moving=false ready=true
+11-15 05:28:02.738  5629  5629 I ArrivalCareSDK: Car UX manager connected
+11-15 05:28:02.791  5629  5629 I ArrivalCare: 도어: UNKNOWN
+11-15 05:28:02.791  5629  5629 I ArrivalCare: STAGE SETUP mode=null
+11-15 05:28:02.791  5629  5629 I ArrivalCareSDK: Vehicle 초기화 요청 반환 · 신호 검증 대기
+11-15 05:28:05.660  5629  5629 I ArrivalCareSDK: NaviHelper 서비스 연결 성공
+11-15 05:28:07.868  5629  5629 I ArrivalCare: 도어: UNKNOWN
+11-15 05:28:15.720  5629  5629 I ArrivalCareSDK: NaviHelper 연결 확인 중
+11-15 05:28:15.965  5629  5629 I ArrivalCare: 도어: UNKNOWN
+11-15 05:28:15.965  5629  5629 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 05:28:15.965  5629  5629 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 05:28:15.970  5629  5629 I ArrivalCare: 입력 제한: moving=false ready=true
+11-15 05:28:15.970  5629  5629 I ArrivalCareSDK: Car UX manager connected
+11-15 05:28:17.059  5629  5629 I ArrivalCare: STAGE SETUP mode=null
+11-15 05:28:17.173  5629  5629 I ArrivalCareSDK: Vehicle 초기화 요청 반환 · 신호 검증 대기
+11-15 05:28:17.440  5629  5629 I ArrivalCareSDK: NaviHelper 서비스 연결 성공
+11-15 05:28:18.252  5629  5629 I ArrivalCare: 도어: UNKNOWN
+11-15 05:28:18.295  5629  5629 I ArrivalCare: 도어: UNKNOWN
+11-15 05:28:18.295  5629  5629 I ArrivalCare: 도어: UNKNOWN
+11-15 05:28:18.295  5629  5629 I ArrivalCare: 도어: CLOSED
+11-15 05:28:20.379  5629  5629 I ArrivalCare: 도어: CLOSED
+11-15 05:28:20.379  5629  5629 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 05:28:23.285  5629  5629 I ArrivalCare: 도어: CLOSED
+11-15 05:28:23.286  5629  5629 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 05:28:26.650  5629  5629 I ArrivalCare: 도어: UNKNOWN
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: FATAL EXCEPTION: DefaultDispatcher-worker-6
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: Process: ai.umos.inputmethod, PID: 7359
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: java.lang.IllegalArgumentException: Failed requirement.
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at u1.d.invokeSuspend(Unknown Source:64)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at u1.d.invoke(Unknown Source:15)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invokeSuspend(Unknown Source:36)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:2)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:1)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at c5.b.b(Unknown Source:7)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at kotlinx.coroutines.i.c(Unknown Source:53)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at kotlinx.coroutines.g.d(Unknown Source:0)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k$s.invokeSuspend(Unknown Source:74)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:1)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:2)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.C.e(Unknown Source:95)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k.B(Unknown Source:10)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k.u(Unknown Source:179)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k.j(Unknown Source:0)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at androidx.datastore.core.k$g.invokeSuspend(Unknown Source:12)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at kotlin.coroutines.jvm.internal.a.resumeWith(Unknown Source:10)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at kotlinx.coroutines.V.run(Unknown Source:128)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at kotlinx.coroutines.internal.l$a.run(Unknown Source:3)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at d5.k.run(Unknown Source:2)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at d5.a.F(Unknown Source:0)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at d5.a$c.d(Unknown Source:14)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at d5.a$c.p(Unknown Source:28)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	at d5.a$c.run(Unknown Source:0)
+11-15 05:28:43.833  7359  7491 E AndroidRuntime: 	Suppressed: kotlinx.coroutines.internal.h: [I0{Cancelling}@91869f, Dispatchers.IO]

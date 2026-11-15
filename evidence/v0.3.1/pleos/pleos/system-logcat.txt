@@ -1,0 +1,308 @@
+--------- beginning of main
+11-15 06:10:29.306   779   877 D ConnectWindowUtil: handleWindowBounds: 5
+11-15 06:10:29.306   779   877 D ConnectWindowUtil: handleWindowChanged(filtered): 0
+11-15 06:10:29.306   779   877 D ConnectWindowUtil: window not changed, skip update
+11-15 06:10:29.341   210  3905 E sdv_vhal_rust: sdv_vhal_rust_ffi::delegator::vehicle_info: Failed to get vehicle information. Error { kind: SecureStorageError, message: "SecureStorageError: RPC error: Connection failed: Connection failed: Connection refused (os error 111)" }
+--------- beginning of system
+11-15 06:10:29.386   779   779 W AccessibilityManagerService:  wait for adding window timeout: 50
+11-15 06:10:29.407  1898  2031 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-15 06:10:29.413  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:29.413  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:29.413  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:311
+11-15 06:10:29.413  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:333
+11-15 06:10:29.423  4887  4887 D [Pleos]e: [main]onLocationCallback data FusedLocationData(latitude=39.237255, longitude=-123.15003166666666, altitude=0.0, heading=0.0, confidence=5.0, timestampMillis=1794751829413)
+11-15 06:10:29.474  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:29.474  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:29.526 16327 16397 I [Pleos][SDK]b: [ArrivalCare-Vehicle]getCapabilityConfig instance ai.pleos.playground.vehicle.api.implement.DoorImpl@be747a2 , propId DOOR_POS
+11-15 06:10:29.526 16327 16397 I [Pleos][SDK]b: [ArrivalCare-Vehicle]getCapabilityConfig request
+11-15 06:10:29.526 16327 16397 I [Pleos][SDK]b: [ArrivalCare-Vehicle]getCapabilityConfig propId DOOR_POS
+11-15 06:10:29.526  4219  5442 D [Pleos]u: [binder:4219_8]getCapabilityConfigByKey() called with: propKey DOOR_POS result = ai.pleos.playground.vehicle.callback.ICapabilityConfigResult$Stub$Proxy@8685ece
+11-15 06:10:29.526  4219  5442 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.526  4219  5442 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.526  4219  5442 D [Pleos]g: consumeAll() called
+11-15 06:10:29.526  4219  5442 D [Pleos]g: update() called | cache size : 1
+11-15 06:10:29.526  4219  4276 D [Pleos]g: cache: interface R0.a
+11-15 06:10:29.526  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getPropertyConfig(SdkPropertyKey(key=DOOR_POS)) called
+11-15 06:10:29.526  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getEffectiveConfigMap() called
+11-15 06:10:29.526  4219  4276 I [Pleos]B: [DefaultDispatcher-worker-2]isInitialize false
+11-15 06:10:29.526  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getEffectiveConfigMap() HMG not initialized, use localMap
+11-15 06:10:29.527   779  1617 W ActivityManager: Unable to start service Intent { act=ai.pleos.iap2.eap.proxy.action.BIND_PROXY_SERVICE pkg=ai.pleos.iap2.eap.proxy } U=10: not found
+11-15 06:10:29.529  4830  4830 I IAPConnector: scheduleBindRetry: 123
+11-15 06:10:29.534  4219  4276 I [Pleos]u: [DefaultDispatcher-worker-2]getCapabilityConfigByKey propKey DOOR_POS, dataString {"access":3,"areaType":4,"changeMode":1,"configArray":[],"configString":"","maxSampleRate":0.0,"minSampleRate":0.0,"propertyId":373295872,"supportedAreas":{"16":{"maxValue":1,"minValue":0,"supportedValues":[]},"64":{"maxValue":1,"minValue":0,"supportedValues":[]},"536870912":{"maxValue":100,"minValue":0,"supportedValues":[]},"268435456":{"maxValue":100,"minValue":0,"supportedValues":[]},"1":{"maxValue":1,"minValue":0,"supportedValues":[]},"4":{"maxValue":1,"minValue":0,"supportedValues":[]}},"type":"java.lang.Integer"}
+11-15 06:10:29.543  4219  5442 D [Pleos]u: [binder:4219_8]getPropertyValue() called with: propKey = DOOR_POS, areaType = 4, areaId = 16, result = ai.pleos.playground.vehicle.callback.IGetPropertyResult$Stub$Proxy@2a751ef
+11-15 06:10:29.543  4219  5442 D [Pleos]u: [binder:4219_8]getPropertyValue() called with: propKey = DOOR_POS, areaType = 4, areaId = 64, result = ai.pleos.playground.vehicle.callback.IGetPropertyResult$Stub$Proxy@a0ee4fc
+11-15 06:10:29.543  4219  5442 D [Pleos]u: [binder:4219_8]getPropertyValue() called with: propKey = DOOR_POS, areaType = 4, areaId = 1, result = ai.pleos.playground.vehicle.callback.IGetPropertyResult$Stub$Proxy@9047785
+11-15 06:10:29.543  4219  5442 D [Pleos]u: [binder:4219_8]getPropertyValue() called with: propKey = DOOR_POS, areaType = 4, areaId = 4, result = ai.pleos.playground.vehicle.callback.IGetPropertyResult$Stub$Proxy@92f99da
+11-15 06:10:29.543  4219  4278 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.543  4219  4278 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.543  4219  4278 D [Pleos]g: consumeAll() called
+11-15 06:10:29.543  4219  4278 D [Pleos]g: update() called | cache size : 1
+11-15 06:10:29.543  4219  4278 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.543  4219  4278 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.543  4219  4278 D [Pleos]g: consumeAll() called
+11-15 06:10:29.543  4219  4278 D [Pleos]g: update() called | cache size : 2
+11-15 06:10:29.543  4219  4278 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.543  4219  4278 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.543  4219  4278 D [Pleos]g: consumeAll() called
+11-15 06:10:29.543  4219  4278 D [Pleos]g: update() called | cache size : 3
+11-15 06:10:29.543  4219  4277 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.543  4219  4277 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:29.543  4219  4277 D [Pleos]g: consumeAll() called
+11-15 06:10:29.543  4219  4277 D [Pleos]g: update() called | cache size : 4
+11-15 06:10:29.547  4219  4276 D [Pleos]g: cache: interface R0.a
+11-15 06:10:29.547  4219  4276 D [Pleos]b: invoke() called with: key = DOOR_POS, areaType = 4, areaId = 16
+11-15 06:10:29.547  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getProperty() called with: propertyKey = SdkPropertyKey(key=DOOR_POS), areaType = SdkAreaType(type=4), areaId = SdkAreaId(id=16)
+11-15 06:10:29.547  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]Passing `validateGetPropertyValue` function
+11-15 06:10:29.547  4219  4276 I [Pleos]j: [DefaultDispatcher-worker-2]getPropertyAsync servicePropertyId 373295872 serviceAreaId 16
+11-15 06:10:29.547  4219  4276 I [Pleos]B: [DefaultDispatcher-worker-2]isInitialize false
+11-15 06:10:29.547  4219  4276 I [Pleos]j: [DefaultDispatcher-worker-2]getPropertyAsync connect servicePropertyId 373295872 serviceAreaId 16
+11-15 06:10:29.547  4219  4276 D [Pleos]b: [DefaultDispatcher-worker-2]manager getProperty() called with: propertyId = 373295872, areaId = 16
+11-15 06:10:29.548 16327 16352 I [Pleos][SDK]b: [binder:16327_2]getProperty_onResult eventPropKey DOOR_POS eventAreaId 16 eventValue 0
+11-15 06:10:29.549  4219  4276 D [Pleos]g: cache: interface R0.a
+11-15 06:10:29.549  4219  4276 D [Pleos]b: invoke() called with: key = DOOR_POS, areaType = 4, areaId = 64
+11-15 06:10:29.549  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getProperty() called with: propertyKey = SdkPropertyKey(key=DOOR_POS), areaType = SdkAreaType(type=4), areaId = SdkAreaId(id=64)
+11-15 06:10:29.549  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]Passing `validateGetPropertyValue` function
+11-15 06:10:29.549  4219  4276 I [Pleos]j: [DefaultDispatcher-worker-2]getPropertyAsync servicePropertyId 373295872 serviceAreaId 64
+11-15 06:10:29.549  4219  4276 I [Pleos]B: [DefaultDispatcher-worker-2]isInitialize false
+11-15 06:10:29.549  4219  4276 I [Pleos]j: [DefaultDispatcher-worker-2]getPropertyAsync connect servicePropertyId 373295872 serviceAreaId 64
+11-15 06:10:29.549  4219  4276 D [Pleos]b: [DefaultDispatcher-worker-2]manager getProperty() called with: propertyId = 373295872, areaId = 64
+11-15 06:10:29.552 16327 16352 I [Pleos][SDK]b: [binder:16327_2]getProperty_onResult eventPropKey DOOR_POS eventAreaId 64 eventValue 0
+11-15 06:10:29.553  4219  4276 D [Pleos]g: cache: interface R0.a
+11-15 06:10:29.553  4219  4276 D [Pleos]b: invoke() called with: key = DOOR_POS, areaType = 4, areaId = 1
+11-15 06:10:29.553  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getProperty() called with: propertyKey = SdkPropertyKey(key=DOOR_POS), areaType = SdkAreaType(type=4), areaId = SdkAreaId(id=1)
+11-15 06:10:29.553  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]Passing `validateGetPropertyValue` function
+11-15 06:10:29.553  4219  4276 I [Pleos]j: [DefaultDispatcher-worker-2]getPropertyAsync servicePropertyId 373295872 serviceAreaId 1
+11-15 06:10:29.553  4219  4276 I [Pleos]B: [DefaultDispatcher-worker-2]isInitialize false
+11-15 06:10:29.553  4219  4276 I [Pleos]j: [DefaultDispatcher-worker-2]getPropertyAsync connect servicePropertyId 373295872 serviceAreaId 1
+11-15 06:10:29.553  4219  4276 D [Pleos]b: [DefaultDispatcher-worker-2]manager getProperty() called with: propertyId = 373295872, areaId = 1
+11-15 06:10:29.553 16327 16352 I [Pleos][SDK]b: [binder:16327_2]getProperty_onResult eventPropKey DOOR_POS eventAreaId 1 eventValue 0
+11-15 06:10:29.554  4219  4276 D [Pleos]g: cache: interface R0.a
+11-15 06:10:29.554  4219  4276 D [Pleos]b: invoke() called with: key = DOOR_POS, areaType = 4, areaId = 4
+11-15 06:10:29.554  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getProperty() called with: propertyKey = SdkPropertyKey(key=DOOR_POS), areaType = SdkAreaType(type=4), areaId = SdkAreaId(id=4)
+11-15 06:10:29.554  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]Passing `validateGetPropertyValue` function
+11-15 06:10:29.554  4219  4276 I [Pleos]j: [DefaultDispatcher-worker-2]getPropertyAsync servicePropertyId 373295872 serviceAreaId 4
+11-15 06:10:29.554  4219  4276 I [Pleos]B: [DefaultDispatcher-worker-2]isInitialize false
+11-15 06:10:29.554  4219  4276 I [Pleos]j: [DefaultDispatcher-worker-2]getPropertyAsync connect servicePropertyId 373295872 serviceAreaId 4
+11-15 06:10:29.554  4219  4276 D [Pleos]b: [DefaultDispatcher-worker-2]manager getProperty() called with: propertyId = 373295872, areaId = 4
+11-15 06:10:29.557 16327 16352 I [Pleos][SDK]b: [binder:16327_2]getProperty_onResult eventPropKey DOOR_POS eventAreaId 4 eventValue 0
+11-15 06:10:29.558 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:29.558 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:29.596  3999  5443 D DRIVING_VIEW: DrivingView FPS: 2.50
+11-15 06:10:29.662  4961  6036 I navi_engine: navi_service::mapmatch_svc::mapmatching: [mm] org(127.094681,37.4127212:0), match(127.094681,37.4127212), head(0.00), speed(0.00), roadid(18446744073709551615), route(-2), sat(0), laneid(18446744073709551615), stat(0), off(0.0), l(0), r(0)
+11-15 06:10:29.689 16327 16369 D EGL_emulation: app_time_stats: avg=1905.16ms min=1905.16ms max=1905.16ms count=1
+11-15 06:10:29.705  1898  1898 I Choreographer: Skipped 49 frames!  The application may be doing too much work on its main thread.
+11-15 06:10:29.696  5771  5771 W init    : type=1400 audit(0.0:809): avc:  denied  { entrypoint } for  path="/system_ext/bin/logcatProxy" dev="dm-3" ino=96 scontext=u:r:logcatProxy:s0 tcontext=u:object_r:system_file:s0 tclass=file permissive=0
+11-15 06:10:29.751  4219  4219 I [Pleos]b: [main]Vehicle onChangeEvent: propertyId=291504905, areaId=0, value=77400.0
+11-15 06:10:29.751  4219  4275 I PropertyEventValueExt: [DefaultDispatcher-worker-1]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:29.751  4219  4275 I PropertyEventValueExt: [DefaultDispatcher-worker-1]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:29.757  4219  4275 D [Pleos]j: [DefaultDispatcher-worker-1]carPropertyFilter: FlowFilter key SdkPropertyKey(key=EV_BATTERY_LEVEL) areaId 0
+11-15 06:10:29.757  4219  4275 D [Pleos]j: compare to value: current(PropertyEventValue(propertyKey=SdkPropertyKey(key=EV_BATTERY_LEVEL), areaId=0, value=77400.0, error=null)) | latest(PropertyEventValue(propertyKey=SdkPropertyKey(key=EV_BATTERY_LEVEL), areaId=0, value=77400.0, error=null)) 
+11-15 06:10:29.757  4219  4275 D [Pleos]j: compare to time: 3011
+11-15 06:10:29.757  4219  4275 I [Pleos]j: [DefaultDispatcher-worker-1]fetchFilterMap propertyEventFilterMap 28
+11-15 06:10:29.757  4219  4275 I PropertyEventValueExt: [DefaultDispatcher-worker-1]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:29.757  4219  4275 D [Pleos]j: [DefaultDispatcher-worker-1]before latestMap value: PropertyEventFilterData(propertyEventValue=PropertyEventValue(propertyKey=SdkPropertyKey(key=EV_BATTERY_LEVEL), areaId=0, value=77400.0, error=null), collectTime=1794751826740)
+11-15 06:10:29.757  4219  4275 I PropertyEventValueExt: [DefaultDispatcher-worker-1]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:29.757  4219  4275 D [Pleos]j: [DefaultDispatcher-worker-1]after latestMap value: PropertyEventFilterData(propertyEventValue=PropertyEventValue(propertyKey=SdkPropertyKey(key=EV_BATTERY_LEVEL), areaId=0, value=77400.0, error=null), collectTime=1794751829757)
+11-15 06:10:29.757  4219  4275 I PropertyEventValueExt: [DefaultDispatcher-worker-1]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:29.757  4219  4275 D [Pleos]u: [DefaultDispatcher-worker-1]collect event: PropertyEventItem(packageNames=[ai.umos.ambientai], itemValue=PropertyEventValueItem(propertyKey=EV_BATTERY_LEVEL, areaIds=[0], value=77400.0, error=null))
+11-15 06:10:29.757  4219  4275 D [Pleos]u: [DefaultDispatcher-worker-1]broadcastPropertyCallback() called with: applicationId = ai.umos.ambientai, broadcastItem = ai.pleos.playground.vehicle.callback.IPropertyCallback$Stub$Proxy@d34b12e, propertyEventItem = PropertyEventItem(packageNames=[ai.umos.ambientai], itemValue=PropertyEventValueItem(propertyKey=EV_BATTERY_LEVEL, areaIds=[0], value=77400.0, error=null))
+11-15 06:10:29.757  4219  4275 D [Pleos]u: [DefaultDispatcher-worker-1]include - EV_BATTERY_LEVEL
+11-15 06:10:29.757  4219  4275 D [Pleos]u: [DefaultDispatcher-worker-1]broadcastPropertyCallback() called with: applicationId = ai.arrivalcare.app.pleos, broadcastItem = ai.pleos.playground.vehicle.callback.IPropertyCallback$Stub$Proxy@cfbbeeb, propertyEventItem = PropertyEventItem(packageNames=[ai.umos.ambientai], itemValue=PropertyEventValueItem(propertyKey=EV_BATTERY_LEVEL, areaIds=[0], value=77400.0, error=null))
+11-15 06:10:29.768  3050 11149 D [Pleos][SDK]a: [binder:3050_8]onChangeEvent() called with: propIdName = EV_BATTERY_LEVEL, areaId = 0, value = 77400.0
+11-15 06:10:29.775  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:29.775  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:29.793   779   877 D ConnectWindowUtil: handleWindowBounds: 5
+11-15 06:10:29.793   779   877 D ConnectWindowUtil: handleWindowChanged(filtered): 0
+11-15 06:10:29.793   779   877 D ConnectWindowUtil: window not changed, skip update
+11-15 06:10:29.795  7192  7192 D CarEvsVehicleInfoService: Digital mirror is disabled by system property
+11-15 06:10:29.881   414  5167 W audio_hw_generic_caremu: Not supplying enough data to HAL, expected position 3872314 , only wrote 3534480
+11-15 06:10:29.892  5813  5813 I flags_health_check: ServerConfigurableFlagsReset reset_mode value: 1
+11-15 06:10:29.892  5813  5813 I flags_health_check: ServerConfigurableFlagsReset updatable crashing detected, resetting flags.
+11-15 06:10:29.900  5834  5834 W init    : type=1400 audit(0.0:810): avc:  denied  { execute } for  name="icvi-service" dev="dm-1" ino=137 scontext=u:r:init:s0 tcontext=u:object_r:icvi_exec:s0 tclass=file permissive=0
+11-15 06:10:30.000  5845  5845 I flags_health_check: ServerConfigurableFlagsReset reset_mode value: 1
+11-15 06:10:30.000  5845  5845 I flags_health_check: ServerConfigurableFlagsReset updatable crashing detected, resetting flags.
+11-15 06:10:30.035   779   924 W ActivityManager: Unable to start service Intent { act=ai.pleos.iap2.eap.proxy.action.BIND_PROXY_SERVICE pkg=ai.pleos.iap2.eap.proxy } U=10: not found
+11-15 06:10:30.035  4830  4830 I IAPConnector: scheduleBindRetry: 123
+11-15 06:10:30.077  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:30.077  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:30.182  1131  1214 D EGL_emulation: app_time_stats: avg=1003.69ms min=1003.69ms max=1003.69ms count=1
+11-15 06:10:30.273  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:30.273  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:30.273  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:311
+11-15 06:10:30.273  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:321
+11-15 06:10:30.296  7192  7192 D CarEvsVehicleInfoService: Digital mirror is disabled by system property
+11-15 06:10:30.307  3999  5895 I DrivingRenderPerf: {"event":"RENDER_COUNTERS","output":0,"session":1,"mono_ns":326571494788,"submitted":191,"gpu_completed":188,"completed_sequence":0,"untracked":0,"rhi":"OpenGL"}
+11-15 06:10:30.384  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:30.384  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:30.479  3999  5895 D EGL_emulation: app_time_stats: avg=889.50ms min=888.70ms max=890.30ms count=2
+11-15 06:10:30.538   779   924 W ActivityManager: Unable to start service Intent { act=ai.pleos.iap2.eap.proxy.action.BIND_PROXY_SERVICE pkg=ai.pleos.iap2.eap.proxy } U=10: not found
+11-15 06:10:30.538  4830  4830 I IAPConnector: scheduleBindRetry: 123
+11-15 06:10:30.562  2459  3526 D TrafficStats: tagSocket(5) with statsTag=0xffffffff, statsUid=-1
+11-15 06:10:30.648  5995  5995 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-15 06:10:30.648  5995  5995 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-15 06:10:30.683  4961  6036 I navi_engine: navi_service::mapmatch_svc::mapmatching: [mm] org(127.094681,37.4127212:0), match(127.094681,37.4127212), head(0.00), speed(0.00), roadid(18446744073709551615), route(-2), sat(0), laneid(18446744073709551615), stat(0), off(0.0), l(0), r(0)
+11-15 06:10:30.688  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:30.688  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:30.797  7192  7192 D CarEvsVehicleInfoService: Digital mirror is disabled by system property
+11-15 06:10:30.984  4961  6034 I navi_engine: navi_service::traffic_svc::store: [traffic][store] CheckRoadEventsPeriodically: check_timers=1, epoc=25, error=None
+11-15 06:10:30.992  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:30.992  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:31.039   779   924 W ActivityManager: Unable to start service Intent { act=ai.pleos.iap2.eap.proxy.action.BIND_PROXY_SERVICE pkg=ai.pleos.iap2.eap.proxy } U=10: not found
+11-15 06:10:31.039  4830  4830 I IAPConnector: scheduleBindRetry: 123
+11-15 06:10:31.100   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-15 06:10:31.100  5995  6053 I Gralloc4: mapper 4.x is not supported
+11-15 06:10:31.257  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:31.257  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:31.257  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:311
+11-15 06:10:31.257  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:333
+11-15 06:10:31.260  4887  4887 D [Pleos]e: [main]onLocationCallback data FusedLocationData(latitude=39.237255, longitude=-123.15003166666666, altitude=0.0, heading=0.0, confidence=5.0, timestampMillis=1794751831257)
+11-15 06:10:31.313  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:31.313  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:31.313  7192  7192 D CarEvsVehicleInfoService: Digital mirror is disabled by system property
+11-15 06:10:31.343   210  3905 E sdv_vhal_rust: sdv_vhal_rust_ffi::delegator::vehicle_info: Failed to get vehicle information. Error { kind: SecureStorageError, message: "SecureStorageError: RPC error: Connection failed: Connection failed: Connection refused (os error 111)" }
+11-15 06:10:31.541   779   924 W ActivityManager: Unable to start service Intent { act=ai.pleos.iap2.eap.proxy.action.BIND_PROXY_SERVICE pkg=ai.pleos.iap2.eap.proxy } U=10: not found
+11-15 06:10:31.542  4830  4830 I IAPConnector: scheduleBindRetry: 123
+11-15 06:10:31.626  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:31.626  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:31.693  4961  6036 I navi_engine: navi_service::mapmatch_svc::mapmatching: [mm] org(127.094681,37.4127212:0), match(127.094681,37.4127212), head(0.00), speed(0.00), roadid(18446744073709551615), route(-2), sat(0), laneid(18446744073709551615), stat(0), off(0.0), l(0), r(0)
+11-15 06:10:31.737  4219  4219 I [Pleos]b: [main]Vehicle onChangeEvent: propertyId=291504905, areaId=0, value=77400.0
+11-15 06:10:31.740  4219  4276 I PropertyEventValueExt: [DefaultDispatcher-worker-2]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:31.740  4219  4276 I PropertyEventValueExt: [DefaultDispatcher-worker-2]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:31.740  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]carPropertyFilter: FlowFilter key SdkPropertyKey(key=EV_BATTERY_LEVEL) areaId 0
+11-15 06:10:31.740  4219  4276 D [Pleos]j: compare to value: current(PropertyEventValue(propertyKey=SdkPropertyKey(key=EV_BATTERY_LEVEL), areaId=0, value=77400.0, error=null)) | latest(PropertyEventValue(propertyKey=SdkPropertyKey(key=EV_BATTERY_LEVEL), areaId=0, value=77400.0, error=null)) 
+11-15 06:10:31.740  4219  4276 D [Pleos]j: compare to time: 1983
+11-15 06:10:31.814  7192  7192 D CarEvsVehicleInfoService: Digital mirror is disabled by system property
+11-15 06:10:31.823  3999  5895 I DrivingRenderPerf: {"event":"RENDER_COUNTERS","output":0,"session":1,"mono_ns":328087319755,"submitted":193,"gpu_completed":190,"completed_sequence":0,"untracked":0,"rhi":"OpenGL"}
+11-15 06:10:31.899  3999  5895 D EGL_emulation: app_time_stats: avg=710.26ms min=582.45ms max=838.06ms count=2
+11-15 06:10:31.905  3999  5443 D DRIVING_VIEW: DrivingView FPS: 2.50
+11-15 06:10:31.932  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:31.932  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:31.935  1131  1214 D EGL_emulation: app_time_stats: avg=876.57ms min=858.61ms max=894.54ms count=2
+11-15 06:10:32.046   779   924 W ActivityManager: Unable to start service Intent { act=ai.pleos.iap2.eap.proxy.action.BIND_PROXY_SERVICE pkg=ai.pleos.iap2.eap.proxy } U=10: not found
+11-15 06:10:32.046  4830  4830 I IAPConnector: scheduleBindRetry: 123
+11-15 06:10:32.115   210   223 I sdv_vhal_rust: sdv_vhal_rust_ffi::rust_vehicle_hardware: vhal set_value: VehiclePropValue { timestamp: 0, prop: 290459441, area_id: 0, status: Available, raw_value: RawPropValues { int32_values: [], int64_values: [328378], float_values: [], byte_values: [], string_bytes: [] } }
+11-15 06:10:32.170  1131  1498 D MediaStorageRepository: reconnectStorageApi: connect(defaultNetwork)
+11-15 06:10:32.170  1131  1519 D StorageConnection: Connecting to Storage Manager Service at ad-main.local:58310
+11-15 06:10:32.182  1131  1519 D MediaRecordingConnection: Connecting to Media Recording Service at ad-main.local:58300
+11-15 06:10:32.182  1131  1519 I MediaRecordingConnection: Successfully connected to Media Recording Service
+11-15 06:10:32.182  1131  1519 I MediaRecordingAPI: MediaRecordingAPI connected successfully
+11-15 06:10:32.184  1131 11165 D TrafficStats: tagSocket(229) with statsTag=0xffffffff, statsUid=-1
+11-15 06:10:32.234  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:32.234  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:32.316  7192  7192 D CarEvsVehicleInfoService: Digital mirror is disabled by system property
+11-15 06:10:32.324  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:32.324  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:32.324  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:311
+11-15 06:10:32.324  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:333
+11-15 06:10:32.335  4887  4887 D [Pleos]e: [main]onLocationCallback data FusedLocationData(latitude=39.237255, longitude=-123.15003166666666, altitude=0.0, heading=0.0, confidence=5.0, timestampMillis=1794751832324)
+11-15 06:10:32.355  5056  5233 D StorageConnection: Disconnecting from Storage Manager Service
+11-15 06:10:32.357  5056  5233 I StorageConnection: Disconnected from Storage Manager Service
+11-15 06:10:32.357  5056  5233 D MediaRecordingConnection: Disconnecting from Media Recording Service
+11-15 06:10:32.357  5056  5233 I MediaRecordingConnection: Disconnected from Media Recording Service
+11-15 06:10:32.357  5056  5233 I MediaRecordingAPI: MediaRecordingAPI disconnected
+11-15 06:10:32.357  5056  5233 W PLEOS_UI_SERVICE: [PLEOS_UI_SERVICE][MediaStorageRepositoryImpl::reconnectStorageApi$lambda$0] storageApi.connect(defaultNetwork): failed, Connection timed out after 5000ms
+11-15 06:10:32.357  5056  5249 W StorageConnection: Channel is shutting down, ignoring onReady wait
+11-15 06:10:32.358  5056  5175 D PLEOS_UI_SERVICE: [PLEOS_UI_SERVICE][MediaStorageRepositoryImpl::invokeSuspend] storageApi reconnect scheduled after 5000ms
+11-15 06:10:32.527 16327 16397 I [Pleos][SDK]b: [ArrivalCare-Vehicle]getCapabilityConfig instance ai.pleos.playground.vehicle.api.implement.DoorImpl@be747a2 , propId DOOR_POS
+11-15 06:10:32.527 16327 16397 I [Pleos][SDK]b: [ArrivalCare-Vehicle]getCapabilityConfig request
+11-15 06:10:32.527 16327 16397 I [Pleos][SDK]b: [ArrivalCare-Vehicle]getCapabilityConfig propId DOOR_POS
+11-15 06:10:32.528  4219  4234 D [Pleos]u: [binder:4219_1]getCapabilityConfigByKey() called with: propKey DOOR_POS result = ai.pleos.playground.vehicle.callback.ICapabilityConfigResult$Stub$Proxy@2c11e0b
+11-15 06:10:32.528  4219  4234 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.528  4219  4234 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.528  4219  4234 D [Pleos]g: consumeAll() called
+11-15 06:10:32.528  4219  4234 D [Pleos]g: update() called | cache size : 1
+11-15 06:10:32.528  4219  4276 D [Pleos]g: cache: interface R0.a
+11-15 06:10:32.528  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getPropertyConfig(SdkPropertyKey(key=DOOR_POS)) called
+11-15 06:10:32.528  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getEffectiveConfigMap() called
+11-15 06:10:32.528  4219  4276 I [Pleos]B: [DefaultDispatcher-worker-2]isInitialize false
+11-15 06:10:32.528  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]getEffectiveConfigMap() HMG not initialized, use localMap
+11-15 06:10:32.530  4219  4276 I [Pleos]u: [DefaultDispatcher-worker-2]getCapabilityConfigByKey propKey DOOR_POS, dataString {"access":3,"areaType":4,"changeMode":1,"configArray":[],"configString":"","maxSampleRate":0.0,"minSampleRate":0.0,"propertyId":373295872,"supportedAreas":{"16":{"maxValue":1,"minValue":0,"supportedValues":[]},"64":{"maxValue":1,"minValue":0,"supportedValues":[]},"536870912":{"maxValue":100,"minValue":0,"supportedValues":[]},"268435456":{"maxValue":100,"minValue":0,"supportedValues":[]},"1":{"maxValue":1,"minValue":0,"supportedValues":[]},"4":{"maxValue":1,"minValue":0,"supportedValues":[]}},"type":"java.lang.Integer"}
+11-15 06:10:32.531  4219  4234 D [Pleos]u: [binder:4219_1]getPropertyValue() called with: propKey = DOOR_POS, areaType = 4, areaId = 16, result = ai.pleos.playground.vehicle.callback.IGetPropertyResult$Stub$Proxy@ae354e8
+11-15 06:10:32.531  4219  4234 D [Pleos]u: [binder:4219_1]getPropertyValue() called with: propKey = DOOR_POS, areaType = 4, areaId = 64, result = ai.pleos.playground.vehicle.callback.IGetPropertyResult$Stub$Proxy@a1a0701
+11-15 06:10:32.531  4219  4234 D [Pleos]u: [binder:4219_1]getPropertyValue() called with: propKey = DOOR_POS, areaType = 4, areaId = 1, result = ai.pleos.playground.vehicle.callback.IGetPropertyResult$Stub$Proxy@6fd79a6
+11-15 06:10:32.531  4219  4234 D [Pleos]u: [binder:4219_1]getPropertyValue() called with: propKey = DOOR_POS, areaType = 4, areaId = 4, result = ai.pleos.playground.vehicle.callback.IGetPropertyResult$Stub$Proxy@1618fe7
+11-15 06:10:32.532  4219  4277 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.532  4219  4277 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.532  4219  4277 D [Pleos]g: consumeAll() called
+11-15 06:10:32.532  4219  4277 D [Pleos]g: update() called | cache size : 1
+11-15 06:10:32.532  4219  4277 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.532  4219  4277 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.532  4219  4277 D [Pleos]g: consumeAll() called
+11-15 06:10:32.532  4219  4277 D [Pleos]g: update() called | cache size : 2
+11-15 06:10:32.532  4219  4277 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.532  4219  4277 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.532  4219  4277 D [Pleos]g: consumeAll() called
+11-15 06:10:32.532  4219  4277 D [Pleos]g: update() called | cache size : 3
+11-15 06:10:32.532  4219  4277 D [Pleos]g: cache: interface R0.a
+11-15 06:10:32.532  4219  4277 D [Pleos]b: invoke() called with: key = DOOR_POS, areaType = 4, areaId = 16
+11-15 06:10:32.532  4219  4277 D [Pleos]j: [DefaultDispatcher-worker-3]getProperty() called with: propertyKey = SdkPropertyKey(key=DOOR_POS), areaType = SdkAreaType(type=4), areaId = SdkAreaId(id=16)
+11-15 06:10:32.532  4219  4277 D [Pleos]j: [DefaultDispatcher-worker-3]Passing `validateGetPropertyValue` function
+11-15 06:10:32.532  4219  4277 I [Pleos]j: [DefaultDispatcher-worker-3]getPropertyAsync servicePropertyId 373295872 serviceAreaId 16
+11-15 06:10:32.532  4219  4277 I [Pleos]B: [DefaultDispatcher-worker-3]isInitialize false
+11-15 06:10:32.532  4219  4277 I [Pleos]j: [DefaultDispatcher-worker-3]getPropertyAsync connect servicePropertyId 373295872 serviceAreaId 16
+11-15 06:10:32.532  4219  4277 D [Pleos]b: [DefaultDispatcher-worker-3]manager getProperty() called with: propertyId = 373295872, areaId = 16
+11-15 06:10:32.532  4219  4278 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.532  4219  4278 D [Pleos]g: saveOrInvoke() called with: action = interface R0.a
+11-15 06:10:32.532  4219  4278 D [Pleos]g: consumeAll() called
+11-15 06:10:32.532  4219  4278 D [Pleos]g: update() called | cache size : 3
+11-15 06:10:32.534  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:32.534  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:32.536  4219  4277 D [Pleos]g: cache: interface R0.a
+11-15 06:10:32.536  4219  4277 D [Pleos]b: invoke() called with: key = DOOR_POS, areaType = 4, areaId = 64
+11-15 06:10:32.536  4219  4277 D [Pleos]j: [DefaultDispatcher-worker-3]getProperty() called with: propertyKey = SdkPropertyKey(key=DOOR_POS), areaType = SdkAreaType(type=4), areaId = SdkAreaId(id=64)
+11-15 06:10:32.536  4219  4277 D [Pleos]j: [DefaultDispatcher-worker-3]Passing `validateGetPropertyValue` function
+11-15 06:10:32.536  4219  4277 I [Pleos]j: [DefaultDispatcher-worker-3]getPropertyAsync servicePropertyId 373295872 serviceAreaId 64
+11-15 06:10:32.536  4219  4277 I [Pleos]B: [DefaultDispatcher-worker-3]isInitialize false
+11-15 06:10:32.536  4219  4277 I [Pleos]j: [DefaultDispatcher-worker-3]getPropertyAsync connect servicePropertyId 373295872 serviceAreaId 64
+11-15 06:10:32.536  4219  4277 D [Pleos]b: [DefaultDispatcher-worker-3]manager getProperty() called with: propertyId = 373295872, areaId = 64
+11-15 06:10:32.536 16327 16352 I [Pleos][SDK]b: [binder:16327_2]getProperty_onResult eventPropKey DOOR_POS eventAreaId 16 eventValue 0
+11-15 06:10:32.541  4219  4277 D [Pleos]g: cache: interface R0.a
+11-15 06:10:32.541  4219  4277 D [Pleos]b: invoke() called with: key = DOOR_POS, areaType = 4, areaId = 1
+11-15 06:10:32.541  4219  4277 D [Pleos]j: [DefaultDispatcher-worker-3]getProperty() called with: propertyKey = SdkPropertyKey(key=DOOR_POS), areaType = SdkAreaType(type=4), areaId = SdkAreaId(id=1)
+11-15 06:10:32.541  4219  4277 D [Pleos]j: [DefaultDispatcher-worker-3]Passing `validateGetPropertyValue` function
+11-15 06:10:32.541  4219  4277 I [Pleos]j: [DefaultDispatcher-worker-3]getPropertyAsync servicePropertyId 373295872 serviceAreaId 1
+11-15 06:10:32.541  4219  4277 I [Pleos]B: [DefaultDispatcher-worker-3]isInitialize false
+11-15 06:10:32.541  4219  4277 I [Pleos]j: [DefaultDispatcher-worker-3]getPropertyAsync connect servicePropertyId 373295872 serviceAreaId 1
+11-15 06:10:32.541  4219  4277 D [Pleos]b: [DefaultDispatcher-worker-3]manager getProperty() called with: propertyId = 373295872, areaId = 1
+11-15 06:10:32.541 16327 16352 I [Pleos][SDK]b: [binder:16327_2]getProperty_onResult eventPropKey DOOR_POS eventAreaId 64 eventValue 0
+11-15 06:10:32.545  4219  4277 D [Pleos]g: cache: interface R0.a
+11-15 06:10:32.545  4219  4277 D [Pleos]b: invoke() called with: key = DOOR_POS, areaType = 4, areaId = 4
+11-15 06:10:32.545  4219  4277 D [Pleos]j: [DefaultDispatcher-worker-3]getProperty() called with: propertyKey = SdkPropertyKey(key=DOOR_POS), areaType = SdkAreaType(type=4), areaId = SdkAreaId(id=4)
+11-15 06:10:32.545  4219  4277 D [Pleos]j: [DefaultDispatcher-worker-3]Passing `validateGetPropertyValue` function
+11-15 06:10:32.545  4219  4277 I [Pleos]j: [DefaultDispatcher-worker-3]getPropertyAsync servicePropertyId 373295872 serviceAreaId 4
+11-15 06:10:32.545  4219  4277 I [Pleos]B: [DefaultDispatcher-worker-3]isInitialize false
+11-15 06:10:32.545  4219  4277 I [Pleos]j: [DefaultDispatcher-worker-3]getPropertyAsync connect servicePropertyId 373295872 serviceAreaId 4
+11-15 06:10:32.545  4219  4277 D [Pleos]b: [DefaultDispatcher-worker-3]manager getProperty() called with: propertyId = 373295872, areaId = 4
+11-15 06:10:32.545 16327 16352 I [Pleos][SDK]b: [binder:16327_2]getProperty_onResult eventPropKey DOOR_POS eventAreaId 1 eventValue 0
+11-15 06:10:32.552   779   924 W ActivityManager: Unable to start service Intent { act=ai.pleos.iap2.eap.proxy.action.BIND_PROXY_SERVICE pkg=ai.pleos.iap2.eap.proxy } U=10: not found
+11-15 06:10:32.552  4830  4830 I IAPConnector: scheduleBindRetry: 123
+11-15 06:10:32.552 16327 16352 I [Pleos][SDK]b: [binder:16327_2]getProperty_onResult eventPropKey DOOR_POS eventAreaId 4 eventValue 0
+11-15 06:10:32.552 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:32.552 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:32.721  4961  6036 I navi_engine: navi_service::mapmatch_svc::mapmatching: [mm] org(127.094681,37.4127212:0), match(127.094681,37.4127212), head(0.00), speed(0.00), roadid(18446744073709551615), route(-2), sat(0), laneid(18446744073709551615), stat(0), off(0.0), l(0), r(0)
+11-15 06:10:32.737  4219  4219 I [Pleos]b: [main]Vehicle onChangeEvent: propertyId=291504905, areaId=0, value=77400.0
+11-15 06:10:32.738  4219  4276 I PropertyEventValueExt: [DefaultDispatcher-worker-2]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:32.738  4219  4276 I PropertyEventValueExt: [DefaultDispatcher-worker-2]asStringValue() ENTER propertyId=SdkPropertyKey(key=EV_BATTERY_LEVEL), value=77400.0, kotlinType=kotlin.Float, javaType=java.lang.Float, isArray=false, componentType=null
+11-15 06:10:32.738  4219  4276 D [Pleos]j: [DefaultDispatcher-worker-2]carPropertyFilter: FlowFilter key SdkPropertyKey(key=EV_BATTERY_LEVEL) areaId 0
+11-15 06:10:32.738  4219  4276 D [Pleos]j: compare to value: current(PropertyEventValue(propertyKey=SdkPropertyKey(key=EV_BATTERY_LEVEL), areaId=0, value=77400.0, error=null)) | latest(PropertyEventValue(propertyKey=SdkPropertyKey(key=EV_BATTERY_LEVEL), areaId=0, value=77400.0, error=null)) 
+11-15 06:10:32.738  4219  4276 D [Pleos]j: compare to time: 2981
+11-15 06:10:32.817  7192  7192 D CarEvsVehicleInfoService: Digital mirror is disabled by system property
+11-15 06:10:32.835  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:32.835  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:33.040  1131  1214 D EGL_emulation: app_time_stats: avg=1105.06ms min=1105.06ms max=1105.06ms count=1
+11-15 06:10:33.056   779   924 W ActivityManager: Unable to start service Intent { act=ai.pleos.iap2.eap.proxy.action.BIND_PROXY_SERVICE pkg=ai.pleos.iap2.eap.proxy } U=10: not found
+11-15 06:10:33.062  4830  4830 I IAPConnector: scheduleBindRetry: 123
+11-15 06:10:33.081 16327 16369 D EGL_emulation: app_time_stats: avg=945.68ms min=5.15ms max=2807.89ms count=3
+11-15 06:10:33.138  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:33.138  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:33.222  3999  5895 I DrivingRenderPerf: {"event":"RENDER_COUNTERS","output":0,"session":1,"mono_ns":329486413866,"submitted":195,"gpu_completed":192,"completed_sequence":0,"untracked":0,"rhi":"OpenGL"}
+11-15 06:10:33.317  7192  7192 D CarEvsVehicleInfoService: Digital mirror is disabled by system property
+11-15 06:10:33.345   210  3905 E sdv_vhal_rust: sdv_vhal_rust_ffi::delegator::vehicle_info: Failed to get vehicle information. Error { kind: SecureStorageError, message: "SecureStorageError: RPC error: Connection failed: Connection failed: Connection refused (os error 111)" }
+11-15 06:10:33.441  7192  7192 D CarEvsAppState: isCarEvsActivityRunning: ai.umos.car.evs.CarEvsBlindSpotCameraPreviewActivity not found in 4 tasks
+11-15 06:10:33.441  7192  7192 W CarEvsVehicleInfoService: Garbage activity checker + (running=false, activityRunning=false)
+11-15 06:10:33.450  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:33.450  1292  4928 D android.hardware.gnss-service.ranchu: GnssHwListener:consume:87 sz=64
+11-15 06:10:33.450  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:311
+11-15 06:10:33.450  1292  4928 D android.hardware.gnss-service.ranchu: Gnss:onGnssLocationCb:333
+11-15 06:10:33.452  4887  4887 D [Pleos]e: [main]onLocationCallback data FusedLocationData(latitude=39.237255, longitude=-123.15003166666666, altitude=0.0, heading=0.0, confidence=5.0, timestampMillis=1794751833450)
+11-15 06:10:33.454  3999  5895 D EGL_emulation: app_time_stats: avg=777.20ms min=596.14ms max=958.25ms count=2

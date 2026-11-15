@@ -1,0 +1,182 @@
+--------- beginning of crash
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: FATAL EXCEPTION: DefaultDispatcher-worker-5
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: Process: ai.umos.inputmethod, PID: 2097
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: java.lang.IllegalArgumentException: Failed requirement.
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at u1.d.invokeSuspend(Unknown Source:64)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at u1.d.invoke(Unknown Source:15)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invokeSuspend(Unknown Source:36)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:2)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:1)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at c5.b.b(Unknown Source:7)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at kotlinx.coroutines.i.c(Unknown Source:53)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at kotlinx.coroutines.g.d(Unknown Source:0)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$s.invokeSuspend(Unknown Source:74)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:1)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:2)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.C.e(Unknown Source:95)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k.B(Unknown Source:10)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k.u(Unknown Source:118)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k.j(Unknown Source:0)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$w.invokeSuspend(Unknown Source:34)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$w.l(Unknown Source:8)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.k$w.invoke(Unknown Source:4)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at androidx.datastore.core.B$b.invokeSuspend(Unknown Source:86)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at kotlin.coroutines.jvm.internal.a.resumeWith(Unknown Source:10)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at kotlinx.coroutines.V.run(Unknown Source:128)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at kotlinx.coroutines.internal.l$a.run(Unknown Source:3)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at d5.k.run(Unknown Source:2)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at d5.a.F(Unknown Source:0)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at d5.a$c.d(Unknown Source:14)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at d5.a$c.p(Unknown Source:28)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	at d5.a$c.run(Unknown Source:0)
+11-15 06:05:44.972  2097  2249 E AndroidRuntime: 	Suppressed: kotlinx.coroutines.internal.h: [I0{Cancelling}@3bce18f, Dispatchers.IO]
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: FATAL EXCEPTION: DefaultDispatcher-worker-5
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: Process: ai.umos.inputmethod, PID: 7637
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: java.lang.IllegalArgumentException: Failed requirement.
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at u1.d.invokeSuspend(Unknown Source:64)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at u1.d.invoke(Unknown Source:15)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invokeSuspend(Unknown Source:36)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:2)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k$s$a.invoke(SourceFile:1)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at c5.b.b(Unknown Source:7)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at kotlinx.coroutines.i.c(Unknown Source:53)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at kotlinx.coroutines.g.d(Unknown Source:0)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k$s.invokeSuspend(Unknown Source:74)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:1)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k$s.invoke(SourceFile:2)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.C.e(Unknown Source:95)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k.B(Unknown Source:10)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k.u(Unknown Source:179)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k.j(Unknown Source:0)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at androidx.datastore.core.k$g.invokeSuspend(Unknown Source:12)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at kotlin.coroutines.jvm.internal.a.resumeWith(Unknown Source:10)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at kotlinx.coroutines.V.run(Unknown Source:128)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at kotlinx.coroutines.internal.l$a.run(Unknown Source:3)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at d5.k.run(Unknown Source:2)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at d5.a.F(Unknown Source:0)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at d5.a$c.d(Unknown Source:14)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at d5.a$c.p(Unknown Source:28)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	at d5.a$c.run(Unknown Source:0)
+11-15 06:06:41.397  7637  7808 E AndroidRuntime: 	Suppressed: kotlinx.coroutines.internal.h: [I0{Cancelling}@1e2b527, Dispatchers.IO]
+--------- beginning of main
+11-15 06:08:10.911 16327 16327 I ArrivalCare: 도어: UNKNOWN
+11-15 06:08:10.912 16327 16327 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 06:08:10.918 16327 16327 I ArrivalCare: 입력 제한: moving=false ready=false
+11-15 06:08:10.933 16327 16327 I ArrivalCare: 입력 제한: moving=false ready=true
+11-15 06:08:10.933 16327 16327 I ArrivalCareSDK: Car UX manager connected
+11-15 06:08:10.981 16327 16327 I ArrivalCare: STAGE SETUP mode=null
+11-15 06:08:17.911 16327 16327 I ArrivalCareSDK: Vehicle 초기화 요청 반환 · 신호 검증 대기
+11-15 06:08:19.981 16327 16327 I ArrivalCare: 도어: UNKNOWN
+11-15 06:08:19.981 16327 16327 I ArrivalCare: 도어: UNKNOWN
+11-15 06:08:19.981 16327 16327 I ArrivalCare: 도어: UNKNOWN
+11-15 06:08:19.981 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:19.981 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:19.981 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:19.981 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:20.952 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:20.952 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:23.930 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:23.930 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:26.938 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:26.938 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:29.941 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:29.941 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:32.951 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:32.951 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:34.934 16327 16327 I ArrivalCare: STAGE ROUTING_DROPOFF mode=DROP_FIRST
+11-15 06:08:36.311 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:36.311 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:39.286 16327 16327 I ArrivalCare: ROUTE request=1 destination=hospital-near:drop
+11-15 06:08:39.942 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:39.942 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:40.860 16327 16327 I ArrivalCare: ROUTE result=1 success=true ignored=0
+11-15 06:08:40.862 16327 16327 I ArrivalCare: STAGE EN_ROUTE_DROPOFF mode=DROP_FIRST
+11-15 06:08:42.484 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:42.484 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:43.797 16327 16327 I ArrivalCare: STAGE EXIT_CHECK mode=DROP_FIRST
+11-15 06:08:45.513 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:45.513 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:48.473 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:48.473 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:51.488 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:51.488 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:54.476 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:54.476 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:08:57.514 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:08:57.514 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:00.484 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:00.484 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:03.477 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:03.477 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:04.142 16327 16327 I ArrivalCare: STAGE ROUTING_PARKING mode=DROP_FIRST
+11-15 06:09:06.477 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:06.477 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:09.498 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:09.498 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:12.489 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:12.489 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:13.648 16327 16327 I ArrivalCare: ROUTE request=2 destination=hospital-near:park
+11-15 06:09:14.449 16327 16327 I ArrivalCare: ROUTE result=2 success=true ignored=0
+11-15 06:09:14.449 16327 16327 I ArrivalCare: STAGE EN_ROUTE_PARKING mode=DROP_FIRST
+11-15 06:09:15.504 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:15.504 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:18.329 16327 16327 I ArrivalCare: STAGE PARKING_CHECK mode=DROP_FIRST
+11-15 06:09:18.714 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:18.714 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:21.694 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:21.694 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:24.918 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:24.918 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:27.892 16327 16327 I ArrivalCare: STAGE REUNION mode=DROP_FIRST
+11-15 06:09:28.408 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:28.408 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:31.062 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:31.062 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:34.048 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:34.048 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:37.132 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:37.132 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:38.592 16327 16327 I ArrivalCare: STAGE DONE mode=DROP_FIRST
+11-15 06:09:40.042 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:40.042 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:43.026 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:43.026 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:46.036 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:46.036 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:47.306 16327 16327 I ArrivalCare: STAGE SETUP mode=null
+11-15 06:09:49.046 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:49.046 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:54.788 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:54.788 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:56.111 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:56.112 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:09:59.067 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:09:59.067 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:03.016 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:03.016 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:05.200 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:05.200 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:06.075 16327 16327 I ArrivalCare: STAGE ROUTING_PARKING mode=TOGETHER
+11-15 06:10:08.189 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:08.189 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:11.250 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:11.250 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:14.218 16327 16327 I ArrivalCare: ROUTE request=4 destination=hospital-near:park
+11-15 06:10:14.723 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:14.723 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:15.394 16327 16327 I ArrivalCare: ROUTE result=4 success=true ignored=0
+11-15 06:10:15.394 16327 16327 I ArrivalCare: STAGE EN_ROUTE_PARKING mode=TOGETHER
+11-15 06:10:17.392 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:17.392 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:18.475 16327 16327 I ArrivalCare: STAGE PARKING_CHECK mode=TOGETHER
+11-15 06:10:20.416 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:20.416 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:23.411 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:23.411 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:26.503 16327 16327 I ArrivalCare: STAGE REUNION mode=TOGETHER
+11-15 06:10:26.862 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:26.862 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:29.558 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:29.558 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
+11-15 06:10:32.552 16327 16327 I ArrivalCare: 도어: CLOSED
+11-15 06:10:32.552 16327 16327 I ArrivalCareSDK: 지원 도어 4개 조회: CLOSED
