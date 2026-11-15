@@ -1,0 +1,47 @@
+{
+  "date_local": "2026-11-15",
+  "timezone": "Asia/Seoul",
+  "version": "0.1.0",
+  "final_code_revision": "edd7c19e0c7c6d83f1acf7a953871207b8b9fdbd",
+  "build": {
+    "demoRelease": "PASS",
+    "pleosRelease": "PASS",
+    "unit_tests": {"passed": 22, "failed": 0, "errors": 0},
+    "lintDemoDebug": {"errors": 0, "warnings": 2},
+    "github_actions": "https://github.com/junyong290/arrival-care-mvp/actions/runs/43677768808",
+    "github_actions_conclusion": "success",
+    "ide_gui_tested": false
+  },
+  "demo_runtime": {
+    "os": "AOSP Android 9",
+    "api": 28,
+    "emulator_engine": "35.6.11",
+    "display": "1280x720",
+    "apk_variant": "demoRelease",
+    "apk_install": "PASS",
+    "activity_launch": "Status: ok",
+    "ui_scenarios_passed": 8,
+    "ui_scenarios_failed": 0,
+    "video_duration_seconds": 78.40,
+    "video_final_stage": "DONE"
+  },
+  "sdk": {
+    "Vehicle": "2.3.2",
+    "NaviHelper": "3.0.5",
+    "real_dependencies_compiled": true,
+    "runtime_connection_verified": false,
+    "final_pleos_installed_apk_hash_verified": true,
+    "final_pleos_activity_launch_return": "Status: ok",
+    "final_pleos_normal_ui_verified": false,
+    "car_ux_connection_observed_in_initial_probe": true,
+    "real_navigation_route_requested": false,
+    "real_vehicle_tested": false,
+    "navigation_and_arrival_in_both_variants": "SIMULATION"
+  },
+  "apk_sha256": {
+    "arrivalcare-demo-0.1.0.apk": "367402c54ac0bd4d0d0078ed14c4778af2552f6a3dd9f781cf80e6f718dc63c2",
+    "arrivalcare-pleos-probe-0.1.0.apk": "614f3164051b3ac1b53bc2486295928e828846cacf5a53d57cc95703e9c89704"
+  },
+  "signature_scheme": "v2",
+  "signing_certificate_sha256": "8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289"
+}

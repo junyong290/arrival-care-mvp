@@ -1,0 +1,30 @@
+2026-11-15 / Pleos Connect 2.1.0 / Android 14 API 34
+Android Emulator engine: 35.6.11
+Display: 2560x1440, density 160. AVD RAM: 4096 MB.
+
+Observed sys.boot_completed: 1
+Final APK install command exceeded a 90-second client timeout.
+The installed base.apk SHA-256 was subsequently read from the device:
+614f3164051b3ac1b53bc2486295928e828846cacf5a53d57cc95703e9c89704
+This matches the distributed final pleosRelease APK.
+
+Final launch output:
+Starting: Intent { cmp=ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity }
+Status: ok
+LaunchState: UNKNOWN (0)
+Activity: ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity
+WaitTime: 37146
+Complete
+
+Observed after launch: white starting surface; normal app UI not verified.
+Vehicle door values and NaviHelper service callbacks were NOT verified.
+System diagnostics included: network eth0 is not ready yet;
+CarService and preinstalled media service exceptions.
+
+In the earlier probe build, the actual AAOS UX observer logged:
+11-15 04:29:57.256 I ArrivalCareSDK: Car UX manager connected
+This does not establish Vehicle or NaviHelper connectivity.
+
+Do not use this record as an end-to-end Pleos success claim.
+The verified eight-scenario demo and 78.40-second recording were run on
+AOSP Android 9 / API 28 / Emulator 35.6.11 at 1280x720.

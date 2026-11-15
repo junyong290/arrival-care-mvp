@@ -6,6 +6,19 @@
 
 > 시연에는 **demo** 빌드를 사용합니다. A병원과 B쇼핑몰은 가상의 시설이며, 도어·주행·경로·도착 신호는 화면에 표시된 시뮬레이션입니다. 실제 도로에서 사용할 수 있는 내비게이션이나 검증된 시설 접근성 안내가 아닙니다.
 
+## 바로 확인하기
+
+- [서명된 시연 APK](https://github.com/junyong290/arrival-care-mvp/releases/download/v0.1.0/arrivalcare-demo-0.1.0.apk)
+- [실제 실행 영상 · 78초](https://github.com/junyong290/arrival-care-mvp/releases/download/v0.1.0/arrivalcare-demo-78s.mp4)
+- [Android Studio 소스 ZIP](https://github.com/junyong290/arrival-care-mvp/releases/download/v0.1.0/arrivalcare-source-0.1.0.zip)
+- [설치·실행·SDK 검증 보고서](docs/VERIFICATION.md)
+
+서명 Release APK를 API 28 에뮬레이터에 설치해 실제 UI 시나리오 **8개**를 통과했습니다. 상태 머신 단위 테스트는 **22개 통과**했습니다. Pleos SDK 연결 상태는 위 보고서에서 별도로 확인하세요.
+
+| 도착 계획 | 명시적 하차 확인 | 주차 후 재합류 |
+|---|---|---|
+| ![도착 계획](evidence/01-plan.png) | ![하차 확인](evidence/02-exit.png) | ![재합류](evidence/04-reunion.png) |
+
 ## 실행
 
 1. Android Studio에서 이 폴더를 엽니다.
@@ -50,7 +63,7 @@ macOS/Linux에서는 `./gradlew`를 사용합니다. Gradle Wrapper **8.7**, AGP
 | 시설·접근성 데이터 | 가상 fixture. 실제 시설의 승하차 허용, 무단차, 통로 폭, 승강기 운영을 보장하지 않음 |
 | 실시간 일행 위치 / 음성 / 실내 측위 | 미구현 |
 
-`pleos`는 SDK 연결 진단용 변형입니다. **컴파일 성공, 서비스 연결 성공, 실제 차량 검증은 각각 다른 결과**입니다. 설치·실행 결과와 남은 제약은 [검증 보고서](docs/VERIFICATION.md)에 기록합니다.
+`pleos`는 SDK 연결 진단용 개발 변형입니다. 이 PC에서는 설치와 Activity 실행 반환값까지 확인했으며, 정상 UI 표시와 Vehicle·NaviHelper 연결은 확인하지 못했습니다. **시연은 검증된 `demo` APK를 사용하세요.** 설치·실행 결과와 남은 제약은 [검증 보고서](docs/VERIFICATION.md)에 기록합니다.
 
 ## 안전 상태 전환
 
@@ -78,8 +91,8 @@ SETUP → ROUTING_DROPOFF → EN_ROUTE_DROPOFF → EXIT_CHECK
 오른쪽 위 **시뮬레이터**에서 주행/정차, 도어 열림/닫힘/누락/연결 실패, 다음 경로 요청 실패/응답 지연을 선택할 수 있습니다. 응답 지연은 타임아웃 후 늦은 콜백을 보내며, 재시도 후에도 이전 응답이 무시되는지 확인할 수 있습니다.
 
 ```powershell
-python tools/adb_scenarios.py --serial emulator-5556 --out evidence
-python tools/adb_scenarios.py --serial emulator-5556 --out evidence --video
+python tools/adb_scenarios.py --serial emulator-5558 --out evidence
+python tools/adb_scenarios.py --serial emulator-5558 --out evidence --video
 ```
 
 실제 기기의 UI 계층을 읽고 터치하는 검증 스크립트입니다. 이미지로 화면을 합성하지 않습니다. `--video`는 Android `screenrecord`로 화면을 녹화합니다. Python 3와 ADB가 필요합니다. 검증 기기 외에 다른 기기가 연결돼 있으면 `--serial`을 정확히 지정합니다.

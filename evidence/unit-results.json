@@ -1,0 +1,30 @@
+{
+  "suite": "ai.arrivalcare.app.domain.JourneyTest",
+  "tests": 22,
+  "failures": 0,
+  "errors": 0,
+  "cases": [
+    "disconnectedDoorAllowsExplicitFallback",
+    "bothHumanChecksAreRequired",
+    "movementInvalidatesChecksAndBlocksConfirmation",
+    "facilityAndMobilityChangeRecommendation",
+    "timeoutCannotBeOverriddenByLateSuccessBeforeRetry",
+    "parkingArrivalIsNotParkingCompletion",
+    "unknownDoorRequiresAdditionalManualCheck",
+    "unknownRestrictionFailsClosed",
+    "failedNavigationStaysPendingUntilRetryCompletes",
+    "lateResponseFromPreviousRequestIsIgnored",
+    "repeatedMissingSignalDoesNotEraseHumanFallback",
+    "resetInvalidatesPreviousJourneyResponse",
+    "soleCaregiverAlwaysSkipsDropOff",
+    "emptyPassengerSelectionIsRejected",
+    "planIsFrozenOnceStarted",
+    "changedDoorInvalidatesManualCheck",
+    "repeatedCallbackCannotAdvanceExit",
+    "selectedTogetherSkipsDropOff",
+    "doorCycleNeverConfirmsExit",
+    "openDoorBlocksEvenWithChecks",
+    "wrongDestinationIsIgnored",
+    "parentsHospitalEndToEnd"
+  ]
+}
