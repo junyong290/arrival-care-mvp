@@ -135,6 +135,7 @@ class MainActivity:Activity(){
         val oldY=if(changed)0 else scroll.scrollY
         val s=journey.state
         modeBadge.visibility=if(resources.configuration.screenWidthDp<480)View.GONE else View.VISIBLE
+        adaptive.minimumGuideDp=if(s.stage==Stage.EXIT_CHECK)if(s.door in setOf(Door.UNKNOWN,Door.DISCONNECTED))340 else 280 else 220
         resetButton.isEnabled=s.inputAllowed;resetButton.alpha=if(s.inputAllowed)1f else .35f
         stageBar.removeAllViews();renderProgress()
         content.removeAllViews();actions.removeAllViews();mapPanel.update(s);mapPanel.vehicle(navigation.currentPosition)
@@ -237,10 +238,18 @@ class MainActivity:Activity(){
     }
     private fun exitCheck(){
         val s=journey.state;val p=s.plan!!
-        heading("01 · 하차 확인","모두 내렸나요","정차와 동승자 하차를 직접 확인해 주세요.")
-        ui.label(content,p.facility.drop,16,Palette.ink,true,10)
         val door=when(s.door){Door.CLOSED->"도어 닫힘";Door.OPEN->"도어 열림";Door.UNKNOWN->"도어 신호 없음";Door.DISCONNECTED->"차량 연결 끊김"}
-        content.addView(ui.pill(door,if(s.door==Door.CLOSED)Palette.green else Palette.amber,if(s.door==Door.CLOSED)Palette.greenSoft else Palette.amberSoft),LinearLayout.LayoutParams(-2,-2).apply{bottomMargin=ui.dp(12)})
+        val wide=ResponsivePolicy.sideBySide(resources.configuration.screenWidthDp-24,resources.configuration.screenHeightDp-100)
+        val status=ui.pill(door,if(s.door==Door.CLOSED)Palette.green else Palette.amber,if(s.door==Door.CLOSED)Palette.greenSoft else Palette.amberSoft)
+        if(wide){
+            heading("01 · 하차 확인","모두 내렸나요","정차와 동승자 하차를 직접 확인해 주세요.")
+            ui.label(content,p.facility.drop,16,Palette.ink,true,10)
+            content.addView(status,LinearLayout.LayoutParams(-2,-2).apply{bottomMargin=ui.dp(12)})
+        }else{
+            val row=ui.row();row.addView(ui.text("모두 내렸나요",22,Palette.navy,true),LinearLayout.LayoutParams(0,-2,1f));row.addView(status)
+            content.addView(row,LinearLayout.LayoutParams(-1,-2).apply{bottomMargin=ui.dp(8)})
+            ui.label(content,p.facility.drop,14,Palette.muted,false,6)
+        }
         ui.check(content,"안전하게 정차·주차했어요",s.parked){journey.checkParked(!s.parked);refresh()}
         ui.check(content,"보호자와 동승자가 모두 내렸어요",s.exited){journey.checkExited(!s.exited);refresh()}
         if(s.door in setOf(Door.UNKNOWN,Door.DISCONNECTED))ui.check(content,"모든 문이 닫힌 것을 직접 확인했어요",s.manualDoorCheck){journey.checkDoorsManually(!s.manualDoorCheck);refresh()}

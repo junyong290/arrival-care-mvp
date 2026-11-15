@@ -8,6 +8,8 @@ import android.view.ViewGroup
 class AdaptiveJourneyLayout(context:Context,val map:View,val guide:View):ViewGroup(context){
     private val ui=Ui(context)
     var wide=false;private set
+    var minimumGuideDp=220
+        set(value){if(field!=value){field=value;requestLayout()}}
     private var mapWidth=0
     private var mapHeight=0
     init{addView(map);addView(guide);clipToPadding=false}
@@ -24,7 +26,7 @@ class AdaptiveJourneyLayout(context:Context,val map:View,val guide:View):ViewGro
         }else{
             mapWidth=w
             val heightDp=(h/density).toInt()
-            mapHeight=if(heightDp>=400)(h*.52f).toInt().coerceAtMost(h-ui.dp(220)) else ui.dp(ResponsivePolicy.mapHeight(heightDp))
+            mapHeight=if(heightDp>=400)(h*.52f).toInt().coerceAtMost(h-ui.dp(minimumGuideDp)).coerceAtLeast(ui.dp(70)) else ui.dp(ResponsivePolicy.mapHeight(heightDp))
             map.measure(MeasureSpec.makeMeasureSpec(w,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(mapHeight,MeasureSpec.EXACTLY))
             guide.measure(MeasureSpec.makeMeasureSpec(w,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec((h-mapHeight).coerceAtLeast(0),MeasureSpec.EXACTLY))
         }
