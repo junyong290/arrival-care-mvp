@@ -1,6 +1,52 @@
 # 도착케어 · Arrival Care v0.3.0
 
-**함께 내리고, 주차하고, 다시 만나는 도착 경험.** Kotlin Android / HMG AppDev Challenge MVP.
+**동승자의 상황에 맞춰 하차·주차·재합류를 하나의 여정으로 연결하는 차량용 도착 관리 앱.**
+
+참가팀 **Unrival** · 앱 **도착케어(Arrival Care)** · **v0.3.0** · Kotlin Android / HMG AppDev Challenge MVP.
+
+## 공모전 제출 정보
+
+| 항목 | 내용 |
+|---|---|
+| GitHub 저장소 | https://github.com/junyong290/arrival-care-mvp |
+| 제출 APK 경로 | [`apk/Unrival_도착케어_release.apk`](apk/Unrival_도착케어_release.apk) |
+| 제출 APK 다운로드 | [Unrival_도착케어_release.apk 다운로드](https://github.com/junyong290/arrival-care-mvp/raw/refs/heads/codex/mvp/apk/Unrival_%EB%8F%84%EC%B0%A9%EC%BC%80%EC%96%B4_release.apk) |
+| 빌드 종류 | 서명된 `demoOfflineRelease`, versionName `0.3.0`, versionCode `3`, `debuggable=false` |
+| Android 패키지 | `ai.arrivalcare.app.demo` |
+| 파일 크기 | 2,196,789 bytes — 저장소 `apk/`에 직접 포함 |
+| 보조 산출물 | [v0.3.0 Release: Kakao ARM·Pleos 진단 빌드·67초 영상·검증 보고서](https://github.com/junyong290/arrival-care-mvp/releases/tag/v0.3.0) |
+
+제출 APK는 실제 실행을 검증한 v0.3.0 Offline Release와 **동일한 파일**이며 제출 규칙에 맞게 이름만 변경했습니다. [APK 서명·해시 기록](apk/SUBMISSION_APK.json)과 [제출 안내](docs/SUBMISSION.md)를 함께 제공합니다. 소스 코드는 저장소 루트와 `app/`에 포함되어 있습니다.
+
+## 제출 APK 설치·실행
+
+1. 위 APK를 다운로드해 **Android 9(API 28) 이상**의 Android 기기 또는 일반 Android 에뮬레이터에 설치하고 **도착케어**를 실행합니다.
+2. 기본 조건인 **가상 A병원 / 부모님 / 별도 보호자 있음 / 먼저 내려주기**로 시작합니다.
+3. **이 계획으로 안내 시작 → 동의하고 시연 경로 요청 → 하차 지점 도착(시연)** 순서로 진행합니다.
+4. 정차·동승자 하차를 직접 확인한 뒤 **확인하고 주차장 안내**를 누르고, 주차 경로를 별도로 승인합니다.
+5. 주차장 도착과 주차 완료를 확인하면 처음 지정한 만남 장소가 표시됩니다. **만남 장소 확인했어요**를 누르면 여정이 완료됩니다.
+
+ADB로 설치할 경우 저장소 루트에서 실행합니다.
+
+```powershell
+adb install -r "apk/Unrival_도착케어_release.apk"
+adb shell am start -n ai.arrivalcare.app.demo/ai.arrivalcare.app.MainActivity
+```
+
+**제출 APK에는 로그인·카카오 키·차량 서비스 연결이 필요하지 않습니다.** 가상 시설, 지도 동선도, 차량·도착·경로 응답은 명시된 시뮬레이션입니다. 실제 서울아산병원 선택 시 미검증 승하차·접근성 정보로 계획을 만들지 않고 보류하는 것이 정상 동작입니다.
+
+## 테스트 환경과 필요한 설정
+
+| 환경 | 버전·화면 규격·설정 | 확인 결과 |
+|---|---|---|
+| 제출 Release APK 가로 실행 | AOSP Android 9 / API 28 / x86_64, Android Emulator 35.6.11, **1280×720 / 160dpi** | 설치 파일 해시 일치, 실제 UI 시나리오 **15/15 통과**, 67.36초 실제 화면 녹화 |
+| 같은 앱 소스의 세로 실행 | GitHub Actions Ubuntu KVM, API 28 / x86_64, **720×1280 / 320dpi**, CI debug 인증서 | 실제 UI 시나리오 **4/4 통과**. 제출 Release와 인증서·바이너리가 다름 |
+| 개발·연동 진단에 사용한 Pleos | **Pleos Connect Emulator 2.1.0 / API 34 / x86_64 / 2560×1440 / 160dpi / RAM 4GB**, 호스트 Android Emulator **35.6.11**, cold boot | 늦은 부팅·Virtual Console 응답 확인. 최종 Pleos APK 설치·정상 UI·Vehicle/NaviHelper 실연동은 **미검증** |
+| 빌드·단위 테스트 | JDK 17, Gradle 8.7, AGP 8.5.2, Kotlin 1.9.24, Android SDK 34 | 네 가지 Release 빌드·서명 검사, **48개 단위 테스트 통과** |
+
+가로·세로 레이아웃은 앱 창 크기에 따라 전환됩니다. 제출 APK의 가상 동선도에는 네트워크나 지도 API 키가 필요하지 않습니다. 실제 카카오 지도를 사용하는 보조 ARM 빌드는 [키·패키지·서명 해시 설정](docs/KAKAO_SETUP.md)이 필요하며, **실제 ARM 스마트폰의 지도 타일 표시는 아직 미검증**입니다. Pleos SDK는 Vehicle **2.3.2**, NaviHelper **3.0.5**를 사용합니다. [환경별 검증 보고서](docs/VERIFICATION_V0_3.md)에 실패 기록과 확인 범위를 구분했습니다.
+
+## 서비스 소개
 
 지도 위의 목적지 하나를 가족의 **하차 → 주차 → 재합류** 계획으로 연결합니다. 세로에서는 지도 위·안내 카드 아래, 넓은 가로 창에서는 지도 왼쪽·안내 패널 오른쪽으로 전환합니다. 정차 중 선택한 동행 조건에 따라 장소와 순서가 달라지고, 하차·주차는 사용자가 직접 확인합니다.
 

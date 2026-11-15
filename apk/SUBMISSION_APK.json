@@ -1,0 +1,22 @@
+{
+  "file": "apk/Unrival_도착케어_release.apk",
+  "package": "ai.arrivalcare.app.demo",
+  "versionName": "0.3.0",
+  "versionCode": 3,
+  "minSdk": 28,
+  "targetSdk": 34,
+  "debuggable": false,
+  "debuggableEvidence": "Attribute absent from compiled AndroidManifest.xml; Android default false",
+  "testOnlyAttributePresent": false,
+  "signatureVerified": true,
+  "signatureScheme": "APK Signature Scheme v2",
+  "certificateSha256": "8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289",
+  "bytes": 2196789,
+  "sha256": "bfd4384dcd391e888021febb8d61c89ccd44ee0144e3ae96ce4fdcdfb31734e3",
+  "matchesExistingReleaseEvidence": true,
+  "applicationCommit": "4f5ff2a83b62bd84ec6a2c1b83a67396eb5ae96f",
+  "scope": "Static APK verification only; no rebuild or runtime retest",
+  "team": "Unrival",
+  "appName": "도착케어",
+  "originalReleaseAsset": "https://github.com/junyong290/arrival-care-mvp/releases/download/v0.3.0/arrivalcare-demo-offline-0.3.0.apk"
+}
