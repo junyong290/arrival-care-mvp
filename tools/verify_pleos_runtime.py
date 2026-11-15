@@ -124,7 +124,7 @@ def finish_video(folder):
         assert streams and streams[0]['width'] == 1920 and streams[0]['height'] == 1080
         duration = float(details['format']['duration'])
         assert duration > 1, 'Empty recording'
-        decode = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(target), '-f', 'null', '-'], capture_output=True, text=True, timeout=120)
+        decode = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(target), '-vsync', '0', '-enc_time_base', '-1', '-f', 'null', '-'], capture_output=True, text=True, timeout=120)
         (folder / 'video-decode.txt').write_text(decode.stdout + decode.stderr, encoding='utf-8')
         assert decode.returncode == 0 and not decode.stderr.strip(), 'Video decode failed: ' + decode.stderr
         completed = [mark for mark in recording['timeline'] if mark['stage'] == 'journey_complete']
@@ -215,23 +215,46 @@ def lookup(root, label):
 
 
 def find(label, enabled=None, scroll=True, optional=False):
-    for attempt in range(6 if scroll else 1):
-        root = tree()
+    # Recomposition can expose a fresh but partial hierarchy during a transition.
+    # Keep observing even when that snapshot has no scroll container or footer.
+    deadline = time.monotonic() + 25
+    scroll_attempts = 0
+    observed_disabled = False
+    while time.monotonic() < deadline:
+        root = tree(deadline=deadline)
         n = lookup(root, label)
         if n is not None:
-            if enabled is not None:
-                assert n.get('enabled') == str(enabled).lower(), (label, 'enabled', n.get('enabled'))
-            return n
-        scrolls = [n for n in root.iter('node') if n.get('scrollable') == 'true' and n.get('package') == package]
-        if not scrolls or not scroll:
-            break
-        x1, y1, x2, y2 = rect(scrolls[-1])
-        lo, hi = (y2 - 24, y1 + 24) if attempt < 3 else (y1 + 24, y2 - 24)
-        adb('shell', 'input', 'swipe', str(x2 - 20), str(lo), str(x2 - 20), str(hi), '450')
-        time.sleep(.5)
+            if enabled is False:
+                # Safety assertions fail immediately if the observed control is enabled.
+                assert n.get('enabled') == 'false', (label, 'enabled', n.get('enabled'))
+                return n
+            if enabled is not True or n.get('enabled') == 'true':
+                return n
+            observed_disabled = True
+        else:
+            scrolls = [node for node in root.iter('node')
+                       if node.get('scrollable') == 'true' and node.get('package') == package
+                       and len(rect(node)) == 4
+                       and rect(node)[2] - rect(node)[0] > 48
+                       and rect(node)[3] - rect(node)[1] > 48]
+            # Optional means absence in a fresh observation is acceptable;
+            # observation/ADB errors still propagate rather than becoming absence.
+            if optional and (not scroll or not scrolls or scroll_attempts >= 6):
+                return None
+            if scroll and scrolls and scroll_attempts < 6:
+                x1, y1, x2, y2 = rect(scrolls[-1])
+                lo, hi = (y2 - 24, y1 + 24) if scroll_attempts < 3 else (y1 + 24, y2 - 24)
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    break
+                adb('shell', 'input', 'swipe', str(x2 - 20), str(lo), str(x2 - 20), str(hi), '450', timeout=min(30, remaining))
+                scroll_attempts += 1
+        time.sleep(min(.5, max(0, deadline - time.monotonic())))
+    if observed_disabled:
+        raise AssertionError('UI element did not become enabled within 25 seconds: ' + label)
     if optional:
         return None
-    raise AssertionError('UI element not found: ' + label)
+    raise AssertionError('UI element not found within 25 seconds: ' + label)
 
 
 def tap(label):

@@ -56,7 +56,8 @@ else:
 run(command)
 final_duration, final_width, final_height, final_probe = probe(target)
 assert 59.9 <= final_duration <= 90.1, final_duration
-decode = run(['ffmpeg', '-hide_banner', '-v', 'error', '-threads', '2', '-i', str(target), '-f', 'null', '-'])
+decode = run(['ffmpeg', '-hide_banner', '-v', 'error', '-threads', '2', '-i', str(target),
+              '-vsync', '0', '-enc_time_base', '-1', '-f', 'null', '-'])
 assert not decode.stderr.strip(), 'Decode warnings/errors: ' + decode.stderr[-4000:]
 (folder / 'final-video-decode.txt').write_text(decode.stderr, encoding='utf-8')
 (folder / 'final-video-ffprobe.json').write_text(json.dumps(final_probe, indent=2), encoding='utf-8')
