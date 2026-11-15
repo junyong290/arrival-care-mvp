@@ -73,15 +73,18 @@ class PleosProbeNavigationGateway(private val context:Context):NavigationGateway
         val reason=LiveRoutePolicy.rejection(request.target,permission("NAVI_ROUTE_SEARCH")&&permission("NAVI_ROUTE"),connected)
         if(reason!=null){result(request.id,request.destinationId,false,reason);return}
         if(pending!=null){result(request.id,request.destinationId,false,"이전 차량 내비 요청을 확인 중이에요");return}
+        val oldListener=listener;io{oldListener?.let{sdk?.removeListener(it)}}
+        installListener(++epoch)
         val target=request.target!!;pending=request;callback=result;routingCompleted=false
         val token=request.id;val generation=epoch
-        handler.postDelayed({if(!closed&&generation==epoch&&pending?.id==token){finish(false,"차량 내비 응답 시간 초과 · 연결을 다시 확인해 주세요");reconnect()}},15000)
-        io{sdk?.requestRoute(RouteInfo(latitude=target.point.latitude,longitude=target.point.longitude,poiName=request.name,poiId=target.poiId,address=target.address))}
+        handler.postDelayed({if(!closed&&generation==epoch&&pending?.id==token){finish(false,"차량 내비 응답 시간 초과 · 연결을 다시 확인해 주세요")}},15000)
+        io{sdk?.requestRoute(RouteInfo(latitude=target.point.latitude,longitude=target.point.longitude,displayLatitude=null,displayLongitude=null,poiName=request.name,poiId=target.poiId,poiSubId="0",address=target.address))}
     }
     private fun finish(success:Boolean,message:String){
         val request=pending?:return;val cb=callback
         pending=null;callback=null;routingCompleted=false
         cb?.invoke(request.id,request.destinationId,success,message)
+        if(!success&&connected&&!closed)reconnect()
     }
     private fun reconnect(){
         ++epoch;connected=false;position=null

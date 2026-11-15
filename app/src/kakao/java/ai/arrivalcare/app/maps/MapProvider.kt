@@ -32,7 +32,17 @@ private class KakaoRenderer(context:Context,onReady:()->Unit,onError:(String)->U
         mapView=MapView(context).apply{setFinishManually(true)}
         mapView.start(object:MapLifeCycleCallback(){
             override fun onMapDestroy(){if(!closed)onError("지도 종료")}
-            override fun onMapError(error:Exception){if(!closed)onError(error.javaClass.simpleName)}
+            override fun onMapError(error:Exception){if(!closed){
+                val code=(error as? MapAuthException)?.errorCode
+                val reason=when(code){
+                    401->"지도 인증 실패 · 앱 키·패키지·키 해시 확인"
+                    403->"지도 사용 권한 없음 · 개발자 콘솔 사용 설정 확인"
+                    429->"지도 요청 한도 초과 · 잠시 후 다시 연결"
+                    -2,-3,-4,499->"지도 네트워크 연결 실패 · 인터넷 확인"
+                    else->"지도 연결 오류 · 다시 연결해 주세요"
+                }
+                onError(reason+if(code!=null)" ("+code+")" else "")
+            }}
         },object:KakaoMapReadyCallback(){
             override fun getPosition()=LatLng.from(scene.venue.center.latitude,scene.venue.center.longitude)
             override fun getZoomLevel()=16
