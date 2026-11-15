@@ -15,9 +15,9 @@ android {
         applicationId = "ai.arrivalcare.app"
         minSdk = 28
         targetSdk = 34
-        versionCode = 2
-        versionName = "0.2.0"
-        buildConfigField("String", "KAKAO_MAP_NATIVE_KEY", "\"$mapKey\"")
+        versionCode = 3
+        versionName = "0.3.0"
+        buildConfigField("String", "KAKAO_MAP_NATIVE_KEY", "\"\"")
         testInstrumentationRunner = "android.test.InstrumentationTestRunner"
     }
     flavorDimensions += listOf("integration", "mapEngine")
@@ -28,6 +28,7 @@ android {
         create("kakao") {
             dimension = "mapEngine"
             buildConfigField("boolean", "KAKAO_INCLUDED", "true")
+            buildConfigField("String", "KAKAO_MAP_NATIVE_KEY", "\"$mapKey\"")
             ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a") }
         }
     }

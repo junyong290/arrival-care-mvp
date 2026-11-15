@@ -22,7 +22,9 @@ class AdaptiveJourneyLayout(context:Context,val map:View,val guide:View):ViewGro
             map.measure(MeasureSpec.makeMeasureSpec(mapWidth,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(h,MeasureSpec.EXACTLY))
             guide.measure(MeasureSpec.makeMeasureSpec(guideWidth,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(h,MeasureSpec.EXACTLY))
         }else{
-            mapWidth=w;mapHeight=ui.dp(ResponsivePolicy.mapHeight((h/density).toInt()))
+            mapWidth=w
+            val heightDp=(h/density).toInt()
+            mapHeight=if(heightDp>=400)(h*.52f).toInt().coerceAtMost(h-ui.dp(220)) else ui.dp(ResponsivePolicy.mapHeight(heightDp))
             map.measure(MeasureSpec.makeMeasureSpec(w,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(mapHeight,MeasureSpec.EXACTLY))
             guide.measure(MeasureSpec.makeMeasureSpec(w,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec((h-mapHeight).coerceAtLeast(0),MeasureSpec.EXACTLY))
         }

@@ -10,17 +10,19 @@ import android.view.*
 import android.widget.*
 
 object Palette {
-    val navy=Color.rgb(20,35,61)
+    var night=false
+    val surface get()=if(night)Color.rgb(26,35,48) else Color.WHITE
+    val navy get()=if(night)Color.rgb(239,245,255) else Color.rgb(20,35,61)
     val blue=Color.rgb(40,100,240)
-    val blueSoft=Color.rgb(234,241,255)
-    val ink=Color.rgb(32,47,69)
-    val muted=Color.rgb(99,115,137)
-    val paper=Color.rgb(244,247,252)
-    val line=Color.rgb(225,232,242)
+    val blueSoft get()=if(night)Color.rgb(37,58,93) else Color.rgb(234,241,255)
+    val ink get()=if(night)Color.rgb(222,232,245) else Color.rgb(32,47,69)
+    val muted get()=if(night)Color.rgb(163,180,202) else Color.rgb(99,115,137)
+    val paper get()=if(night)Color.rgb(15,23,35) else Color.rgb(244,247,250)
+    val line get()=if(night)Color.rgb(49,65,85) else Color.rgb(225,232,242)
     val green=Color.rgb(17,130,108)
-    val greenSoft=Color.rgb(231,246,239)
-    val amber=Color.rgb(145,90,15)
-    val amberSoft=Color.rgb(255,246,226)
+    val greenSoft get()=if(night)Color.rgb(24,62,55) else Color.rgb(231,246,239)
+    val amber get()=if(night)Color.rgb(255,199,116) else Color.rgb(145,90,15)
+    val amberSoft get()=if(night)Color.rgb(64,48,27) else Color.rgb(255,246,226)
 }
 
 class Ui(val context:Context) {
@@ -50,10 +52,10 @@ class Ui(val context:Context) {
         minHeight=dp(52);minimumHeight=dp(52);minimumWidth=0;minWidth=0
         setPadding(dp(14),dp(10),dp(14),dp(10));gravity=Gravity.CENTER
         isEnabled=enabled;isSelected=selected
-        val fill=when{!enabled->Palette.line;primary->Palette.blue;selected->Palette.blueSoft;else->Color.WHITE}
+        val fill=when{!enabled->Palette.line;primary->Palette.blue;selected->Palette.blueSoft;else->Palette.surface}
         val foreground=when{!enabled->Palette.muted;primary->Color.WHITE;selected->Palette.blue;else->Palette.ink}
         setTextColor(foreground)
-        background=RippleDrawable(ColorStateList.valueOf(Color.argb(40,60,110,220)),shape(fill,16,if(primary) null else if(selected) Palette.blue else Palette.line),null)
+        background=RippleDrawable(ColorStateList.valueOf(Color.argb(40,60,110,220)),shape(fill,16,if(selected&&!primary)Palette.blue else null),null)
         stateListAnimator=null
         icon?.let{setCompoundDrawablesRelativeWithIntrinsicBounds(IconDrawable(context,it,foreground),null,null,null);compoundDrawablePadding=dp(7)}
         setOnClickListener{action()}
@@ -66,7 +68,7 @@ class Ui(val context:Context) {
     }
     fun iconButton(name:String,icon:String,action:()->Unit)=ImageButton(context).apply{
         contentDescription=name;tooltipText=name;setImageDrawable(IconDrawable(context,icon,Palette.navy))
-        background=RippleDrawable(ColorStateList.valueOf(Palette.blueSoft),shape(Color.WHITE,16,Palette.line),null)
+        background=RippleDrawable(ColorStateList.valueOf(Palette.blueSoft),shape(Palette.surface,16),null)
         setPadding(dp(13),dp(13),dp(13),dp(13));setOnClickListener{action()}
     }
     fun iconTile(icon:String,color:Int=Palette.blue,fill:Int=Palette.blueSoft,size:Int=48)=ImageView(context).apply{
@@ -118,6 +120,10 @@ class IconDrawable(private val context:Context,private val name:String,private v
             "meeting"->{c.drawCircle(8f,6f,3f,p);c.drawCircle(17f,8f,2.5f,p);c.drawArc(2f,12f,14f,25f,180f,180f,false,p);c.drawArc(13f,13f,23f,25f,180f,180f,false,p)}
             "info"->{c.drawCircle(12f,12f,9f,p);line(12f,11f,12f,17f);line(12f,7f,12f,7.1f)}
             "more"->{p.style=Paint.Style.FILL;listOf(5f,12f,19f).forEach{c.drawCircle(it,12f,1.6f,p)}}
+            "moon"->{c.drawArc(3f,3f,21f,21f,45f,270f,false,p);c.drawArc(9f,-1f,25f,15f,65f,190f,false,p)}
+            "sun"->{c.drawCircle(12f,12f,4f,p);for(i in 0..7){val a=i*Math.PI/4;line(12f+8*kotlin.math.cos(a).toFloat(),12f+8*kotlin.math.sin(a).toFloat(),12f+10*kotlin.math.cos(a).toFloat(),12f+10*kotlin.math.sin(a).toFloat())}}
+            "plus"->{line(5f,12f,19f,12f);line(12f,5f,12f,19f)}
+            "minus"->line(5f,12f,19f,12f)
             else->{p.style=Paint.Style.FILL;p.textSize=19f;p.typeface=Typeface.DEFAULT_BOLD;p.textAlign=Paint.Align.CENTER;c.drawText(name,12f,19f,p)}
         }
         c.restore()

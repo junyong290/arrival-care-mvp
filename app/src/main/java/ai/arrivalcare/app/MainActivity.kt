@@ -31,6 +31,7 @@ class MainActivity:Activity(){
     private lateinit var stageBar:LinearLayout
     private lateinit var adaptive:AdaptiveJourneyLayout
     private lateinit var resetButton:ImageButton
+    private lateinit var modeBadge:TextView
     private val handler=Handler(Looper.getMainLooper())
     private val events=ArrayDeque<String>()
     private var lastStage:Stage?=null
@@ -39,9 +40,14 @@ class MainActivity:Activity(){
     private var ready=false
     private var resumed=false
     private var dialog:AlertDialog?=null
+    private var accessibilityAvailable=true
 
     override fun onCreate(savedInstanceState:Bundle?){
+        val theme=getPreferences(0).getInt("theme",0)
+        Palette.night=theme==2 || (theme==0 && resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK==Configuration.UI_MODE_NIGHT_YES)
+        setTheme(if(Palette.night)R.style.AppThemeNight else R.style.AppTheme)
         super.onCreate(savedInstanceState)
+        accessibilityAvailable=savedInstanceState?.getBoolean("accessibilityAvailable",true)?:true
         ui=Ui(this);journey=Journey(SessionState.restore(savedInstanceState,BuildConfig.PLEOS))
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         // Keep the OS/window chrome visible; never cover Pleos Driving view or window controls.
@@ -64,7 +70,7 @@ class MainActivity:Activity(){
         if(ready){content.animate().cancel();mapPanel.pause();vehicle.onBackground();journey.checkParked(false);journey.checkExited(false);journey.checkDoorsManually(false)}
         super.onPause()
     }
-    override fun onSaveInstanceState(outState:Bundle){if(ready)SessionState.save(journey.state,outState);super.onSaveInstanceState(outState)}
+    override fun onSaveInstanceState(outState:Bundle){if(ready){SessionState.save(journey.state,outState);outState.putBoolean("accessibilityAvailable",accessibilityAvailable)};super.onSaveInstanceState(outState)}
     override fun onConfigurationChanged(newConfig:Configuration){super.onConfigurationChanged(newConfig);dialog?.dismiss();adaptive.requestLayout();refresh()}
     override fun onMultiWindowModeChanged(isInMultiWindowMode:Boolean,newConfig:Configuration){super.onMultiWindowModeChanged(isInMultiWindowMode,newConfig);adaptive.requestLayout();refresh()}
     override fun onDestroy(){
@@ -79,20 +85,22 @@ class MainActivity:Activity(){
 
     private fun createLayout(){
         val root=ui.column().apply{setBackgroundColor(Palette.paper)}
-        val header=ui.row().apply{setBackgroundColor(Color.WHITE);setPadding(ui.dp(16),ui.dp(4),ui.dp(12),ui.dp(4))}
-        header.addView(ui.iconTile("brand",Color.WHITE,Palette.navy,36))
+        val header=ui.row().apply{setBackgroundColor(Palette.surface);setPadding(ui.dp(16),ui.dp(4),ui.dp(12),ui.dp(4))}
+        header.addView(ui.iconTile("brand",Color.WHITE,Palette.blue,36))
         val brand=ui.column()
-        ui.label(brand,"도착케어",20,Palette.navy,true,2);ui.label(brand,"ARRIVAL CARE",9,Palette.muted,true,0)
+        ui.label(brand,"도착케어",20,Palette.navy,true,2);ui.label(brand,"ARRIVAL CARE",10,Palette.muted,true,0)
         header.addView(brand,LinearLayout.LayoutParams(0,-2,1f).apply{leftMargin=ui.dp(9)})
-        header.addView(ui.pill(if(BuildConfig.PLEOS)"SDK 시연" else "시연 모드"),LinearLayout.LayoutParams(-2,-2).apply{rightMargin=ui.dp(8)})
+        modeBadge=ui.pill(if(BuildConfig.PLEOS)"PLEOS" else "DEMO")
+        header.addView(modeBadge,LinearLayout.LayoutParams(-2,-2).apply{rightMargin=ui.dp(8)})
+        header.addView(ui.iconButton("화면 테마",if(Palette.night)"moon" else "sun"){showTheme()},LinearLayout.LayoutParams(ui.dp(48),ui.dp(48)))
         header.addView(ui.iconButton("시뮬레이터","more"){showSimulator()},LinearLayout.LayoutParams(ui.dp(48),ui.dp(48)))
         resetButton=ui.iconButton("새 여정","pin"){if(journey.state.inputAllowed)askReset()}
         header.addView(resetButton,LinearLayout.LayoutParams(ui.dp(48),ui.dp(48)).apply{leftMargin=ui.dp(6)})
-        root.addView(header,LinearLayout.LayoutParams(-1,ui.dp(60)))
-        stageBar=ui.row().apply{setPadding(ui.dp(18),ui.dp(6),ui.dp(18),ui.dp(8));setBackgroundColor(Color.WHITE)}
-        root.addView(stageBar,LinearLayout.LayoutParams(-1,ui.dp(50)))
+        root.addView(header,LinearLayout.LayoutParams(-1,ui.dp(56)))
+        stageBar=ui.row().apply{setPadding(ui.dp(18),ui.dp(6),ui.dp(18),ui.dp(8));setBackgroundColor(Palette.surface)}
+        root.addView(stageBar,LinearLayout.LayoutParams(-1,ui.dp(42)))
         mapPanel=MapPanel(this,{showPoint(it)},{showMapInfo()}).apply{id=R.id.map_panel}
-        val guide=ui.column().apply{id=R.id.guide_panel;background=ui.shape(Color.WHITE,24);setPadding(ui.dp(18),ui.dp(18),ui.dp(18),ui.dp(10))}
+        val guide=ui.column().apply{id=R.id.guide_panel;background=ui.shape(Palette.surface,24);setPadding(ui.dp(18),ui.dp(14),ui.dp(18),ui.dp(10))}
         content=ui.column()
         scroll=ScrollView(this).apply{addView(content);isFillViewport=false;isVerticalScrollBarEnabled=false;overScrollMode=View.OVER_SCROLL_IF_CONTENT_SCROLLS}
         guide.addView(scroll,LinearLayout.LayoutParams(-1,0,1f))
@@ -114,7 +122,7 @@ class MainActivity:Activity(){
             if(changed){log("STAGE "+s.stage+" mode="+s.plan?.mode);lastStage=s.stage}
             if(resumed){render(changed)}
             val request=s.request
-            if(request!=null && request.id!=lastRequested && s.error==null){
+            if(request!=null && request.id!=lastRequested && s.error==null && s.routeApproved && resumed){
                 lastRequested=request.id
                 log("ROUTE request="+request.id+" destination="+request.destinationId)
                 navigation.request(request){id,destination,success,error->runOnUiThread{
@@ -126,9 +134,10 @@ class MainActivity:Activity(){
     private fun render(changed:Boolean){
         val oldY=if(changed)0 else scroll.scrollY
         val s=journey.state
+        modeBadge.visibility=if(resources.configuration.screenWidthDp<480)View.GONE else View.VISIBLE
         resetButton.isEnabled=s.inputAllowed;resetButton.alpha=if(s.inputAllowed)1f else .35f
         stageBar.removeAllViews();renderProgress()
-        content.removeAllViews();actions.removeAllViews();mapPanel.update(s)
+        content.removeAllViews();actions.removeAllViews();mapPanel.update(s);mapPanel.vehicle(navigation.currentPosition)
         if(!s.inputAllowed)locked()else when(s.stage){
             Stage.SETUP->setup()
             Stage.ROUTING_DROPOFF,Stage.EN_ROUTE_DROPOFF,Stage.ROUTING_PARKING,Stage.EN_ROUTE_PARKING->route()
@@ -159,12 +168,12 @@ class MainActivity:Activity(){
         }
     }
     private fun heading(eyebrow:String,title:String,subtitle:String){
-        ui.label(content,eyebrow,12,Palette.blue,true,7)
-        ui.label(content,title,25,Palette.navy,true,9)
-        ui.label(content,subtitle,14,Palette.muted,false,17)
+        ui.label(content,eyebrow,12,Palette.blue,true,5)
+        ui.label(content,title,26,Palette.navy,true,7)
+        if(subtitle.isNotEmpty())ui.label(content,subtitle,15,Palette.muted,false,12)
     }
     private fun primary(title:String,enabled:Boolean=true,description:String=title,note:String?=null,action:()->Unit){
-        actions.addView(ui.button(title,primary=true,enabled=enabled){action();refresh()}.apply{contentDescription=description;textSize=16f},LinearLayout.LayoutParams(-1,-2))
+        actions.addView(ui.button(title,primary=true,enabled=enabled){action();refresh()}.apply{contentDescription=description;textSize=18f},LinearLayout.LayoutParams(-1,-2))
         note?.let{actions.addView(ui.text(it,11,Palette.muted).apply{gravity=Gravity.CENTER},LinearLayout.LayoutParams(-1,-2).apply{topMargin=ui.dp(7)})}
     }
     private fun note(text:String,warning:Boolean=false){
@@ -172,30 +181,38 @@ class MainActivity:Activity(){
         v.background=ui.shape(if(warning)Palette.amberSoft else Palette.paper,14);v.setPadding(ui.dp(12),ui.dp(11),ui.dp(12),ui.dp(11))
         content.addView(v,LinearLayout.LayoutParams(-1,-2).apply{bottomMargin=ui.dp(12)})
     }
+    private fun recommendation()=ArrivalRecommendationEngine.recommend(journey.state.conditions,accessibilityAvailable)
     private fun setup(){
-        val c=journey.state.conditions;val p=Plan.create(c)
-        heading("우리의 도착 계획","어디로 함께 갈까요?","마지막 이동까지, 일행의 속도에 맞춰요.")
-        val facilities=ui.row()
-        DemoFacilities.all.forEachIndexed{i,f->
-            facilities.addView(ui.button(f.name,selected=f.id==c.facilityId,icon=if(i==0)"hospital" else "mall"){
-                journey.configure(c.copy(facilityId=f.id));refresh()
-            },LinearLayout.LayoutParams(0,-2,1f).apply{if(i>0)leftMargin=ui.dp(8)})
+        val c=journey.state.conditions;val v=VenueRepository.get(c.facilityId);val r=recommendation()
+        val destination=ui.card(content,if(c.facilityId=="mall")"mall" else "hospital",v.name,if(v.simulated)"시연 장소 · 목적지 변경  ›" else v.address+"  ›")
+        destination.contentDescription="목적지 변경";destination.isClickable=true;destination.setOnClickListener{showVenues()}
+        content.addView(ui.button(c.passengers.joinToString(" · "){it.label}+"  ·  "+if(c.caregiver)"보호자 동행  ›" else "함께 이동  ›",icon="person"){showConditions()}.apply{contentDescription="동행 조건 변경";gravity=Gravity.START or Gravity.CENTER_VERTICAL},LinearLayout.LayoutParams(-1,-2))
+        ui.label(content,r.title,18,Palette.navy,true,8)
+        content.addView(ui.button(if(r.canStart)"추천 이유와 전체 계획 보기" else "확인이 필요한 정보 보기",icon="info"){showPlan()},LinearLayout.LayoutParams(-1,-2))
+        primary(if(r.canStart)"이 계획으로 안내 시작" else "도착 계획 보류",r.canStart,note=if(v.simulated)"가상 장소 시연 · 실제 경로 안내와 별개" else "실제 승하차·접근성 정보 확인 필요"){
+            recommendation().plan?.let{journey.begin(it,true)}
         }
-        content.addView(facilities,LinearLayout.LayoutParams(-1,-2).apply{bottomMargin=ui.dp(14)})
-        ui.card(content,if(c.facilityId=="hospital")"hospital" else "mall",p.facility.name,"하차 · 주차 · 만남 장소를 한 번에")
-        ui.label(content,"누구와 함께하나요?",17,Palette.navy,true,9)
-        val companion=ui.row().apply{background=ui.shape(Color.WHITE,18,Palette.line);setPadding(ui.dp(13),ui.dp(12),ui.dp(13),ui.dp(12))}
-        companion.addView(ui.iconTile("meeting",Palette.navy,Palette.paper,42))
-        val detail=ui.column()
-        ui.label(detail,c.passengers.joinToString(" · "){it.label},16,Palette.navy,true,5)
-        ui.label(detail,if(c.caregiver)"별도 보호자 동행" else "운전자가 유일한 보호자",13,Palette.muted,false,0)
-        companion.addView(detail,LinearLayout.LayoutParams(0,-2,1f).apply{leftMargin=ui.dp(10)})
-        content.addView(companion,LinearLayout.LayoutParams(-1,-2).apply{bottomMargin=ui.dp(9)})
-        content.addView(ui.button("동행 조건 변경",icon="person"){showConditions()},LinearLayout.LayoutParams(-1,-2).apply{bottomMargin=ui.dp(15)})
-        ui.label(content,if(p.mode==Mode.DROP_FIRST)"먼저 내려드리고, 다시 만나요" else "주차부터 함께 이동해요",18,Palette.navy,true,8)
-        note(p.reason,!c.caregiver)
-        ui.card(content,"M",p.facility.meeting,"처음 정한 만남 장소를 끝까지 유지해요",Palette.green)
-        primary("이 계획으로 안내 시작",note="가상 시설 시연 · 실제 경로 안내 아님"){journey.begin()}
+    }
+    private fun showVenues(){
+        if(!journey.state.inputAllowed)return
+        dialog=AlertDialog.Builder(this).setTitle("어디로 함께 갈까요?").setItems(VenueRepository.all.map{it.name+if(it.simulated)" · 시연" else " · 공식 정보"}.toTypedArray()){_,i->
+            journey.configure(journey.state.conditions.copy(facilityId=VenueRepository.all[i].id));refresh()
+        }.setNegativeButton("닫기",null).create();showDialogWindow()
+    }
+    private fun showPlan(){
+        if(!journey.state.inputAllowed)return
+        val r=recommendation();val v=VenueRepository.get(journey.state.conditions.facilityId);val p=journey.state.plan?:r.plan
+        val details=if(p==null)r.reason else (if(p.mode==Mode.TOGETHER)"D · 하차 생략\n" else p.facility.drop+"\n")+p.facility.parking+"\nM · "+p.facility.meeting+"\n\n"+r.reason
+        val builder=AlertDialog.Builder(this).setTitle(if(p==null)"계획 보류" else "우리의 도착 계획").setMessage(details+"\n\n"+r.evidence+if(!v.simulated)"\n\n"+v.facts else "")
+            .setPositiveButton("확인",null)
+        if(!v.simulated)builder.setNeutralButton("공식 안내 열기"){_,_->runCatching{startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW,android.net.Uri.parse(v.source)))}}
+        dialog=builder.create();showDialogWindow()
+    }
+    private fun showTheme(){
+        if(!journey.state.inputAllowed)return
+        dialog=AlertDialog.Builder(this).setTitle("화면 테마").setSingleChoiceItems(arrayOf("시스템 설정","라이트","다크"),getPreferences(0).getInt("theme",0)){d,i->
+            getPreferences(0).edit().putInt("theme",i).apply();d.dismiss();recreate()
+        }.setNegativeButton("닫기",null).create();showDialogWindow()
     }
     private fun route(){
         val s=journey.state;val p=s.plan!!
@@ -205,35 +222,37 @@ class MainActivity:Activity(){
             if(drop)"먼저, 하차 장소로" else if(p.mode==Mode.TOGETHER)"모두 함께 주차해요" else "이제, 주차장으로",
             if(drop)"동승자와 보호자가 안전하게 내릴 곳을 확인해요." else p.reason)
         ui.card(content,if(drop)"D" else "P",if(drop)p.facility.drop else p.facility.parking,p.facility.name)
-        ui.card(content,"M",p.facility.meeting,"이곳에서 다시 만나요",Palette.green)
-        note("지도 표시는 내비게이션 경로 안내와 달라요. 현재 경로·도착 신호는 시뮬레이션입니다.")
+        ui.label(content,"만남 장소 · "+p.facility.meeting,14,Palette.muted,false,10)
+        ui.label(content,if(navigation.liveMode)"차량 내비게이션에 목적지를 전달해요" else "경로·도착은 시연 신호로 진행해요",13,Palette.muted,false,8)
         if(s.error!=null){
-            note(s.error,true);primary("경로 안내 다시 시도"){journey.retry()}
+            note(s.error,true);primary("경로 안내 다시 시도"){journey.retry();journey.approveRoute()}
+        }else if(loading && !s.routeApproved){
+            primary(if(navigation.liveMode)"동의하고 차량 내비 요청" else "동의하고 시연 경로 요청"){journey.approveRoute()}
         }else if(loading){
             content.addView(ProgressBar(this),LinearLayout.LayoutParams(ui.dp(32),ui.dp(32)).apply{gravity=Gravity.CENTER_HORIZONTAL})
             primary("안내를 준비하고 있어요",enabled=false){}
         }else{
-            primary(if(drop)"하차 지점 도착" else "주차장 도착",description=if(drop)"[시연] 하차 지점 도착" else "[시연] 주차장 도착",note="도착 버튼은 위치 신호를 대신하는 시연 동작입니다"){journey.arrived()}
+            primary(if(drop)"하차 지점 도착" else "주차장 도착",description=if(drop)"[시연] 하차 지점 도착" else "[시연] 주차장 도착",enabled=!navigation.liveMode,note=if(navigation.liveMode)"실제 도착 신호 연동은 검증 대기 중" else "시연 · 실제 위치로 자동 도착 처리하지 않아요"){journey.arrived()}
         }
     }
     private fun exitCheck(){
         val s=journey.state;val p=s.plan!!
         heading("01 · 하차 확인","모두 내렸나요","정차와 동승자 하차를 직접 확인해 주세요.")
-        ui.card(content,"D",p.facility.drop,p.facility.name)
+        ui.label(content,p.facility.drop,16,Palette.ink,true,10)
         val door=when(s.door){Door.CLOSED->"도어 닫힘";Door.OPEN->"도어 열림";Door.UNKNOWN->"도어 신호 없음";Door.DISCONNECTED->"차량 연결 끊김"}
         content.addView(ui.pill(door,if(s.door==Door.CLOSED)Palette.green else Palette.amber,if(s.door==Door.CLOSED)Palette.greenSoft else Palette.amberSoft),LinearLayout.LayoutParams(-2,-2).apply{bottomMargin=ui.dp(12)})
         ui.check(content,"안전하게 정차·주차했어요",s.parked){journey.checkParked(!s.parked);refresh()}
         ui.check(content,"보호자와 동승자가 모두 내렸어요",s.exited){journey.checkExited(!s.exited);refresh()}
         if(s.door in setOf(Door.UNKNOWN,Door.DISCONNECTED))ui.check(content,"모든 문이 닫힌 것을 직접 확인했어요",s.manualDoorCheck){journey.checkDoorsManually(!s.manualDoorCheck);refresh()}
-        note(if(s.door==Door.OPEN)"문이 열려 있어요. 닫힘을 확인할 때까지 진행할 수 없어요." else "도어 신호는 참고 정보예요. 문이 닫혀도 하차가 자동으로 완료되지 않아요.",s.door!=Door.CLOSED)
+        if(s.door==Door.OPEN)note("문이 열려 있어요. 문을 닫은 뒤 진행해 주세요.",true)
         primary("확인하고 주차장 안내",s.canConfirmExit,note="다음 장소 · "+p.facility.parking){journey.confirmExit()}
     }
     private fun parkingCheck(){
         val s=journey.state;val p=s.plan!!
         heading("02 · 주차 완료 확인","주차를 마쳤나요",if(p.mode==Mode.TOGETHER)"이제 일행과 함께 약속 장소로 이동해요." else "차를 세운 뒤, 처음 정한 만남 장소로 이동해요.")
-        ui.card(content,"P",p.facility.parking,p.facility.name)
+        ui.label(content,p.facility.parking,17,Palette.ink,true,12)
         ui.check(content,"주차를 마치고 안전하게 내릴 수 있어요",s.parked){journey.checkParked(!s.parked);refresh()}
-        note("주차장 도착과 주차 완료는 달라요. 주변을 살피고 직접 확인해 주세요.")
+
         primary("주차 완료 · 만남 장소 보기",s.parked){journey.confirmParking()}
     }
     private fun reunion(){
@@ -271,6 +290,8 @@ class MainActivity:Activity(){
                 val person=pair[i];val next=if(person in draft.passengers)draft.passengers-person else draft.passengers+person
                 if(next.isEmpty())Toast.makeText(this,"동승자를 하나 이상 선택해 주세요",Toast.LENGTH_SHORT).show()else{draft=draft.copy(passengers=next);renderDraft()}
             }}
+            ui.spacer(body,10);ui.label(body,"우선할 이동 조건",16,Palette.navy,true,10)
+            Preference.entries.forEach{pref->choices(listOf(pref.label to (pref in draft.preferences))){draft=draft.copy(preferences=if(pref in draft.preferences)draft.preferences-pref else draft.preferences+pref);renderDraft()}}
             ui.spacer(body,10);ui.label(body,"운전자 외 보호자",16,Palette.navy,true,10)
             choices(listOf("별도 보호자 있음" to draft.caregiver,"별도 보호자 없음" to !draft.caregiver)){draft=draft.copy(caregiver=it==0);renderDraft()}
             ui.spacer(body,10);ui.label(body,"어떻게 도착할까요?",16,Palette.navy,true,10)
@@ -284,9 +305,10 @@ class MainActivity:Activity(){
             .setPositiveButton("조건 적용"){_,_->if(journey.state.inputAllowed){journey.configure(draft);refresh()}}.create()
         showDialogWindow()
     }
-    private fun showPoint(point:Waypoint){
+    private fun showPoint(point:Waypoint?){
+        if(point==null){showPlan();return}
         if(!journey.state.inputAllowed)return
-        val f=journey.state.plan?.facility?:DemoFacilities.get(journey.state.conditions.facilityId)
+        val f=journey.state.plan?.facility?:recommendation().plan?.facility?:DemoFacilities.get(journey.state.conditions.facilityId)
         val title=when(point){Waypoint.DROP->f.drop;Waypoint.PARK->f.parking;Waypoint.MEET->f.meeting}
         dialog=AlertDialog.Builder(this).setTitle(point.letter+" · "+point.title+" 지점")
             .setMessage(title+"\n\n"+f.name+"\n\nUI 시연용 가상 위치입니다. 실제 시설의 하차·주차·만남 지점이나 검증된 접근성 정보가 아닙니다.")
@@ -323,7 +345,11 @@ class MainActivity:Activity(){
             body.addView(r,LinearLayout.LayoutParams(-1,-2).apply{bottomMargin=ui.dp(8)})
             listOf(Door.CLOSED to "도어 닫힘",Door.OPEN to "도어 열림",Door.UNKNOWN to "도어 신호 누락",Door.DISCONNECTED to "차량 연결 실패").forEach{(door,title)->command(title){v.door(door)}}
         }
-        (navigation as? MockNavigationGateway)?.let{n->
+        if(BuildConfig.PLEOS && journey.state.stage==Stage.SETUP && journey.state.inputAllowed){
+            command(if(navigation.liveMode)"시연 내비 모드 사용" else "실제 차량 내비 모드 선택"){navigation.setLiveMode(!navigation.liveMode)}
+        }
+        if(journey.state.stage==Stage.SETUP && journey.state.inputAllowed)command(if(accessibilityAvailable)"접근성 정보 누락 시연" else "가상 접근성 정보 복원"){accessibilityAvailable=!accessibilityAvailable}
+        navigation.simulator?.let{n->
             command("다음 내비 요청 실패"){n.failNext=true;n.delayNext=false}
             command("다음 내비 응답 지연"){n.delayNext=true;n.failNext=false}
         }

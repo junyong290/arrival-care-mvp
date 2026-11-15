@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.Looper
+import android.os.SystemClock
 import android.util.Log
 import ai.arrivalcare.app.data.VehicleGateway
 import ai.arrivalcare.app.domain.Door
@@ -11,6 +12,7 @@ import ai.pleos.playground.vehicle.Vehicle
 import ai.pleos.playground.vehicle.api.model.area.DoorArea
 import ai.pleos.playground.vehicle.api.model.capability.AreaBounds
 import ai.pleos.playground.vehicle.constant.area.DoorValue
+import ai.pleos.playground.vehicle.listener.DoorPositionListener
 import java.util.concurrent.ArrayBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
@@ -27,6 +29,9 @@ class PleosVehicleGateway(private val context:Context):VehicleGateway {
     private val worker=ThreadPoolExecutor(1,1,0,TimeUnit.SECONDS,ArrayBlockingQueue(8),
         { task -> Thread(task,"ArrivalCare-Vehicle").apply{isDaemon=true} })
     private var generation=0L
+    private var subscriptionGeneration=0L
+    private val listeners=mutableMapOf<DoorArea,DoorPositionListener>()
+    private val eventValues=mutableMapOf<DoorArea,Pair<Door,Long>>()
     private var callback:((Door)->Unit)?=null
     private var status="연결 확인 중"
     override val description get()="Vehicle SDK 2.3.2: $status / 도어 신호는 하차 확인을 대신하지 않음"
@@ -53,6 +58,36 @@ class PleosVehicleGateway(private val context:Context):VehicleGateway {
         catch(e:Exception){if(!closed)onFailure(e)}
     }
     private fun fail(e:Exception){if(!closed){++generation;status="연결·조회 실패: ${e.javaClass.simpleName}";callback?.invoke(Door.DISCONNECTED);Log.w("ArrivalCareSDK",status)}}
+    private fun decode(position:Int?,bounds:AreaBounds<Int>)=when{
+        position==null||bounds.minValue!=0||position !in bounds.minValue..bounds.maxValue->Door.UNKNOWN
+        position==0->Door.CLOSED
+        else->Door.OPEN
+    }
+    private fun subscribe(areas:Map<DoorArea,AreaBounds<Int>>){
+        val token=subscriptionGeneration
+        areas.forEach{(area,bounds)->if(area !in listeners){
+            val listener=object:DoorPositionListener{
+                override fun onPositionUpdated(position:Int?){handler.post{
+                    if(!closed&&foreground&&token==subscriptionGeneration){
+                        eventValues[area]=decode(position,bounds) to SystemClock.elapsedRealtime()
+                        ++generation // An older snapshot/timeout cannot overwrite an event.
+                        val now=SystemClock.elapsedRealtime()
+                        val values=areas.keys.map{a->eventValues[a]?.takeIf{now-it.second<10000}?.first?:Door.UNKNOWN}
+                        val value=when{Door.OPEN in values->Door.OPEN;Door.UNKNOWN in values->Door.UNKNOWN;else->Door.CLOSED}
+                        status="도어 이벤트: "+value;callback?.invoke(value)
+                    }
+                }}
+                override fun onFailed(exception:Exception){handler.post{if(!closed&&foreground&&token==subscriptionGeneration){eventValues.clear();fail(exception)}}}
+            }
+            listeners[area]=listener
+            background({sdk?.getDoor()?.registerDoorPosition(area,listener)},{if(token==subscriptionGeneration){status="이벤트 연결 실패 · 주기 조회 사용";listeners.remove(area)}})
+        }}
+    }
+    private fun unsubscribe(){
+        ++subscriptionGeneration;eventValues.clear()
+        val old=listeners.toMap();listeners.clear()
+        background({old.forEach{(area,l)->runCatching{sdk?.getDoor()?.unregisterDoorPosition(area,l)}}},{})
+    }
     private fun poll(){
         if(closed || !foreground)return
         handler.removeCallbacks(pollTask)
@@ -68,12 +103,14 @@ class PleosVehicleGateway(private val context:Context):VehicleGateway {
                         if(!coverage.containsAll(required)){
                             status="필수 4개 도어 지원 미확인";callback?.invoke(Door.UNKNOWN)
                         }else{
+                            subscribe(supported)
                             val values=mutableMapOf<DoorArea,Door>()
                             supported.forEach{(area,bounds)->
                                 background({
                                 sdk?.getDoor()?.getCurrentDoorPosition(area=area,onComplete={position:Int?->handler.post{
                                     if(!closed && epoch==generation){
-                                        values[area]=when{position==null || bounds.minValue!=0 || position !in bounds.minValue..bounds.maxValue->Door.UNKNOWN;position==0->Door.CLOSED;else->Door.OPEN}
+                                        values[area]=decode(position,bounds)
+                                        eventValues[area]=values.getValue(area) to SystemClock.elapsedRealtime()
                                         if(values.size==supported.size){
                                             ++generation // invalidate this cycle's timeout after a complete fresh snapshot
                                             val aggregate=when{Door.OPEN in values.values->Door.OPEN;Door.UNKNOWN in values.values->Door.UNKNOWN;else->Door.CLOSED}
@@ -91,11 +128,12 @@ class PleosVehicleGateway(private val context:Context):VehicleGateway {
         },{if(epoch==generation)fail(it)})
         handler.postDelayed(pollTask,3000)
     }
-    override fun onBackground(){foreground=false;++generation;handler.removeCallbacks(pollTask)}
+    override fun onBackground(){foreground=false;++generation;handler.removeCallbacks(pollTask);unsubscribe();callback?.invoke(Door.UNKNOWN)}
     override fun onForeground(){val wasActive=foreground;foreground=true;if(!wasActive && !initializing && !closed)poll()}
     override fun close(){
+        val old=listeners.toMap();listeners.clear();++subscriptionGeneration
         closed=true;++generation;handler.removeCallbacksAndMessages(null);ux?.close();callback=null
         worker.shutdownNow()
-        Thread({runCatching{sdk?.release()}},"ArrivalCare-Vehicle-close").apply{isDaemon=true;start()}
+        Thread({old.forEach{(area,l)->runCatching{sdk?.getDoor()?.unregisterDoorPosition(area,l)}};runCatching{sdk?.release()}},"ArrivalCare-Vehicle-close").apply{isDaemon=true;start()}
     }
 }

@@ -1,11 +1,11 @@
 package ai.arrivalcare.app.domain
 
-enum class Passenger(val label: String) { PARENT("부모님"), CHILD("아이"), STROLLER("유모차"), WHEELCHAIR("휠체어 이용자") }
+enum class Passenger(val label: String) { PARENT("부모님"), CHILD("아이"), STROLLER("유모차"), WHEELCHAIR("휠체어 이용자"), GENERAL("일반 동승자") }
 enum class Mode { DROP_FIRST, TOGETHER }
 enum class Door { CLOSED, OPEN, UNKNOWN, DISCONNECTED }
 enum class Stage { SETUP, ROUTING_DROPOFF, EN_ROUTE_DROPOFF, EXIT_CHECK, ROUTING_PARKING, EN_ROUTE_PARKING, PARKING_CHECK, REUNION, DONE }
-data class Conditions(val facilityId: String = "hospital", val passengers: Set<Passenger> = setOf(Passenger.PARENT), val caregiver: Boolean = true, val requestedMode: Mode = Mode.DROP_FIRST)
-data class Facility(val id: String, val name: String, val drop: String, val parking: String, val meeting: String, val walking: String)
+data class Conditions(val facilityId: String = "hospital", val passengers: Set<Passenger> = setOf(Passenger.PARENT), val caregiver: Boolean = true, val requestedMode: Mode = Mode.DROP_FIRST,val preferences:Set<Preference> = emptySet())
+data class Facility(val id: String, val name: String, val drop: String, val parking: String, val meeting: String, val walking: String,val dropTarget:RouteTarget?=null,val parkingTarget:RouteTarget?=null)
 object DemoFacilities {
     // Fictional identifiers only: deliberately no latitude/longitude for unverified facilities.
     val all = listOf(
@@ -33,13 +33,13 @@ data class Plan(val conditions: Conditions, val facility: Facility, val mode: Mo
         }
     }
 }
-data class RouteRequest(val id: Long, val destinationId: String, val name: String)
+data class RouteRequest(val id: Long, val destinationId: String, val name: String,val target:RouteTarget?=null)
 data class State(
     val conditions: Conditions = Conditions(), val plan: Plan? = null, val stage: Stage = Stage.SETUP,
     val moving: Boolean = false, val uxReady: Boolean = true, val door: Door = Door.UNKNOWN,
     val parked: Boolean = false, val exited: Boolean = false, val manualDoorCheck: Boolean = false,
     val sequence: Long = 0, val request: RouteRequest? = null, val error: String? = null, val ignoredResponses: Int = 0,
-    val notice: String? = null
+    val notice: String? = null,val requireRouteApproval:Boolean=false,val routeApproved:Boolean=true
 ) {
     val inputAllowed get() = !moving && uxReady
     val canConfirmExit get() = stage == Stage.EXIT_CHECK && inputAllowed && parked && exited && (door == Door.CLOSED || (door in setOf(Door.UNKNOWN, Door.DISCONNECTED) && manualDoorCheck))
@@ -57,10 +57,11 @@ class Journey(initial: State = State()) {
             exited = if (moving || !ready) false else state.exited, manualDoorCheck = if (moving || !ready) false else state.manualDoorCheck))
     }
     fun setDoor(door: Door) { if (door != state.door) update(state.copy(door = door, manualDoorCheck = false)) }
-    fun begin() {
+    fun begin(recommended:Plan?=null,requireApproval:Boolean=false) {
         if (state.stage != Stage.SETUP || !state.inputAllowed) return
-        val p = Plan.create(state.conditions)
-        update(state.copy(plan = p, parked = false, exited = false, manualDoorCheck = false, notice = null))
+        val p = recommended?:Plan.create(state.conditions)
+        if(p.conditions!=state.conditions)return
+        update(state.copy(plan = p, parked = false, exited = false, manualDoorCheck = false, notice = null,requireRouteApproval=requireApproval))
         route(if (p.mode == Mode.DROP_FIRST) Stage.ROUTING_DROPOFF else Stage.ROUTING_PARKING)
     }
     private fun route(stage: Stage) {
@@ -68,11 +69,12 @@ class Journey(initial: State = State()) {
         val drop = stage == Stage.ROUTING_DROPOFF
         val id = state.sequence + 1
         update(state.copy(stage = stage, sequence = id,
-            request = RouteRequest(id, p.facility.id + if (drop) ":drop" else ":park", if (drop) p.facility.drop else p.facility.parking), error = null))
+            request = RouteRequest(id, p.facility.id + if (drop) ":drop" else ":park", if (drop) p.facility.drop else p.facility.parking,if(drop)p.facility.dropTarget else p.facility.parkingTarget), error = null,routeApproved=!state.requireRouteApproval))
     }
+    fun approveRoute(){if(state.inputAllowed&&state.request!=null&&state.error==null)update(state.copy(routeApproved=true))}
     fun routeResult(id: Long, destinationId: String, success: Boolean, message: String = "경로 요청에 실패했습니다. 연결을 확인하고 다시 시도하세요.") {
         val r = state.request
-        if (r == null || r.id != id || r.destinationId != destinationId || state.error != null || state.stage !in setOf(Stage.ROUTING_DROPOFF, Stage.ROUTING_PARKING)) {
+        if (r == null || r.id != id || r.destinationId != destinationId || state.error != null || !state.routeApproved || state.stage !in setOf(Stage.ROUTING_DROPOFF, Stage.ROUTING_PARKING)) {
             update(state.copy(ignoredResponses = state.ignoredResponses + 1)); return
         }
         update(if (success) state.copy(stage = if (state.stage == Stage.ROUTING_DROPOFF) Stage.EN_ROUTE_DROPOFF else Stage.EN_ROUTE_PARKING, request = null, error = null)

@@ -6,6 +6,10 @@ import ai.arrivalcare.app.domain.*
 
 interface NavigationGateway {
     val description: String
+    val liveMode:Boolean get()=false
+    val currentPosition:GeoPoint? get()=null
+    val simulator:MockNavigationGateway? get()=null
+    fun setLiveMode(enabled:Boolean) {}
     fun request(request: RouteRequest, result: (Long, String, Boolean, String) -> Unit)
     fun close()
 }
@@ -17,6 +21,7 @@ interface VehicleGateway {
     fun close()
 }
 class MockNavigationGateway : NavigationGateway {
+    override val simulator get()=this
     override val description = "경로 요청 시뮬레이션 · 실제 내비 미연결"
     private val handler = Handler(Looper.getMainLooper())
     var failNext = false
