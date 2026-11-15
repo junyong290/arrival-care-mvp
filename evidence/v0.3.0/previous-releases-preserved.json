@@ -1,0 +1,16 @@
+[
+  {
+    "release": "v0.1.0",
+    "id": 445819360,
+    "asset_count": 7,
+    "tag_commit": "48221a5d13537f6699d4000d0f1d2ae8c9940bcf",
+    "metadata_and_asset_ids_and_digests_unchanged": true
+  },
+  {
+    "release": "v0.2.0",
+    "id": 445894341,
+    "asset_count": 9,
+    "tag_commit": "f2cd6fa64ae78328821e171988213b5e92d1eb61",
+    "metadata_and_asset_ids_and_digests_unchanged": true
+  }
+]

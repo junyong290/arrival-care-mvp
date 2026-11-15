@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="ai.arrivalcare.app.domain.JourneyTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-11-15T10:36:09" time="0.039">
+  <properties />
+  <testcase name="disconnectedDoorAllowsExplicitFallback" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="bothHumanChecksAreRequired" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="movementInvalidatesChecksAndBlocksConfirmation" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="facilityAndMobilityChangeRecommendation" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="timeoutCannotBeOverriddenByLateSuccessBeforeRetry" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.0" />
+  <testcase name="parkingArrivalIsNotParkingCompletion" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.003" />
+  <testcase name="unknownDoorRequiresAdditionalManualCheck" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="unknownRestrictionFailsClosed" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.002" />
+  <testcase name="failedNavigationStaysPendingUntilRetryCompletes" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="lateResponseFromPreviousRequestIsIgnored" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.003" />
+  <testcase name="repeatedMissingSignalDoesNotEraseHumanFallback" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="resetInvalidatesPreviousJourneyResponse" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="soleCaregiverAlwaysSkipsDropOff" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="emptyPassengerSelectionIsRejected" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="planIsFrozenOnceStarted" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="changedDoorInvalidatesManualCheck" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.003" />
+  <testcase name="repeatedCallbackCannotAdvanceExit" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="selectedTogetherSkipsDropOff" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.0" />
+  <testcase name="doorCycleNeverConfirmsExit" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.0" />
+  <testcase name="openDoorBlocksEvenWithChecks" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="wrongDestinationIsIgnored" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <testcase name="parentsHospitalEndToEnd" classname="ai.arrivalcare.app.domain.JourneyTest" time="0.001" />
+  <system-out />
+  <system-err />
+</testsuite>

@@ -1,0 +1,8 @@
+{
+  "expected_release_sha256": "8d0471a1196776d212c752a27222e4555107db0536356b10f94241fdddcf509a",
+  "installed_sha256": "306a5527115b783b74db9f4a8ec4b7f00751baadcbb2494f58908a7dc46ae974",
+  "installed_final_apk_verified": false,
+  "sdk_signal_verified": false,
+  "shutdown": "OK: killing emulator, bye bye\r\r\nOK",
+  "forward_removed": ""
+}

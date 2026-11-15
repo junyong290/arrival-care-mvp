@@ -1,0 +1,27 @@
+{
+  "application_commit": "4f5ff2a83b62bd84ec6a2c1b83a67396eb5ae96f",
+  "total_tests": 48,
+  "suites": [
+    {
+      "suite": "ai.arrivalcare.app.domain.ArrivalRecommendationTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "ai.arrivalcare.app.domain.JourneyTest",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "ai.arrivalcare.app.ui.ResponsivePolicyTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "application_commit": "4f5ff2a83b62bd84ec6a2c1b83a67396eb5ae96f",
+  "variant": "demoOfflineDebug",
+  "certificate_matches_release": false,
+  "apk": "app-demo-offline-debug.apk",
+  "installed_apk_sha256": "e425aa55b5495af8fa8d31af378c0d28b05c22dd23e7c5f12f4d9f5aef70fad2",
+  "installed_bytes_match": true,
+  "emulator": true,
+  "host": "GitHub Actions Ubuntu KVM",
+  "workflow_run": "43711064419",
+  "model": "Android SDK built for x86_64",
+  "api": "28",
+  "abi": "x86_64",
+  "size": "Physical size: 720x1280",
+  "density": "Physical density: 320"
+}

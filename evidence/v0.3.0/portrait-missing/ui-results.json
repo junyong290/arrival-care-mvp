@@ -1,0 +1,6 @@
+[
+  {
+    "scenario": "disconnected_door_manual_fallback",
+    "result": "PASS"
+  }
+]

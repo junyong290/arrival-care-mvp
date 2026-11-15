@@ -2,7 +2,7 @@
 Run only after stopping other emulators and Gradle to leave memory for the 4 GB AVD.
 """
 import argparse,pathlib,subprocess,time,json,hashlib,urllib.request
-p=argparse.ArgumentParser();p.add_argument('--adb',default='adb');p.add_argument('--apks',required=True);p.add_argument('--out',required=True)
+p=argparse.ArgumentParser();p.add_argument('--adb',default='adb');p.add_argument('--apks',required=True);p.add_argument('--out',required=True);p.add_argument('--boot-timeout',type=int,default=300);p.add_argument('--allow-framework-probe',action='store_true');p.add_argument('--variant',choices=['all','demo','pleos'],default='all')
 a=p.parse_args();out=pathlib.Path(a.out);out.mkdir(parents=True,exist_ok=True);adb=[a.adb,'-s','emulator-5554'];observations=[]
 def run(name,args,timeout=35):
     try:
@@ -18,27 +18,30 @@ def save():
 def note(step,result):
     observations.append({'step':step,'result':result});save();print(step,result,flush=True)
 try:
-    deadline=time.monotonic()+300
+    deadline=time.monotonic()+a.boot_timeout
     while time.monotonic()<deadline:
         try:
             r=subprocess.run(adb+['shell','getprop','sys.boot_completed'],capture_output=True,timeout=8)
             if r.stdout.strip()==b'1':break
         except subprocess.TimeoutExpired:pass
         time.sleep(6)
-    else:raise RuntimeError('No boot completion within 300 seconds')
-    note('boot','sys.boot_completed=1')
+    else:
+        note('boot','No boot completion within timeout')
+        if not a.allow_framework_probe:raise RuntimeError(f'No boot completion within {a.boot_timeout} seconds')
+    current=run('boot-property.txt',['shell','getprop','sys.boot_completed'],8)
+    note('boot-property',current.stdout.decode().strip() if current else 'unavailable')
     run('virtual-console-forward.txt',['forward','tcp:8088','tcp:8088'])
     try:
         with urllib.request.urlopen('http://127.0.0.1:8088/',timeout=15) as response:
             content=response.read();(out/'virtual-console.html').write_bytes(content);note('virtual-console-http',str(response.status))
     except Exception as e:note('virtual-console-http',type(e).__name__)
-    for variant in ['demo','pleos']:
+    for variant in (['demo','pleos'] if a.variant=='all' else [a.variant]):
         package='ai.arrivalcare.app.'+variant;apk=pathlib.Path(a.apks)/f'arrivalcare-{variant}-offline-0.3.0.apk'
         expected=hashlib.sha256(apk.read_bytes()).hexdigest()
         install=run(variant+'-install.txt',['install','-r',str(apk)],70)
         path=run(variant+'-installed-path.txt',['shell','pm','path',package],25)
         actual=None
-        if path and path.returncode==0:
+        if path and path.returncode==0 and path.stdout.strip().startswith(b'package:'):
             installed=path.stdout.decode(errors='replace').strip().removeprefix('package:').splitlines()[0]
             digest=run(variant+'-installed-sha256.txt',['shell','sha256sum',installed],30)
             if digest and digest.returncode==0:actual=digest.stdout.decode().split()[0]

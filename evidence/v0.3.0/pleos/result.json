@@ -1,0 +1,41 @@
+{
+  "emulator_image": "Pleos Connect 2.1.0",
+  "host_emulator_version": "35.6.11",
+  "configured_ram_mib": 4096,
+  "cold_boot": true,
+  "boot_completed_within_300_seconds": false,
+  "final_apk_installation_verified": false,
+  "vehicle_signal_verified": false,
+  "navi_request_verified": false,
+  "boot_recheck": {
+    "exit": 0,
+    "stdout": "1",
+    "stderr": ""
+  },
+  "api": {
+    "exit": 0,
+    "stdout": "34",
+    "stderr": ""
+  },
+  "abi": {
+    "exit": 0,
+    "stdout": "x86_64",
+    "stderr": ""
+  },
+  "virtual_console_forward": {
+    "exit": 0,
+    "stdout": "8088",
+    "stderr": ""
+  },
+  "virtual_console_http": 200,
+  "shutdown": {
+    "exit": 0,
+    "stdout": "OK: killing emulator, bye bye\r\r\nOK",
+    "stderr": ""
+  },
+  "remove_forward": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}

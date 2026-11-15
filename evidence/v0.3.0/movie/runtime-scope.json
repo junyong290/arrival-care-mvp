@@ -1,0 +1,12 @@
+{
+  "application_commit": "4f5ff2a83b62bd84ec6a2c1b83a67396eb5ae96f",
+  "apk": "arrivalcare-demo-offline-0.3.0.apk",
+  "installed_apk_sha256": "bfd4384dcd391e888021febb8d61c89ccd44ee0144e3ae96ce4fdcdfb31734e3",
+  "installed_bytes_match": true,
+  "model": "Android SDK built for x86_64",
+  "api": "28",
+  "abi": "x86_64",
+  "emulator": true,
+  "size": "Physical size: 1280x720",
+  "density": "Physical density: 160"
+}

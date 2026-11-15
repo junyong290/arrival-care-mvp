@@ -1,0 +1,47 @@
+[
+  {
+    "step": "boot",
+    "result": "No boot completion within timeout"
+  },
+  {
+    "step": "boot-property.txt",
+    "exit": 0,
+    "bytes": 2
+  },
+  {
+    "step": "boot-property",
+    "result": ""
+  },
+  {
+    "step": "virtual-console-forward.txt",
+    "exit": 0,
+    "bytes": 6
+  },
+  {
+    "step": "virtual-console-http",
+    "result": "200"
+  },
+  {
+    "step": "pleos-install.txt",
+    "result": "TIMEOUT"
+  },
+  {
+    "step": "pleos-installed-path.txt",
+    "exit": 0,
+    "bytes": 105
+  },
+  {
+    "step": "pleos-installed-sha256.txt",
+    "exit": 0,
+    "bytes": 163
+  },
+  {
+    "step": "pleos-installed-apk-match",
+    "result": "NOT_VERIFIED"
+  },
+  {
+    "step": "system-logcat.txt",
+    "exit": 0,
+    "bytes": 23635
+  }
+]

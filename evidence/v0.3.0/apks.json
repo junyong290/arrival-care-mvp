@@ -1,0 +1,61 @@
+{
+  "application_commit": "4f5ff2a83b62bd84ec6a2c1b83a67396eb5ae96f",
+  "actual_kakao_tiles_verified": false,
+  "physical_device_test": "Deferred by user on 2026-11-15",
+  "apks": [
+    {
+      "file": "arrivalcare-demo-offline-0.3.0.apk",
+      "package": "ai.arrivalcare.app.demo",
+      "version": "0.3.0",
+      "versionCode": 3,
+      "bytes": 2196789,
+      "sha256": "bfd4384dcd391e888021febb8d61c89ccd44ee0144e3ae96ce4fdcdfb31734e3",
+      "certificate_sha256": "8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289",
+      "kakao_key_hash": "VRrndCnhcmPis6Eo0kxawHoNJzU=",
+      "native_key_embedded": false,
+      "abis": []
+    },
+    {
+      "file": "arrivalcare-demo-kakao-arm-0.3.0.apk",
+      "package": "ai.arrivalcare.app.demo",
+      "version": "0.3.0",
+      "versionCode": 3,
+      "bytes": 40509693,
+      "sha256": "6db40d293cd4a1e5e51b7b0ca2414d43813d3f0b05af0089e2bb8e60b0269c5a",
+      "certificate_sha256": "8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289",
+      "kakao_key_hash": "VRrndCnhcmPis6Eo0kxawHoNJzU=",
+      "native_key_embedded": true,
+      "abis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ]
+    },
+    {
+      "file": "arrivalcare-pleos-offline-0.3.0.apk",
+      "package": "ai.arrivalcare.app.pleos",
+      "version": "0.3.0",
+      "versionCode": 3,
+      "bytes": 8750654,
+      "sha256": "8d0471a1196776d212c752a27222e4555107db0536356b10f94241fdddcf509a",
+      "certificate_sha256": "8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289",
+      "kakao_key_hash": "VRrndCnhcmPis6Eo0kxawHoNJzU=",
+      "native_key_embedded": false,
+      "abis": []
+    },
+    {
+      "file": "arrivalcare-pleos-kakao-arm-0.3.0.apk",
+      "package": "ai.arrivalcare.app.pleos",
+      "version": "0.3.0",
+      "versionCode": 3,
+      "bytes": 47078842,
+      "sha256": "c2c07908f1d547e371f0f124d84754643b93ff6b513b30f1ee7f14583b627dac",
+      "certificate_sha256": "8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289",
+      "kakao_key_hash": "VRrndCnhcmPis6Eo0kxawHoNJzU=",
+      "native_key_embedded": true,
+      "abis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ]
+    }
+  ]
+}
