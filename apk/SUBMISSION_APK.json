@@ -1,8 +1,8 @@
 {
   "file": "apk/Unrival_도착케어_release.apk",
-  "package": "ai.arrivalcare.app.demo",
-  "versionName": "0.3.0",
-  "versionCode": 3,
+  "package": "ai.arrivalcare.app.pleos",
+  "versionName": "0.3.1",
+  "versionCode": 4,
   "minSdk": 28,
   "targetSdk": 34,
   "debuggable": false,
@@ -11,12 +11,11 @@
   "signatureVerified": true,
   "signatureScheme": "APK Signature Scheme v2",
   "certificateSha256": "8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289",
-  "bytes": 2196789,
-  "sha256": "bfd4384dcd391e888021febb8d61c89ccd44ee0144e3ae96ce4fdcdfb31734e3",
-  "matchesExistingReleaseEvidence": true,
-  "applicationCommit": "4f5ff2a83b62bd84ec6a2c1b83a67396eb5ae96f",
-  "scope": "Static APK verification only; no rebuild or runtime retest",
+  "bytes": 8759249,
+  "sha256": "2c1bfad093e3333dec221d839104190b155af7e7fff5bf32c019d68e743d034e",
+  "applicationCommit": "8e3cbe612c092ee3ab619502009a8db8118a18d8",
+  "scope": "Signed v0.3.1 Pleos Offline Release candidate; actual Pleos runtime revalidation pending",
   "team": "Unrival",
   "appName": "도착케어",
-  "originalReleaseAsset": "https://github.com/junyong290/arrival-care-mvp/releases/download/v0.3.0/arrivalcare-demo-offline-0.3.0.apk"
+  "buildRun": "https://github.com/junyong290/arrival-care-mvp/actions/runs/43720052027"
 }

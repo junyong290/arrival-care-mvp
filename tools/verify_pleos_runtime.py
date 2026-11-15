@@ -19,11 +19,13 @@ p.add_argument('--serial', default='emulator-5554')
 p.add_argument('--apks', required=True)
 p.add_argument('--out', required=True)
 p.add_argument('--boot-timeout', type=int, default=900)
+p.add_argument('--version', default='0.3.0')
+p.add_argument('--variant', choices=['all', 'pleos', 'demo'], default='all')
 a = p.parse_args()
 out = pathlib.Path(a.out)
 out.mkdir(parents=True, exist_ok=True)
 base = [a.adb, '-s', a.serial]
-result = {'emulator': 'Pleos Connect 2.1.0', 'variants': [], 'success': False}
+result = {'emulator': 'Pleos Connect 2.1.0', 'apk_version': a.version, 'variants': [], 'success': False}
 
 
 def save():
@@ -251,11 +253,11 @@ try:
     result['stable_system_server_pid'] = stable[-1]
     screenshot(out, '00-pleos-system')
     park_virtual_vehicle()
-    for flavor in ['pleos', 'demo']:
+    for flavor in (['pleos', 'demo'] if a.variant == 'all' else [a.variant]):
         current = out / flavor
         current.mkdir(exist_ok=True)
         package = 'ai.arrivalcare.app.' + flavor
-        apk = pathlib.Path(a.apks) / ('arrivalcare-' + flavor + '-offline-0.3.0.apk')
+        apk = pathlib.Path(a.apks) / ('arrivalcare-' + flavor + '-offline-' + a.version + '.apk')
         expected = hashlib.sha256(apk.read_bytes()).hexdigest()
         item = {'flavor': flavor, 'package': package, 'apk_sha256': expected, 'checks': [], 'success': False}
         result['variants'].append(item)
