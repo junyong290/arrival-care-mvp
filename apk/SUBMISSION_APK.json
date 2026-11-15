@@ -9,13 +9,17 @@
   "debuggableEvidence": "Attribute absent from compiled AndroidManifest.xml; Android default false",
   "testOnlyAttributePresent": false,
   "signatureVerified": true,
-  "signatureScheme": "APK Signature Scheme v2",
+  "signatureScheme": "APK Signature Scheme v3",
   "certificateSha256": "8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289",
   "bytes": 8759249,
   "sha256": "2c1bfad093e3333dec221d839104190b155af7e7fff5bf32c019d68e743d034e",
   "applicationCommit": "8e3cbe612c092ee3ab619502009a8db8118a18d8",
-  "scope": "Signed v0.3.1 Pleos Offline Release candidate; actual Pleos runtime revalidation pending",
+  "scope": "Signed Pleos Offline Release; exact installed APK hash and actual Pleos UI scenarios verified. Routes and arrival remain simulated.",
   "team": "Unrival",
   "appName": "도착케어",
-  "buildRun": "https://github.com/junyong290/arrival-care-mvp/actions/runs/43720052027"
+  "buildRun": "https://github.com/junyong290/arrival-care-mvp/actions/runs/43720052027",
+  "runtimeEvidence": "evidence/v0.3.1/pleos/runtime-result.json",
+  "runtimeRun": "https://github.com/junyong290/arrival-care-mvp/actions/runs/43721867358",
+  "runtimeVerified": true,
+  "nativeLibraries": []
 }

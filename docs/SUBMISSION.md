@@ -9,7 +9,9 @@
 | 한 줄 소개 | 동승자의 상황에 맞춰 하차·주차·재합류를 하나의 여정으로 연결하는 차량용 도착 관리 앱 |
 | GitHub 저장소 주소 | https://github.com/junyong290/arrival-care-mvp |
 | APK 파일 경로 | `apk/Unrival_도착케어_release.apk` |
-| 제출 버전 | 0.3.0 / versionCode 3 / 서명된 release APK |
+| 제출 버전 | 0.3.1 / versionCode 4 / 서명된 `pleosOfflineRelease` APK |
+| Android 패키지 | `ai.arrivalcare.app.pleos` |
+| 실행 환경 | Pleos Connect Emulator 2.1.0 / API 34 / x86_64 |
 | 실행 방법·테스트 환경 | [README](../README.md) |
 
 접수 메일에는 **저장소 주소와 최종 제출 커밋의 40자리 hash**를 함께 기재합니다. `apk/`와 제출용 README가 포함된 새 커밋을 사용하며, 이전 v0.3.0 Release 태그의 커밋을 최종 제출 커밋으로 대신 적지 않습니다.
@@ -26,12 +28,18 @@ git rev-parse HEAD
 - 제출 APK: [`apk/Unrival_도착케어_release.apk`](../apk/Unrival_도착케어_release.apk).
 - APK 메타데이터·서명·SHA-256: [`apk/SUBMISSION_APK.json`](../apk/SUBMISSION_APK.json).
 - 앱 이름·한 줄 소개, 실행 방법, 테스트 환경·필요 설정, Pleos 버전·화면 규격, APK 경로: [README](../README.md).
-- 실제 실행 화면과 테스트 증거: [`evidence/v0.3.0/`](../evidence/v0.3.0/).
-- 보조 ARM·Pleos 빌드와 시연 영상: [기존 v0.3.0 Release](https://github.com/junyong290/arrival-care-mvp/releases/tag/v0.3.0).
+- 새 Pleos 검증 보고서: [`docs/VERIFICATION_V0_3_1.md`](VERIFICATION_V0_3_1.md).
+- 새 실제 실행 검사와 증거: [v0.3.1 Pleos CI](https://github.com/junyong290/arrival-care-mvp/actions/runs/43721867358), [`evidence/v0.3.1/pleos/`](../evidence/v0.3.1/pleos/).
+- 이전 일반 Android 시연 화면·테스트: [`evidence/v0.3.0/`](../evidence/v0.3.0/).
+- 일반 Android용 보조 앱과 이전 AOSP 시연 영상: [기존 v0.3.0 Release](https://github.com/junyong290/arrival-care-mvp/releases/tag/v0.3.0).
 
 ## 실행 범위
 
-제출 APK는 실행 검증을 마친 **Offline 시뮬레이션 MVP**입니다. 배포된 `arrivalcare-demo-offline-0.3.0.apk`의 바이트를 바꾸지 않고 파일명만 제출 형식에 맞췄습니다. 실제 카카오 지도 타일, 실제 차량·Pleos 서비스 연동을 검증 완료로 표현하지 않습니다. 자세한 결과는 [검증 보고서](VERIFICATION_V0_3.md)에 있습니다.
+제출 대상은 **공식 Pleos 2.1.0 에뮬레이터에서 실행 검증한 v0.3.1 Pleos용 Offline MVP**입니다. 기본 시연 모드에서 불필요한 SDK 초기화를 하지 않고, 사용자가 실제 내비 모드를 선택했을 때만 NaviHelper를 연결하도록 변경했습니다. Vehicle SDK와 Car UX 서비스는 실제 Pleos 플랫폼을 사용하고, 지도·시설·경로·도착은 명시된 시뮬레이션입니다. 일반 Android용 `demo` APK와 구분합니다.
+
+**최종 서명 APK의 설치 해시 일치와 핵심 UI 검사 3개를 통과했습니다.** 부모님 하차·주차·재합류·완료, 직접 확인 전 진행 금지, 유일 보호자의 하차 생략을 확인했습니다. 초기 검사에서 Pleos 홈 앱이 실행한 OEM 내비가 전면에 표시된 기록과, 부팅 완료 후 120초 안정화를 거친 성공 결과를 [v0.3.1 검증 보고서](VERIFICATION_V0_3_1.md)에 구분합니다. 실제 카카오 지도 타일·실차·실제 목적지 경로 안내는 별도 검증 범위입니다.
+
+최종 커밋을 전달받으면 이전 제출 정보의 `a30a837582dec1dc8697411a3f7fd422955e4e1c`를 새 커밋으로 교체합니다. 이 문서에 자기 자신이 포함된 커밋 hash를 고정하지 않고, 저장소 밖 제출 정보·메일 본문에서 최종값을 제공합니다.
 
 이 문서는 첨부된 GitHub 저장소 제출 안내의 필수 항목을 기준으로 작성했습니다.
 

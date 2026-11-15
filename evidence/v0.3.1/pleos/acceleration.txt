@@ -1,0 +1,9 @@
+exit_code=0
+command=['/home/runner/work/_temp/arrivalcare-pleos-runtime/emulator-host/emulator/emulator', '-accel-check']
+--- stdout ---
+accel:
+0
+KVM (version 12) is installed and usable.
+accel
+
+--- stderr ---

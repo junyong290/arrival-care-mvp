@@ -1,0 +1,164 @@
+{
+  "run": "https://github.com/junyong290/arrival-care-mvp/actions/runs/43721867358",
+  "artifact_id": 14165620526,
+  "apk_sha256": "2c1bfad093e3333dec221d839104190b155af7e7fff5bf32c019d68e743d034e",
+  "installed_sha256": "2c1bfad093e3333dec221d839104190b155af7e7fff5bf32c019d68e743d034e",
+  "checks": [
+    "parents_dropoff_parking_reunion_complete",
+    "no_exit_or_parking_without_explicit_confirmation",
+    "sole_caregiver_skips_dropoff"
+  ],
+  "car_ux_connection_observed": true,
+  "four_doors_closed_query_observed": true,
+  "arrivalcare_java_crash_observed": false,
+  "native_navigation_mode_tested": false,
+  "actual_route_request_tested": false,
+  "actual_kakao_tiles_tested": false,
+  "setup_metadata_note": "environment.json is the unmodified setup record; runtime-result.json records subsequent boot and UI verification.",
+  "original_files": [
+    {
+      "path": "00-pleos-system.png",
+      "sha256": "bf716aa815fb42727e05e3b9f533bbe92bd63bb61f8ef421f82ea58d5d03258c"
+    },
+    {
+      "path": "acceleration-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "acceleration-stdout.txt",
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "path": "acceleration.txt",
+      "sha256": "337e74522cbe1327204a239110386c1054070d12ad6ba8326db4aecf294404b1"
+    },
+    {
+      "path": "emulator-stderr.txt",
+      "sha256": "98cf93ef0aae9afa81ca36da058e8b12fdfbe3eaabbc5deb359cb294bf08c2b2"
+    },
+    {
+      "path": "emulator-stdout.txt",
+      "sha256": "3f0b4a3293e63f861d8324d5f375bccc023a269a395d6ebdbe015d3669e222e5"
+    },
+    {
+      "path": "emulator-version-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "emulator-version-stdout.txt",
+      "sha256": "f92c0e9fd2f8ca02f943960f24282d4efadf54966cefca4c6f4e10d5513647e0"
+    },
+    {
+      "path": "emulator-version.txt",
+      "sha256": "5d47407ea97a5cb9e732d03f6868dfa8db7e612e35ed2718f3348170b29f954d"
+    },
+    {
+      "path": "environment.json",
+      "sha256": "8ac28111c6e96d8524ea80c70315576c6e8cf1bb4cd6d5570504df1b95653320"
+    },
+    {
+      "path": "ldd-emulator-launcher-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ldd-emulator-launcher-stdout.txt",
+      "sha256": "e9d5f79eda7d8d54a5adb16df69d9b86255604cec0499b9e1dd55cb54e403da8"
+    },
+    {
+      "path": "ldd-emulator-launcher.txt",
+      "sha256": "cea42a07d06fe818f6ed286f5eb246aa6d791088b323c1484e9e37fdc5181429"
+    },
+    {
+      "path": "ldd-qemu-system-x86_64-headless-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ldd-qemu-system-x86_64-headless-stdout.txt",
+      "sha256": "e806a05414dd20d2d066a0901ec5869fc5bf3d8b9b96cca2a8fae1fe62d0ec53"
+    },
+    {
+      "path": "ldd-qemu-system-x86_64-headless.txt",
+      "sha256": "69ec207143dbf0f43417a0084b6fe94bd817bfc431867a6389799fb299079149"
+    },
+    {
+      "path": "ldd-qemu-system-x86_64-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ldd-qemu-system-x86_64-stdout.txt",
+      "sha256": "6b776758cd80747f7f3e4a008f5ab471cfb1a389395555e3644e358c26fedeb3"
+    },
+    {
+      "path": "ldd-qemu-system-x86_64.txt",
+      "sha256": "a0dc11782a83e253d4d0c53ee280d0ed36d8ce4955e741ffbf8d8b1618b4ce7a"
+    },
+    {
+      "path": "pleos/00-launch.png",
+      "sha256": "d150e01c051d88914164bdd6b9c7018dfcdf8261567e45766ccc71c013743484"
+    },
+    {
+      "path": "pleos/01-plan.png",
+      "sha256": "d150e01c051d88914164bdd6b9c7018dfcdf8261567e45766ccc71c013743484"
+    },
+    {
+      "path": "pleos/02-exit-unconfirmed.png",
+      "sha256": "b21592b11f0c7f08446f5d3bb6532f9ade1296088b7bcf1ae55bec644f7ca77b"
+    },
+    {
+      "path": "pleos/03-parking-approval.png",
+      "sha256": "d4bd95519b23316c803e1fc0143248e6c7f6d50d904446397d6d11f3a82944e0"
+    },
+    {
+      "path": "pleos/04-reunion.png",
+      "sha256": "66ff55fed0181fd9fc6fd186a8412e28b4997421e3c276ba44dc3c62dcbb292b"
+    },
+    {
+      "path": "pleos/05-complete.png",
+      "sha256": "8be2eb8c798e252f2dbe2f50b1022c189c37936dac1bcd04b0ba913653dca041"
+    },
+    {
+      "path": "pleos/06-together.png",
+      "sha256": "d7ba096651b9c1c55ce7b8895c4f81c418a16c4abc22a71e6163bb3286ba1a60"
+    },
+    {
+      "path": "pleos/activities.txt",
+      "sha256": "ce661830bd673cd0f2adb09bb8d811bf6d631606cbb3f84d5bc0a2c7a8e89888"
+    },
+    {
+      "path": "pleos/app-logcat.txt",
+      "sha256": "939212b80712b8d06ba617e8ed83d9520e05e72bf4a809ddb3ff5c9fad788955"
+    },
+    {
+      "path": "pleos/install.txt",
+      "sha256": "5175e4ebc9b5f6701a4a052bf1b1dee2fa62ecb2fb024020bb2e201eb6e76b09"
+    },
+    {
+      "path": "pleos/last-ui.xml",
+      "sha256": "4aaf80ba2b4a293733a2890be589e443cb8c5941106f14d0ddcbfed4769e36a9"
+    },
+    {
+      "path": "pleos/launch.txt",
+      "sha256": "0506315fb0f15a0ccfb63b93430367925ca98441709c3ed39b9ca89e51b1caa2"
+    },
+    {
+      "path": "pleos/package.txt",
+      "sha256": "bbffe4d29c07d1554184d4eb5cda0bfc45555e9733280ba4534612a46b8af336"
+    },
+    {
+      "path": "pleos/system-logcat.txt",
+      "sha256": "fb52ce22e758549d91c787c9db8fc1bbccdb63222bbfeb8a12fb59c76c684c86"
+    },
+    {
+      "path": "pleos/windows.txt",
+      "sha256": "da24e0d49ba6d56ac296c936ee01c19b8aed8eee3b1dc8156dde9b7dc7765077"
+    },
+    {
+      "path": "runtime-result.json",
+      "sha256": "7eec6254c12cc84846582e4547e35a3d3eda0fba55d03bc30e117c83b88e8ffd"
+    },
+    {
+      "path": "virtual-console-state.json",
+      "sha256": "806cfeb0fd800d24f4ea7565ddb2e19c5896b1a9538161764da18dff40fd7a28"
+    }
+  ]
+}

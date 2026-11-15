@@ -1,0 +1,23 @@
+{
+  "run": "https://github.com/junyong290/arrival-care-mvp/actions/runs/43720755421",
+  "result": "failed UI observation before startup settling; preserved separately from final success",
+  "apk_sha256": "2c1bfad093e3333dec221d839104190b155af7e7fff5bf32c019d68e743d034e",
+  "files": [
+    {
+      "path": "runtime-result.json",
+      "sha256": "3154a0eec604efec6e10b9d0f5e23b9df15f59083e173abc497c55152052a6f1"
+    },
+    {
+      "path": "pleos/activities.txt",
+      "sha256": "32d439af2d0ce2a8c35aa99e7fac58a4b727b77c55e3245c055f39c7495e85d2"
+    },
+    {
+      "path": "pleos/app-logcat.txt",
+      "sha256": "8b5e5cbbd95e580e3e29c10c58890059e09fc6511600b56bbb5ddded63480fbe"
+    },
+    {
+      "path": "pleos/failure.png",
+      "sha256": "2e3b5e8d059a0761e300f9468b37622ed65a97374adb9efed3bcb29ce885a80d"
+    }
+  ]
+}

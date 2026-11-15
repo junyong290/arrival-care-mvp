@@ -1,0 +1,30 @@
+{
+  "run": "https://github.com/junyong290/arrival-care-mvp/actions/runs/43718641093",
+  "artifact_id": 14163817799,
+  "files": [
+    {
+      "path": "before-0.3.0/demo/05-complete.png",
+      "sha256": "f0950ece2061f81848b26311bc3084aaf38ee8644e5b4d1aa270140fc79470e4"
+    },
+    {
+      "path": "before-0.3.0/environment.json",
+      "sha256": "91bbc5f82d38d50cd91f931564e04cc6ae3aa2924ca8dd7defd961ba8ea18065"
+    },
+    {
+      "path": "before-0.3.0/pleos/activities.txt",
+      "sha256": "b1487bc9723aa43043876ba56319b52ff1d0a41c698061bb5e7b61908bdfc561"
+    },
+    {
+      "path": "before-0.3.0/pleos/app-logcat.txt",
+      "sha256": "1acae154edc15d26b46a0488c0d53eb00bbde4ce01ffe090b21d77518b230953"
+    },
+    {
+      "path": "before-0.3.0/pleos/failure.png",
+      "sha256": "d374c93d26781f34d91c1115846e04ecbb3c5407d825c0facc22ebafbef51bf4"
+    },
+    {
+      "path": "before-0.3.0/runtime-result.json",
+      "sha256": "34711b4cc1d062edae6777e3600bee48619c50b18003932d172dd3be374526c5"
+    }
+  ]
+}

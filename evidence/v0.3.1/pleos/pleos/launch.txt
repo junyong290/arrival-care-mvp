@@ -1,0 +1,7 @@
+Starting: Intent { cmp=ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity
+TotalTime: 7790
+WaitTime: 7806
+Complete

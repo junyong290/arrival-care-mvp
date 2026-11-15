@@ -1,0 +1,571 @@
+WINDOW MANAGER WINDOWS (dumpsys window windows)
+  Window #0 Window{a4716ce u0 ScreenDecorOverlayBottom}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@eefb3cd
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=NONE
+    mAttrs={(0,0)(fillxwrap) gr=BOTTOM CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=NAVIGATION_BAR_PANEL fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE NOT_TOUCHABLE NOT_TOUCH_MODAL LAYOUT_IN_SCREEN SPLIT_TOUCH FLAG_SLIPPERY
+      pfl=SHOW_FOR_ALL_USERS NO_MOVE_ANIMATION IS_ROUNDED_CORNERS_OVERLAY COLOR_SPACE_AGNOSTIC USE_BLAST FIT_INSETS_CONTROLLED TRUSTED_OVERLAY
+      vsysui=LAYOUT_STABLE
+      bhv=DEFAULT}
+    Requested w=2560 h=10 mLayoutSeq=7
+    mBaseLayer=251000 mSubLayer=0    mToken=WindowToken{8102793 type=2024 android.os.BinderProxy@eefb3cd}
+    mViewVisibility=0x4 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mTouchableInsets=3 mGivenInsetsPending=false
+    touchable region=SkRegion()
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=undefined mDisplayWindowingMode=undefined mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+    mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[0,0][2560,1440] frame=[0,1430][2560,1440] last=[0,0][2560,1440] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{630eb5a ScreenDecorOverlayBottom}:
+      mDrawState=NO_SURFACE       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+      mShownAlpha=0.0 mAlpha=1.0 mLastAlpha=0.0
+    mForceSeamlesslyRotate=true seamlesslyRotate: pending=null    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #1 Window{d3dea1e u0 ScreenDecorOverlay}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@b9882a0
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=NONE
+    mAttrs={(0,0)(fillxwrap) gr=TOP CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=NAVIGATION_BAR_PANEL fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE NOT_TOUCHABLE NOT_TOUCH_MODAL LAYOUT_IN_SCREEN SPLIT_TOUCH FLAG_SLIPPERY
+      pfl=SHOW_FOR_ALL_USERS NO_MOVE_ANIMATION IS_ROUNDED_CORNERS_OVERLAY COLOR_SPACE_AGNOSTIC USE_BLAST FIT_INSETS_CONTROLLED TRUSTED_OVERLAY
+      vsysui=LAYOUT_STABLE
+      bhv=DEFAULT}
+    Requested w=2560 h=10 mLayoutSeq=5
+    mBaseLayer=251000 mSubLayer=0    mToken=WindowToken{f7c8e59 type=2024 android.os.BinderProxy@b9882a0}
+    mViewVisibility=0x4 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mTouchableInsets=3 mGivenInsetsPending=false
+    touchable region=SkRegion()
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=undefined mDisplayWindowingMode=undefined mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+    mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[0,0][2560,1440] frame=[0,0][2560,10] last=[0,0][2560,10] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{c25d18b ScreenDecorOverlay}:
+      mDrawState=NO_SURFACE       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+      mShownAlpha=0.0 mAlpha=1.0 mLastAlpha=0.0
+    mForceSeamlesslyRotate=true seamlesslyRotate: pending=null    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #2 Window{f0b7929 u0 BottomCarSystemBar}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@3bc29f3
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=NONE
+    mAttrs={(0,0)(fillx140) gr=BOTTOM CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=NAVIGATION_BAR_PANEL fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE NOT_TOUCH_MODAL WATCH_OUTSIDE_TOUCH SPLIT_TOUCH
+      pfl=USE_BLAST FIT_INSETS_CONTROLLED
+      bhv=DEFAULT
+      providedInsets:
+        InsetsFrameProvider: {id=#3fbb0001, index=0, type=navigationBars, source=FRAME, flags=[]}
+        InsetsFrameProvider: {id=#3fbb0025, index=1, type=mandatorySystemGestures, source=FRAME, flags=[]}}
+    Requested w=2560 h=140 mLayoutSeq=304
+    mBaseLayer=251000 mSubLayer=0    mToken=WindowToken{d816b0 type=2024 android.os.BinderProxy@3bc29f3}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.88 fontWeightAdjustment=0}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[0,0][2560,1440] frame=[0,1300][2560,1440] last=[0,1300][2560,1440] insetsChanged=false
+     surface=[0,0][0,0]
+    ContainerAnimator:
+      mLeash=Surface(name=Surface(name=f0b7929 BottomCarSystemBar)/@0xc397ee5 - animation-leash of insets_animation)/@0xee11313 mAnimationType=insets_animation
+      Animation: com.android.server.wm.InsetsSourceProvider$ControlAdapter@e74c268
+        ControlAdapter mCapturedLeash=Surface(name=Surface(name=f0b7929 BottomCarSystemBar)/@0xc397ee5 - animation-leash of insets_animation)/@0xee11313
+    WindowStateAnimator{f62a681 BottomCarSystemBar}:
+      mSurface=Surface(name=BottomCarSystemBar)/@0x4826326
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #3 Window{99714f2 u10 Sys2033:ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{5317d45 3999:u10a10142} mClient=android.os.BinderProxy@a8b3454
+    mOwnerUid=1010142 showForAllUsers=false package=ai.umos.drivingview appop=NONE
+    mAttrs={(0,0)(853xfill) gr=TOP LEFT CENTER sim={adjust=pan} ty=VOICE_INTERACTION_STARTING fmt=TRANSLUCENT if=INPUT_FEATURE_SPY
+      fl=NOT_FOCUSABLE NOT_TOUCH_MODAL LAYOUT_IN_SCREEN HARDWARE_ACCELERATED
+      pfl=USE_BLAST TRUSTED_OVERLAY
+      bhv=DEFAULT
+      fitTypes=NAVIGATION_BARS CAPTION_BAR}
+    Requested w=853 h=1300 mLayoutSeq=304
+    mBaseLayer=201000 mSubLayer=0    mToken=WindowToken{42f0ffd type=2033 android.os.BinderProxy@a8b3454}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.88 fontWeightAdjustment=0}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1300] display=[0,0][2560,1300] frame=[0,0][853,1300] last=[0,0][853,1300] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{b1dfb67 Sys2033:ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity}:
+      mSurface=Surface(name=Sys2033:ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity)/@0x7079d14
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #4 Window{e425b76 u10 ai.umos.ambientai}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{d59dfdd 3050:u10a10141} mClient=android.os.BinderProxy@f74ce38
+    mOwnerUid=1010141 showForAllUsers=false package=ai.umos.ambientai appop=NONE
+    mAttrs={(0,0)(fillxfill) gr=TOP START CENTER sim={adjust=pan} ty=VOICE_INTERACTION_STARTING fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE NOT_TOUCH_MODAL LAYOUT_IN_SCREEN LAYOUT_NO_LIMITS HARDWARE_ACCELERATED
+      pfl=USE_BLAST
+      bhv=DEFAULT
+      fitTypes=NAVIGATION_BARS CAPTION_BAR}
+    Requested w=2560 h=1440 mLayoutSeq=110
+    mBaseLayer=201000 mSubLayer=0    mToken=WindowToken{2e10e11 type=2033 android.os.BinderProxy@f74ce38}
+    mViewVisibility=0x8 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.88 fontWeightAdjustment=0}
+    mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1300] display=[-100000,-100000][100000,100000] frame=[0,0][2560,1300] last=[0,0][2560,1300] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{19229bd }:
+      mDrawState=NO_SURFACE       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #5 Window{15debd6 u10 Sys2033:ai.umos.homescreen/ai.umos.homescreen.HomeActivity}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{87b7a27 3326:u10a1000} mClient=android.os.BinderProxy@55a0f98
+    mOwnerUid=1001000 showForAllUsers=false package=ai.umos.homescreen appop=NONE
+    mAttrs={(0,0)(853x1440) gr=TOP LEFT CENTER sim={adjust=pan} ty=VOICE_INTERACTION_STARTING fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE NOT_TOUCHABLE LAYOUT_IN_SCREEN HARDWARE_ACCELERATED
+      pfl=USE_BLAST TRUSTED_OVERLAY
+      bhv=DEFAULT
+      fitTypes=NAVIGATION_BARS CAPTION_BAR}
+    Requested w=853 h=1440 mLayoutSeq=304
+    mBaseLayer=201000 mSubLayer=0    mToken=WindowToken{fa923f1 type=2033 android.os.BinderProxy@55a0f98}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.88 fontWeightAdjustment=0}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1300] display=[0,0][2560,1300] frame=[0,0][853,1300] last=[0,0][853,1300] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{9218bb2 Sys2033:ai.umos.homescreen/ai.umos.homescreen.HomeActivity}:
+      mSurface=Surface(name=Sys2033:ai.umos.homescreen/ai.umos.homescreen.HomeActivity)/@0x984e703
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #6 Window{c3b4b8a u0 HeadsUpNotification}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@3a3f32c
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=NONE
+    mAttrs={(0,0)(fillxwrap) gr=TOP CENTER_VERTICAL sim={adjust=pan} ty=STATUS_BAR_SUB_PANEL fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE LAYOUT_IN_SCREEN HARDWARE_ACCELERATED
+      pfl=USE_BLAST
+      bhv=DEFAULT
+      fitTypes=NAVIGATION_BARS CAPTION_BAR}
+    Requested w=2560 h=464 mLayoutSeq=55
+    mBaseLayer=181000 mSubLayer=0    mToken=WindowToken{ee21f5 type=2017 android.os.BinderProxy@3a3f32c}
+    mViewVisibility=0x4 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=undefined mDisplayWindowingMode=undefined mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+    mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[0,0][2560,1440] frame=[0,0][2560,464] last=[0,0][2560,1440] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{b4b7680 HeadsUpNotification}:
+      mDrawState=NO_SURFACE       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+      mShownAlpha=0.0 mAlpha=1.0 mLastAlpha=0.0
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #7 Window{289f47a u0 SystemUIOverlayWindow}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@9e4d69c
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=NONE
+    mAttrs={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=always ty=2040 fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE TOUCHABLE_WHEN_WAKING ALT_FOCUSABLE_IM WATCH_OUTSIDE_TOUCH SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+      pfl=USE_BLAST FIT_INSETS_CONTROLLED
+      bhv=DEFAULT
+      fitTypes=STATUS_BARS}
+    Requested w=2560 h=1440 mLayoutSeq=96
+    mBaseLayer=171000 mSubLayer=0    mToken=WindowToken{87b18a5 type=2040 android.os.BinderProxy@37d860f}
+    mViewVisibility=0x4 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.88 fontWeightAdjustment=0}
+    mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[0,0][2560,1440] frame=[0,0][2560,1440] last=[0,0][2560,1440] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{43ca4b9 SystemUIOverlayWindow}:
+      mDrawState=NO_SURFACE       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    Requested non-default-visibility types: statusBars navigationBars
+    mPrepareSyncSeqId=0
+  Window #8 Window{95ead4c u0 TopCarSystemBar}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@45fba9e
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=NONE
+    mAttrs={(0,0)(fillx90) gr=TOP CENTER_VERTICAL sim={adjust=pan} layoutInDisplayCutoutMode=always ty=2041 fmt=TRANSLUCENT if=INPUT_FEATURE_SPY
+      fl=NOT_FOCUSABLE NOT_TOUCH_MODAL SPLIT_TOUCH HARDWARE_ACCELERATED
+      pfl=USE_BLAST FIT_INSETS_CONTROLLED
+      bhv=DEFAULT
+      providedInsets:
+        InsetsFrameProvider: {id=#3fbb0000, index=0, type=statusBars, source=FRAME, flags=[]}
+        InsetsFrameProvider: {id=#3fbb0005, index=0, type=mandatorySystemGestures, source=FRAME, flags=[]}}
+    Requested w=2560 h=90 mLayoutSeq=304
+    mBaseLayer=161000 mSubLayer=0    mToken=WindowToken{bd2c97f type=2041 android.os.BinderProxy@45fba9e}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.88 fontWeightAdjustment=0}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[0,0][2560,1440] frame=[0,0][2560,90] last=[0,0][2560,90] insetsChanged=false
+     surface=[0,0][0,0]
+    ContainerAnimator:
+      mLeash=Surface(name=Surface(name=95ead4c TopCarSystemBar)/@0x9e359e4 - animation-leash of insets_animation)/@0xd571950 mAnimationType=insets_animation
+      Animation: com.android.server.wm.InsetsSourceProvider$ControlAdapter@818b0fe
+        ControlAdapter mCapturedLeash=Surface(name=Surface(name=95ead4c TopCarSystemBar)/@0x9e359e4 - animation-leash of insets_animation)/@0xd571950
+    WindowStateAnimator{ae4f05f TopCarSystemBar}:
+      mSurface=Surface(name=TopCarSystemBar)/@0xd317aac
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #9 Window{896820 u10 com.android.car.rotary}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{37029f1 1898:u10a10066} mClient=android.os.BinderProxy@4631b23
+    mOwnerUid=1010066 showForAllUsers=false package=com.android.car.rotary appop=SYSTEM_ALERT_WINDOW
+    mAttrs={(0,0)(0x0) gr=TOP RIGHT CENTER sim={adjust=pan} ty=APPLICATION_OVERLAY fmt=TRANSPARENT
+      fl=NOT_FOCUSABLE WATCH_OUTSIDE_TOUCH HARDWARE_ACCELERATED
+      pfl=USE_BLAST TRUSTED_OVERLAY INSET_PARENT_FRAME_BY_IME
+      bhv=DEFAULT
+      fitTypes=STATUS_BARS NAVIGATION_BARS CAPTION_BAR}
+    Requested w=0 h=0 mLayoutSeq=304
+    mBaseLayer=111000 mSubLayer=0    mToken=WindowToken{91b0b9e type=2038 android.os.BinderProxy@f864f49}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,90][2560,1300] display=[0,90][2560,1300] frame=[2560,90][2560,90] last=[0,0][0,0] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{e79d375 }:
+      mSurface=Surface(name=)/@0x9cadf0a
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #10 Window{9a10663 u10 Sys2038:ai.umos.homescreen/ai.umos.homescreen.HomeActivity}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{87b7a27 3326:u10a1000} mClient=android.os.BinderProxy@1e94248
+    mOwnerUid=1001000 showForAllUsers=false package=ai.umos.homescreen appop=SYSTEM_ALERT_WINDOW
+    mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_OVERLAY fmt=TRANSLUCENT if=INPUT_FEATURE_SPY
+      fl=NOT_FOCUSABLE NOT_TOUCH_MODAL LAYOUT_IN_SCREEN HARDWARE_ACCELERATED
+      pfl=USE_BLAST TRUSTED_OVERLAY
+      bhv=DEFAULT
+      fitTypes=NAVIGATION_BARS CAPTION_BAR}
+    Requested w=2560 h=1300 mLayoutSeq=304
+    mBaseLayer=111000 mSubLayer=0    mToken=WindowToken{42ba21d type=2038 android.os.BinderProxy@1e94248}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1300] display=[0,0][2560,1300] frame=[0,0][2560,1300] last=[0,0][2560,1300] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{712337b Sys2038:ai.umos.homescreen/ai.umos.homescreen.HomeActivity}:
+      mSurface=Surface(name=Sys2038:ai.umos.homescreen/ai.umos.homescreen.HomeActivity)/@0xa919598
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #11 Window{592d093 u0 ShellDropTarget}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@19210c9
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=SYSTEM_ALERT_WINDOW
+    mAttrs={(0,0)(fillxfill) sim={adjust=pan} layoutInDisplayCutoutMode=always ty=APPLICATION_OVERLAY fmt=TRANSLUCENT
+      fl=NOT_FOCUSABLE HARDWARE_ACCELERATED
+      pfl=SHOW_FOR_ALL_USERS NO_MOVE_ANIMATION USE_BLAST FIT_INSETS_CONTROLLED INTERCEPT_GLOBAL_DRAG_AND_DROP
+      bhv=DEFAULT}
+    Requested w=2560 h=1440 mLayoutSeq=2
+    mBaseLayer=111000 mSubLayer=0    mToken=WindowToken{80fe2ef type=2038 android.os.BinderProxy@cfd6bf7}
+    mViewVisibility=0x4 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=undefined mDisplayWindowingMode=undefined mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+    mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[0,0][2560,1440] frame=[0,0][2560,1440] last=[0,0][2560,1440] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{72131f1 ShellDropTarget}:
+      mDrawState=NO_SURFACE       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+      mShownAlpha=0.0 mAlpha=1.0 mLastAlpha=0.0
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #12 Window{9112972 u10 InputMethod}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{c444236 3963:u10a10101} mClient=android.os.BinderProxy@aaa67d
+    mOwnerUid=1010101 showForAllUsers=false package=ai.umos.inputmethod appop=NONE
+    mAttrs={(0,0)(1554xwrap) gr=BOTTOM CENTER_VERTICAL sim={adjust=pan} ty=INPUT_METHOD fmt=TRANSPARENT wanim=0x1030056 receive insets ignoring z-order
+      fl=NOT_FOCUSABLE LAYOUT_IN_SCREEN SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+      pfl=USE_BLAST FIT_INSETS_CONTROLLED
+      bhv=DEFAULT
+      fitTypes=STATUS_BARS NAVIGATION_BARS
+      fitSides=LEFT TOP RIGHT}
+    Requested w=0 h=0 mLayoutSeq=142
+    mIsImWindow=true mIsWallpaper=false mIsFloatingLayer=true
+    mBaseLayer=131000 mSubLayer=0    mToken=WindowToken{5eb8ecd type=2011 android.os.Binder@6a22c64}
+    mViewVisibility=0x8 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mTouchableInsets=2 mGivenInsetsPending=false
+    touchable region=SkRegion()
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=undefined mDisplayWindowingMode=undefined mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+    mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[0,90][2560,1440] display=[0,90][2560,1440] frame=[1280,1440][1280,1440] last=[0,0][0,0] insetsChanged=false
+     surface=[0,0][0,0]
+    ContainerAnimator:
+      mLeash=Surface(name=Surface(name=9112972 InputMethod)/@0xcf8aa40 - animation-leash of insets_animation)/@0xbac5749 mAnimationType=insets_animation
+      Animation: com.android.server.wm.InsetsSourceProvider$ControlAdapter@7bfe1d6
+        ControlAdapter mCapturedLeash=Surface(name=Surface(name=9112972 InputMethod)/@0xcf8aa40 - animation-leash of insets_animation)/@0xbac5749
+    WindowStateAnimator{5068c57 InputMethod}:
+      mDrawState=NO_SURFACE       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+      mShownAlpha=0.0 mAlpha=1.0 mLastAlpha=0.0
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #13 Window{96af49e u10 ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity}:
+    mDisplayId=0 rootTaskId=1000009 mSession=Session{41e0023 16327:u10a10175} mClient=android.os.BinderProxy@c6532d9
+    mOwnerUid=1010175 showForAllUsers=false package=ai.arrivalcare.app.pleos appop=NONE
+    mAttrs={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x10302fe
+      fl=KEEP_SCREEN_ON LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+      pfl=NO_MOVE_ANIMATION FORCE_DRAW_STATUS_BAR_BACKGROUND USE_BLAST FIT_INSETS_CONTROLLED
+      vsysui=LIGHT_STATUS_BAR LIGHT_NAVIGATION_BAR
+      apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+      bhv=DEFAULT
+      fitSides=}
+    Requested w=1682 h=1210 mLayoutSeq=304
+    mBaseLayer=21000 mSubLayer=0    mToken=ActivityRecord{55ccd9a u10 ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity t1000009}
+    mActivityRecord=ActivityRecord{55ccd9a u10 ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity t1000009}
+    drawnStateEvaluated=true    mightAffectAllDrawn=true
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w1682dp h1210dp 160dpi xlrg land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(853, 90 - 2535, 1300) mAppBounds=Rect(853, 90 - 2535, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=multi-window mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.3 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w1682dp h1210dp 160dpi xlrg land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(853, 90 - 2535, 1300) mAppBounds=Rect(853, 90 - 2535, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=multi-window mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.3 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[853,90][2535,1300] display=[853,90][2535,1300] frame=[853,90][2535,1300] last=[853,90][2535,1300] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{4d67344 ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity}:
+      mSurface=Surface(name=ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity)/@0x105fc2d
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=true      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #14 Window{99c8897 u10 ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity}:
+    mDisplayId=0 rootTaskId=1000006 mSession=Session{5317d45 3999:u10a10142} mClient=android.os.BinderProxy@fbb2716
+    mOwnerUid=1010142 showForAllUsers=false package=ai.umos.drivingview appop=NONE
+    mAttrs={(0,0)(fillxfill) sim={adjust=resize} ty=BASE_APPLICATION fmt=TRANSLUCENT wanim=0x10302fe preferredDisplayMode=1 sysuil=true
+      fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+      pfl=NO_MOVE_ANIMATION FORCE_DRAW_STATUS_BAR_BACKGROUND USE_BLAST APPEARANCE_CONTROLLED FIT_INSETS_CONTROLLED
+      vsysui=HIDE_NAVIGATION FULLSCREEN LAYOUT_STABLE LAYOUT_HIDE_NAVIGATION LAYOUT_FULLSCREEN IMMERSIVE_STICKY LIGHT_STATUS_BAR
+      apr=LIGHT_STATUS_BARS
+      bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+      fitSides=}
+    Requested w=853 h=1300 mLayoutSeq=304
+    mBaseLayer=21000 mSubLayer=0    mToken=ActivityRecord{577ad63 u10 ai.umos.drivingview/.DrivingViewActivity t1000006}
+    mActivityRecord=ActivityRecord{577ad63 u10 ai.umos.drivingview/.DrivingViewActivity t1000006}
+    drawnStateEvaluated=true    mightAffectAllDrawn=true
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w853dp h1210dp 160dpi xlrg port car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 853, 1300) mAppBounds=Rect(0, 0 - 853, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=multi-window mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.5 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w853dp h1210dp 160dpi xlrg port car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 853, 1300) mAppBounds=Rect(0, 0 - 853, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=multi-window mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.5 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,0][853,1300] display=[0,0][853,1300] frame=[0,0][853,1300] last=[0,0][853,1300] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{a304562 ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity}:
+      mSurface=Surface(name=ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity)/@0x77d96f3
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=true      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #15 Window{cde2a6c u10 ai.umos.homescreen/ai.umos.homescreen.HomeActivity}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{87b7a27 3326:u10a1000} mClient=android.os.BinderProxy@11b871f
+    mOwnerUid=1001000 showForAllUsers=false package=ai.umos.homescreen appop=NONE
+    mAttrs={(0,0)(fillxfill) sim={adjust=nothing forwardNavigation} ty=BASE_APPLICATION fmt=TRANSLUCENT wanim=0x10302fe preferredRefreshRate=60.0
+      fl=NOT_TOUCH_MODAL KEEP_SCREEN_ON LAYOUT_IN_SCREEN LAYOUT_NO_LIMITS LAYOUT_INSET_DECOR SHOW_WALLPAPER SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+      pfl=NO_MOVE_ANIMATION FORCE_DRAW_STATUS_BAR_BACKGROUND USE_BLAST FIT_INSETS_CONTROLLED TRUSTED_OVERLAY
+      bhv=DEFAULT
+      fitSides=}
+    Requested w=2560 h=1440 mLayoutSeq=304
+    mBaseLayer=21000 mSubLayer=0    mToken=ActivityRecord{81825b7 u10 ai.umos.homescreen/.HomeActivity t1000004}
+    mActivityRecord=ActivityRecord{81825b7 u10 ai.umos.homescreen/.HomeActivity t1000004}
+    drawnStateEvaluated=true    mightAffectAllDrawn=true
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mTouchableInsets=3 mGivenInsetsPending=false
+    touchable region=SkRegion((0,0,2560,90)(2535,90,2560,1260)(0,1260,853,1300)(2535,1260,2560,1300)(0,1300,2560,1440))
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=home mAlwaysOnTop=undefined mRotation=ROTATION_0} s.6 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=home mAlwaysOnTop=undefined mRotation=ROTATION_0} s.4 fontWeightAdjustment=0}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[-100000,-100000][100000,100000] frame=[0,0][2560,1440] last=[0,0][2560,1440] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{7697fb0 ai.umos.homescreen/ai.umos.homescreen.HomeActivity}:
+      mSurface=Surface(name=ai.umos.homescreen/ai.umos.homescreen.HomeActivity)/@0xef32e29
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #16 Window{977843f u10 ai.umos.maps.android.navigation.app/ai.umos.maps.android.navigation.app.MainActivity}:
+    mDisplayId=0 rootTaskId=1000007 mSession=Session{d3a06e0 4961:u10a10126} mClient=android.os.BinderProxy@28ba85e
+    mOwnerUid=1010126 showForAllUsers=false package=ai.umos.maps.android.navigation.app appop=NONE
+    mAttrs={(0,0)(fillxfill) sim={adjust=pan forwardNavigation} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION wanim=0x10302fe
+      fl=KEEP_SCREEN_ON LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+      pfl=NO_MOVE_ANIMATION FORCE_DRAW_STATUS_BAR_BACKGROUND USE_BLAST FIT_INSETS_CONTROLLED
+      vsysui=LIGHT_STATUS_BAR
+      apr=LIGHT_STATUS_BARS
+      bhv=DEFAULT
+      fitSides=}
+    Requested w=1682 h=1210 mLayoutSeq=204
+    mBaseLayer=21000 mSubLayer=0    mToken=ActivityRecord{630af45 u10 ai.umos.maps.android.navigation.app/.MainActivity t1000007}
+    mActivityRecord=ActivityRecord{630af45 u10 ai.umos.maps.android.navigation.app/.MainActivity t1000007}
+    drawnStateEvaluated=true    mightAffectAllDrawn=true
+    mViewVisibility=0x8 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w1682dp h1210dp 160dpi xlrg land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(853, 90 - 2535, 1300) mAppBounds=Rect(853, 90 - 2535, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=multi-window mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.5 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w1682dp h1210dp 160dpi xlrg land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(853, 90 - 2535, 1300) mAppBounds=Rect(853, 90 - 2535, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=multi-window mDisplayWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.5 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[853,90][2535,1300] display=[853,90][2535,1300] frame=[853,90][2535,1300] last=[853,90][2535,1300] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{25155ae ai.umos.maps.android.navigation.app/ai.umos.maps.android.navigation.app.MainActivity}:
+      mDrawState=NO_SURFACE       mLastHidden=true
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #17 Window{381166f u0 com.android.systemui.wallpapers.ImageWallpaper}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@634654e
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=NONE
+    mAttrs={(0,0)(2889x1440) gr=TOP START CENTER layoutInDisplayCutoutMode=always ty=WALLPAPER fmt=RGBX_8888 wanim=0x103030e
+      fl=NOT_FOCUSABLE NOT_TOUCHABLE LAYOUT_IN_SCREEN LAYOUT_NO_LIMITS SCALED LAYOUT_INSET_DECOR
+      pfl=WANTS_OFFSET_NOTIFICATIONS SHOW_FOR_ALL_USERS USE_BLAST
+      bhv=DEFAULT}
+    Requested w=2568 h=1280 mLayoutSeq=304
+    mIsImWindow=false mIsWallpaper=true mIsFloatingLayer=true
+    mBaseLayer=11000 mSubLayer=0    mToken=WallpaperWindowToken{99af77 token=android.os.Binder@c2b1d76}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.88 fontWeightAdjustment=0}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[-100000,-100000][100000,100000] frame=[0,0][2889,1440] last=[0,0][2889,1440] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{750af4f com.android.systemui.wallpapers.ImageWallpaper}:
+      mSurface=Surface(name=com.android.systemui.wallpapers.ImageWallpaper)/@0x8dee6dc
+      Surface: shown=true layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    mHScale=1.125 mVScale=1.125
+    mWallpaperX=0.0 mWallpaperY=0.5
+    mWallpaperZoomOut=0.0
+    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+  Window #18 Window{2a1fde2 u0 com.android.systemui.wallpapers.ImageWallpaper}:
+    mDisplayId=0 rootTaskId=1000002 mSession=Session{6d66a64 1131:u0a10121} mClient=android.os.BinderProxy@ec146ad
+    mOwnerUid=10121 showForAllUsers=true package=com.android.systemui appop=NONE
+    mAttrs={(0,0)(2889x1440) gr=TOP START CENTER layoutInDisplayCutoutMode=always ty=WALLPAPER fmt=RGBX_8888 wanim=0x103030e
+      fl=NOT_FOCUSABLE NOT_TOUCHABLE LAYOUT_IN_SCREEN LAYOUT_NO_LIMITS SCALED LAYOUT_INSET_DECOR
+      pfl=WANTS_OFFSET_NOTIFICATIONS SHOW_FOR_ALL_USERS USE_BLAST
+      bhv=DEFAULT}
+    Requested w=2568 h=1280 mLayoutSeq=118
+    mIsImWindow=false mIsWallpaper=true mIsFloatingLayer=true
+    mBaseLayer=11000 mSubLayer=0    mToken=WallpaperWindowToken{30c3218 token=android.os.Binder@59b71fb}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=true
+    mGivenContentInsets=[0,0][0,0] mGivenVisibleInsets=[0,0][0,0]
+    mFullConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+    mLastReportedConfiguration={1.0 ?mcc0mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.48 fontWeightAdjustment=0}
+    mHasSurface=true isReadyForDisplay()=false mWindowRemovalAllowed=false
+    Frames: parent=[0,0][2560,1440] display=[-100000,-100000][100000,100000] frame=[0,0][2889,1440] last=[0,0][2889,1440] insetsChanged=false
+     surface=[0,0][0,0]
+    WindowStateAnimator{b6783e5 com.android.systemui.wallpapers.ImageWallpaper}:
+      mSurface=Surface(name=com.android.systemui.wallpapers.ImageWallpaper)/@0xd611eba
+      Surface: shown=false layer=0 alpha=1.0 rect=(0.0,0.0)  transform=(1.0, 0.0, 0.0, 1.0)
+      mDrawState=HAS_DRAWN       mLastHidden=true
+      mEnterAnimationPending=false      mSystemDecorRect=[0,0][0,0]
+    mForceSeamlesslyRotate=false seamlesslyRotate: pending=null    mHScale=1.125 mVScale=1.125
+    mWallpaperX=0.0 mWallpaperY=0.5
+    mWallpaperZoomOut=0.0
+    isOnScreen=false
+    isVisible=false
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+
+  mGlobalConfiguration={1.0 310mcc260mnc [ko_KR] ldltr sw1440dp w2560dp h1210dp 160dpi xlrg long land car finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 2560, 1440) mAppBounds=Rect(0, 0 - 2560, 1300) mMaxBounds=Rect(0, 0 - 2560, 1440) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.131 fontWeightAdjustment=0 fontFamily=-1151267997}
+  mHasPermanentDpad=false
+  mTopFocusedDisplayId=0
+  imeLayeringTarget in display# 0 Window{96af49e u10 ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity}
+  imeInputTarget in display# 0 Window{96af49e u10 ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity}
+  imeControlTarget in display# 0 com.android.server.wm.DisplayContent$RemoteInsetsControlTarget@fbe074e
+  Minimum task size of display#0 50  mBlurEnabled=true
+  mLastDisplayFreezeDuration=0 due to new-config
+ mHighResSnapshotScale=1.0
+ mSnapshotEnabled=true
+ SnapshotCache Task
+   Entry token=1
+     topApp=ActivityRecord{8a8764a u10 com.android.car.settings/.FallbackHome t-1 f}}
+     snapshot=TaskSnapshot{ mId=1794751543214 mCaptureTime=39643778211 mTopActivityComponent=com.android.car.settings/.FallbackHome mSnapshot=android.hardware.HardwareBuffer@792f16b (2560x1440) mColorSpace=sRGB IEC61966-2.1 (id=0, model=RGB) mOrientation=2 mRotation=0 mTaskSize=Point(2560, 1440) mContentInsets=[0,0][0,0] mLetterboxInsets=[0,0][0,0] mIsLowResolution=false mIsRealSnapshot=true mWindowingMode=1 mAppearance=0 mIsTranslucent=true mHasImeSurface=false
+ mHighResSnapshotScale=0.6
+ mSnapshotEnabled=false
+ SnapshotCache Activity
+AccessibilityController:
+  No magnification displays
+  1 windows for accessibility observer(s):
+    WindowsForAccessibilityObserver{mDisplayId=0, mInitialized=true}
+  AccessibilityWindowsPopulator
+    mWindowsNotificationEnabled: true
+    8 visible windows: [f0b7929 BottomCarSystemBar, frame=[0,1300,2560,1440], touchableRegion=SkRegion((0,1300,2560,1440)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -1300.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@3bc29f3, displayId=0, isClone=false, 99714f2 Sys2033:ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity, frame=[0,0,853,1300], touchableRegion=SkRegion((0,0,853,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@a8b3454, displayId=0, isClone=false, 15debd6 Sys2033:ai.umos.homescreen/ai.umos.homescreen.HomeActivity, frame=[0,0,853,1440], touchableRegion=SkRegion((0,0,853,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@55a0f98, displayId=0, isClone=false, 95ead4c TopCarSystemBar, frame=[0,0,2560,90], touchableRegion=SkRegion((0,0,2560,90)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@45fba9e, displayId=0, isClone=false, 9a10663 Sys2038:ai.umos.homescreen/ai.umos.homescreen.HomeActivity, frame=[0,0,2560,1300], touchableRegion=SkRegion((0,0,2560,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@1e94248, displayId=0, isClone=false, cde2a6c ai.umos.homescreen/ai.umos.homescreen.HomeActivity, frame=[0,0,2560,1440], touchableRegion=SkRegion((0,0,2560,90)(2535,90,2560,1260)(0,1260,853,1300)(2535,1260,2560,1300)(0,1300,2560,1440)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@11b871f, displayId=0, isClone=false, 96af49e ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity, frame=[853,90,2535,1300], touchableRegion=SkRegion((853,90,2535,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -853.0][0.0, 1.0, -90.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@c6532d9, displayId=0, isClone=false, 99c8897 ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity, frame=[0,0,853,1300], touchableRegion=SkRegion((0,0,853,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@fbb2716, displayId=0, isClone=false]
+    1 display info(s):
+displayId=0, mLogicalSize=2560x1440, mTransform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}
+    1 window handles on display(s):
+  Display #0: [f0b7929 BottomCarSystemBar, frame=[0,1300,2560,1440], touchableRegion=SkRegion((0,1300,2560,1440)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -1300.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@3bc29f3, displayId=0, isClone=false, 99714f2 Sys2033:ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity, frame=[0,0,853,1300], touchableRegion=SkRegion((0,0,853,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@a8b3454, displayId=0, isClone=false, 15debd6 Sys2033:ai.umos.homescreen/ai.umos.homescreen.HomeActivity, frame=[0,0,853,1440], touchableRegion=SkRegion((0,0,853,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@55a0f98, displayId=0, isClone=false, 95ead4c TopCarSystemBar, frame=[0,0,2560,90], touchableRegion=SkRegion((0,0,2560,90)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@45fba9e, displayId=0, isClone=false, 9a10663 Sys2038:ai.umos.homescreen/ai.umos.homescreen.HomeActivity, frame=[0,0,2560,1300], touchableRegion=SkRegion((0,0,2560,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@1e94248, displayId=0, isClone=false, cde2a6c ai.umos.homescreen/ai.umos.homescreen.HomeActivity, frame=[0,0,2560,1440], touchableRegion=SkRegion((0,0,2560,90)(2535,90,2560,1260)(0,1260,853,1300)(2535,1260,2560,1300)(0,1300,2560,1440)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@11b871f, displayId=0, isClone=false, 96af49e ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity, frame=[853,90,2535,1300], touchableRegion=SkRegion((853,90,2535,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -853.0][0.0, 1.0, -90.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@c6532d9, displayId=0, isClone=false, 99c8897 ai.umos.drivingview/ai.umos.drivingview.DrivingViewActivity, frame=[0,0,853,1300], touchableRegion=SkRegion((0,0,853,1300)), scaleFactor=1.0, transform=Matrix{[1.0, 0.0, -0.0][0.0, 1.0, -0.0][0.0, 0.0, 1.0]}, windowToken=android.os.BinderProxy@fbb2716, displayId=0, isClone=false]
+    No magnification spec matrixs
+    No current magnification specs
+    No previous magnification specs
+  mInputMethodWindow=Window{9112972 u10 InputMethod}
+  mTraversalScheduled=false
+  mSystemBooted=true mDisplayEnabled=true
+  mTransactionSequence=388
+  mDisplayFrozen=false windows=0 client=false apps=0
+  mRotation=0
+  mLastOrientation=-1
+  mWaitingForConfig=false
+  Animation settings: disabled=false window=1.0 transition=1.0 animator=1.0

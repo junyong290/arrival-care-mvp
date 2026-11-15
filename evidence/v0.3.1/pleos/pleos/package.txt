@@ -1,0 +1,95 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        6f4dd0d ai.arrivalcare.app.pleos/ai.arrivalcare.app.MainActivity filter 6aa44c2
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Domain verification status:
+
+Key Set Manager:
+  [ai.arrivalcare.app.pleos]
+      Signing KeySets: 20
+
+Packages:
+  Package [ai.arrivalcare.app.pleos] (436c470):
+    appId=10175
+    pkg=Package{4cc7204 ai.arrivalcare.app.pleos}
+    codePath=/data/app/~~LLkAMdOXQX6ynZoxUHGCzg==/ai.arrivalcare.app.pleos-14_DpvDtkyDks18hVU87kw==
+    resourcePath=/data/app/~~LLkAMdOXQX6ynZoxUHGCzg==/ai.arrivalcare.app.pleos-14_DpvDtkyDks18hVU87kw==
+    legacyNativeLibraryDir=/data/app/~~LLkAMdOXQX6ynZoxUHGCzg==/ai.arrivalcare.app.pleos-14_DpvDtkyDks18hVU87kw==/lib
+    extractNativeLibs=false
+    primaryCpuAbi=null
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=4 minSdk=28 targetSdk=34
+    minExtensionVersions=[]
+    versionName=0.3.1
+    usesNonSdkApi=false
+    splits=[base]
+    apkSigningVersion=3
+    flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    queriesIntents=[Intent { act=ai.pleos.playground.vehicle.VEHICLE_START }, Intent { act=ai.pleos.playground.intent.action.NAVI_START }]
+    dataDir=/data/user/0/ai.arrivalcare.app.pleos
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2026-11-15 06:08:06
+    lastUpdateTime=2026-11-15 06:08:06
+    installerPackageName=null
+    installerPackageUid=-1
+    initiatingPackageName=com.android.shell
+    originatingPackageName=null
+    packageSource=1
+    appMetadataFilePath=null
+    signatures=PackageSignatures{8e1f3ed version:3, signatures:[17dc0617], past signatures:[]}
+    installPermissionsFixed=true
+    pkgFlags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    apexModuleName=null
+    requested permissions:
+      pleos.car.permission.CAR_DOORS
+      pleos.car.permission.NAVI_ROUTE
+      pleos.car.permission.NAVI_ROUTE_SEARCH
+      android.permission.INTERNET
+      ai.pleos.playground.service.vehicle.VEHICLE_BINDING
+    install permissions:
+      pleos.car.permission.NAVI_ROUTE_SEARCH: granted=true
+      ai.pleos.playground.service.vehicle.VEHICLE_BINDING: granted=true
+      pleos.car.permission.NAVI_ROUTE: granted=true
+      android.permission.INTERNET: granted=true
+      pleos.car.permission.CAR_DOORS: granted=true
+    User 0: ceDataInode=327701 installed=true hidden=false suspended=false distractionFlags=0 stopped=true notLaunched=true enabled=0 instant=false virtual=false
+      installReason=0
+      firstInstallTime=2026-11-15 06:08:06
+      uninstallReason=0
+      gids=[3003]
+      runtime permissions:
+    User 10: ceDataInode=279381 installed=true hidden=false suspended=false distractionFlags=0 stopped=true notLaunched=true enabled=0 instant=false virtual=false
+      installReason=0
+      firstInstallTime=2026-11-15 06:08:06
+      uninstallReason=0
+      gids=[3003]
+      runtime permissions:
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+  queries via component:
+    com.android.settings.intelligence:
+      ai.arrivalcare.app.pleos
+  queryable via interaction:
+    User 0:
+    User 10:
+  queryable via uses-library:
+
+Dexopt state:
+  [ai.arrivalcare.app.pleos]
+    path: /data/app/~~LLkAMdOXQX6ynZoxUHGCzg==/ai.arrivalcare.app.pleos-14_DpvDtkyDks18hVU87kw==/base.apk
+      x86_64: [status=verify] [reason=install] [primary-abi]
+        [location is /data/app/~~LLkAMdOXQX6ynZoxUHGCzg==/ai.arrivalcare.app.pleos-14_DpvDtkyDks18hVU87kw==/oat/x86_64/base.odex]
+
+Compiler stats:
+  [ai.arrivalcare.app.pleos]
+     base.apk - 1462

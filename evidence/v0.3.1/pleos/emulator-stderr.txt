@@ -1,0 +1,95 @@
+I1115 14:05:03.345526    2852 FeatureControlImpl.cpp:374] Feature 'Vulkan' (21) is overridden to 'disabled'
+I1115 14:05:03.670080    2852 opengles.cpp:307] android_startOpenglesRenderer: gpu info
+I1115 14:05:03.670100    2852 opengles.cpp:308] 
+I1115 14:05:03.670341    2852 FrameBuffer.cpp:199] Not raising nofile soft limit from 65536.
+I1115 14:05:03.670978    2852 HealthMonitor.cpp:275] HealthMonitor disabled.
+I1115 14:05:03.671422    2852 SharedLibrary.cpp:76] SharedLibrary::open for [libGLESv2.so]: not found in map, open for the first time
+I1115 14:05:03.671432    2852 SharedLibrary.cpp:186] SharedLibrary::open for [libGLESv2.so] (posix): begin
+I1115 14:05:03.671441    2852 SharedLibrary.cpp:244] SharedLibrary::open for [libGLESv2.so] (posix,linux): call dlopen on [libGLESv2.so]
+I1115 14:05:03.680888    2852 SharedLibrary.cpp:262] SharedLibrary::open succeeded for [libGLESv2.so].
+I1115 14:05:03.680909    2852 SharedLibrary.cpp:76] SharedLibrary::open for [libEGL.so]: not found in map, open for the first time
+I1115 14:05:03.680913    2852 SharedLibrary.cpp:186] SharedLibrary::open for [libEGL.so] (posix): begin
+I1115 14:05:03.680917    2852 SharedLibrary.cpp:244] SharedLibrary::open for [libEGL.so] (posix,linux): call dlopen on [libEGL.so]
+I1115 14:05:03.681374    2852 SharedLibrary.cpp:262] SharedLibrary::open succeeded for [libEGL.so].
+I1115 14:05:03.690810    2852 SharedLibrary.cpp:64] SharedLibrary::open for [libX11]
+I1115 14:05:03.690826    2852 SharedLibrary.cpp:76] SharedLibrary::open for [libX11]: not found in map, open for the first time
+I1115 14:05:03.690830    2852 SharedLibrary.cpp:186] SharedLibrary::open for [libX11] (posix): begin
+I1115 14:05:03.691181    2852 SharedLibrary.cpp:244] SharedLibrary::open for [libX11] (posix,linux): call dlopen on [libX11.so]
+I1115 14:05:03.691310    2852 SharedLibrary.cpp:262] SharedLibrary::open succeeded for [libX11].
+I1115 14:05:03.703437    2852 FrameBuffer.cpp:460] Graphics Adapter Vendor Google (Google Inc.)
+I1115 14:05:03.703458    2852 FrameBuffer.cpp:461] Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+I1115 14:05:03.703462    2852 FrameBuffer.cpp:462] Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+I1115 14:05:03.703466    2852 FrameBuffer.cpp:463] Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+I1115 14:05:03.703469    2852 FrameBuffer.cpp:464] Graphics Device Extensions N/A
+I1115 14:05:03.711487    2852 userspace-boot-properties.cpp:760] Userspace boot properties:
+I1115 14:05:03.711494    2852 userspace-boot-properties.cpp:764]   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+I1115 14:05:03.711498    2852 userspace-boot-properties.cpp:764]   androidboot.dalvik.vm.heapsize=576m
+I1115 14:05:03.711500    2852 userspace-boot-properties.cpp:764]   androidboot.debug.hwui.renderer=skiagl
+I1115 14:05:03.711503    2852 userspace-boot-properties.cpp:764]   androidboot.debug.sf.nobootanimation=1
+I1115 14:05:03.711505    2852 userspace-boot-properties.cpp:764]   androidboot.hardware=ranchu
+I1115 14:05:03.711508    2852 userspace-boot-properties.cpp:764]   androidboot.hardware.gltransport=pipe
+I1115 14:05:03.711510    2852 userspace-boot-properties.cpp:764]   androidboot.logcat=*:V
+I1115 14:05:03.711513    2852 userspace-boot-properties.cpp:764]   androidboot.opengles.version=196608
+I1115 14:05:03.711515    2852 userspace-boot-properties.cpp:764]   androidboot.qemu=1
+I1115 14:05:03.711518    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.adb.pubkey=QAAAAG1TcLCbUfgQH9DtgLGXa2yzUXs6U10/Mviw/fp0VygS7d9Hm1Rhj4Bm+KRuw3/tQwDevkorGyFosBE9wah0Xe7YYWO+ozvmfVIkZUNg6bC6urACWC3IIjTRSq2pcbpBJ86eOh1Ci3xVu8ocArtmOVhQBA+FGlEZ6I+MJwCYPvvkjBGYm4A90Fy9ldg4OAfbrx3/VHZY7XLtwrIdFJ2M1gLjIlyYxJIwT1B3W9biUJMvUEo5JG9Dh8tiUZ6783hPXwdfsFzipF4cvogDOz3EN6TIoe5A7uUVQQpFQUcdezDQ4psyjVbGYpODRqgf3tYqPnz7FfIhmffSD0j0/TarBSIWfJiX6bGK0ks9DWmRFVZAW5kAkWMg9IG8FaJ13eJ58GuMCULvdYpm6hLb9x0N677rHPWwpr7VYz+w1CaKXktSfwho9z+yykuWnyKbODu+Ccfu7hsk9ihuZgPZE5q3L1RAQxs/zojW4mXTBZtzoTaLi3PhHfuS2uKX2rb8Bm1k6bgN9ZF9RU0Hb9i09J0wIoxV/Fd1uG2co4wuZVQ/5cYukK9j2w/LIGv5R3mxiNwipRkcWyEeA3qvsNb+3+1wpCrPgdJVBkjRxJwiRlbKFYkA//evENenCwoZ4086ROuLZTlVeLdQfUa580Ny7OKFa8u2DUgJdAedYR6kKV01SusLk1UrOgEAAQA= runner@unknown
+I1115 14:05:03.711529    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.avd_name=ArrivalCarePleosCI
+I1115 14:05:03.711531    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.camera_hq_edge_processing=0
+I1115 14:05:03.711534    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.camera_protocol_ver=1
+I1115 14:05:03.711536    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.cpuvulkan.version=4202496
+I1115 14:05:03.711539    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.gltransport.drawFlushInterval=800
+I1115 14:05:03.711541    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.gltransport.name=pipe
+I1115 14:05:03.711544    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.hwcodec.avcdec=2
+I1115 14:05:03.711546    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.hwcodec.hevcdec=2
+I1115 14:05:03.711548    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.hwcodec.vpxdec=2
+I1115 14:05:03.711551    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+I1115 14:05:03.711553    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.virtiowifi=1
+I1115 14:05:03.711555    2852 userspace-boot-properties.cpp:764]   androidboot.qemu.vsync=60
+I1115 14:05:03.711558    2852 userspace-boot-properties.cpp:764]   androidboot.serialno=EMULATOR35X6X11X0
+I1115 14:05:03.711560    2852 userspace-boot-properties.cpp:764]   androidboot.vbmeta.digest=a43808d542a6f7ea7a54c849d8cf5682b62ae48dca6607440bcc6c6799d72fd7
+I1115 14:05:03.711563    2852 userspace-boot-properties.cpp:764]   androidboot.vbmeta.hash_alg=sha256
+I1115 14:05:03.711565    2852 userspace-boot-properties.cpp:764]   androidboot.vbmeta.size=6720
+I1115 14:05:03.711567    2852 userspace-boot-properties.cpp:764]   androidboot.veritymode=enforcing
+WARNING: cannnot unmap ptr 0x7f033a001000 as it is in the protected range from 0x7f023a000000 to 0x7f033a200000
+pc_memory_init: above 4g size: 40000000
+I1115 14:05:03.822126    2905 FrameBuffer.cpp:2805] Setting display: 0 configuration to: 2560x1440, dpi: 160x160 
+I1115 14:05:03.822165    2905 FrameBuffer.cpp:2818] setDisplayActiveConfig 0
+Failed to call cuInit, cannot use nvidia cuvid decoder for h264 stream
+[h264 @ 0x564800650900] no frame!
+[h264 @ 0x564800650900] no frame!
+[h264 @ 0x5647e6d75180] no frame!
+[h264 @ 0x5647e6d75180] no frame!
+[h264 @ 0x5647f3314d00] no frame!
+[h264 @ 0x5647f3314d00] no frame!
+[h264 @ 0x5647f58c2400] no frame!
+[h264 @ 0x5647f58c2400] no frame!
+[h264 @ 0x56480d513a80] no frame!
+[h264 @ 0x56480d513a80] no frame!
+[h264 @ 0x5647e6ec5b00] no frame!
+[h264 @ 0x5647e6ec5b00] no frame!
+[h264 @ 0x5647ed8dad80] no frame!
+[h264 @ 0x5647ed8dad80] no frame!
+[h264 @ 0x5647fb8a6400] no frame!
+[h264 @ 0x5647fb8a6400] no frame!
+[h264 @ 0x5647f58ba400] no frame!
+[h264 @ 0x5647f58ba400] no frame!
+[h264 @ 0x5647ec24da80] no frame!
+[h264 @ 0x5647ec24da80] no frame!
+[h264 @ 0x5647f58c3a80] no frame!
+[h264 @ 0x5647f58c3a80] no frame!
+[h264 @ 0x5648327a3f80] no frame!
+[h264 @ 0x5648327a3f80] no frame!
+[h264 @ 0x5647f58c1b00] no frame!
+[h264 @ 0x5647f58c1b00] no frame!
+[h264 @ 0x56483198b680] no frame!
+[h264 @ 0x56483198b680] no frame!
+[h264 @ 0x5647e6868d00] no frame!
+[h264 @ 0x5647e6868d00] no frame!
+[h264 @ 0x5647ec2af680] no frame!
+[h264 @ 0x5647ec2af680] no frame!
+[h264 @ 0x5647ee431f80] no frame!
+[h264 @ 0x5647ee431f80] no frame!
+[h264 @ 0x564831222880] no frame!
+[h264 @ 0x564831222880] no frame!
+E1115 14:08:32.529702    3322 FrameBuffer.cpp:3012] bad color buffer handle 370
+E1115 14:08:45.700841    3345 FrameBuffer.cpp:3012] bad color buffer handle 392
+E1115 14:08:50.853799    3352 FrameBuffer.cpp:3012] bad color buffer handle 399
