@@ -126,8 +126,9 @@ private class CareMap(context:Context,private val click:(Waypoint?)->Unit):Frame
         if(scene.venue.simulated){
             paint.color=if(Palette.night)Color.rgb(71,110,167) else Color.rgb(150,182,218);paint.strokeWidth=ui.dp(3).toFloat();paint.pathEffect=DashPathEffect(floatArrayOf(ui.dp(3).toFloat(),ui.dp(7).toFloat()),0f)
             val path=Path().apply{moveTo(w*.28f,h*.47f);cubicTo(w*.41f,h*.4f,w*.5f,h*.73f,w*.66f,h*.72f);cubicTo(w*.83f,h*.7f,w*.82f,h*.4f,w*.70f,h*.34f)};c.drawPath(path,paint);paint.pathEffect=null
-            paint.style=Paint.Style.FILL;paint.color=Palette.blue;c.drawCircle(w*.2f,h*.73f,ui.dp(16).toFloat(),paint)
-            val car=IconDrawable(context,"car",Color.WHITE);car.setBounds((w*.2f-ui.dp(10)).toInt(),(h*.73f-ui.dp(10)).toInt(),(w*.2f+ui.dp(10)).toInt(),(h*.73f+ui.dp(10)).toInt());car.draw(c)
+            val carX=w*(if(height<ui.dp(235)).10f else .20f);val carY=h*.73f
+            paint.style=Paint.Style.FILL;paint.color=Palette.blue;c.drawCircle(carX,carY,ui.dp(16).toFloat(),paint)
+            val car=IconDrawable(context,"car",Color.WHITE);car.setBounds((carX-ui.dp(10)).toInt(),(carY-ui.dp(10)).toInt(),(carX+ui.dp(10)).toInt(),(carY+ui.dp(10)).toInt());car.draw(c)
         }
         c.restore()
     }}
