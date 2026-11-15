@@ -1,0 +1,12 @@
+.gradle/
+.idea/
+**/build/
+local.properties
+*.jks
+*.keystore
+signing.properties
+captures/
+evidence/*.mp4
+evidence/*-logcat.txt
+evidence/*failure.xml
+*.iml
