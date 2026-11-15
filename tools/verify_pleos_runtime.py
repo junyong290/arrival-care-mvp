@@ -10,6 +10,7 @@ import pathlib
 import re
 import subprocess
 import time
+import urllib.request
 import xml.etree.ElementTree as ET
 
 p = argparse.ArgumentParser()
@@ -53,6 +54,41 @@ def screenshot(folder, name):
     data = adb('exec-out', 'screencap', '-p', binary=True, timeout=45)
     assert data.startswith(b'\x89PNG\r\n\x1a\n'), 'Invalid screenshot'
     (folder / (name + '.png')).write_bytes(data)
+
+
+def park_virtual_vehicle():
+    """Use the official emulator console's Park control, never override app UX.
+
+    Endpoints and readback fields come from Pleos 2.1.0's served console HTML:
+    its Park handler resets controls, requests Park, then observes actual gear.
+    This changes only this test emulator, not a real vehicle or app state.
+    """
+    record = {'scope': 'Pleos Virtual Console simulated vehicle', 'verified_parked': False}
+    result['virtual_console'] = record
+    try:
+        adb('forward', 'tcp:8088', 'tcp:8088')
+        def request(path, method='GET'):
+            req = urllib.request.Request('http://127.0.0.1:8088' + path, method=method)
+            with urllib.request.urlopen(req, timeout=15) as response:
+                payload = response.read()
+                return json.loads(payload) if payload else {}
+        record['initial_state'] = request('/vehicle/state')
+        request('/vehicle/controls?speed=0&accelerator=0&brake=0&steering=0', 'PUT')
+        request('/vehicle/gear?gear=Park', 'PUT')
+        request('/vehicle/body?door_fl=0&door_fr=0&door_rl=0&door_rr=0', 'PUT')
+        for _ in range(10):
+            state = request('/vehicle/state')
+            record['observed_state'] = state
+            if (state.get('gear', {}).get('actual', {}).get('value') == 'Park'
+                    and state.get('controls', {}).get('speed_kph') == 0
+                    and state.get('controls', {}).get('accelerator_pct') == 0):
+                record['verified_parked'] = True
+                break
+            time.sleep(1)
+    except Exception as e:
+        record['error'] = str(e)
+    # Car UX still independently decides whether app input is permitted.
+    (out / 'virtual-console-state.json').write_text(json.dumps(record, indent=2), encoding='utf-8')
 
 
 def tree(deadline=None):
@@ -214,6 +250,7 @@ try:
     result['display'] = {'size': adb('shell', 'wm', 'size'), 'density': adb('shell', 'wm', 'density')}
     result['stable_system_server_pid'] = stable[-1]
     screenshot(out, '00-pleos-system')
+    park_virtual_vehicle()
     for flavor in ['pleos', 'demo']:
         current = out / flavor
         current.mkdir(exist_ok=True)

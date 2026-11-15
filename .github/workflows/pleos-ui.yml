@@ -25,6 +25,10 @@ jobs:
           ls -l /dev/kvm
           sudo chmod 666 /dev/kvm
           test -r /dev/kvm && test -w /dev/kvm
+      - name: Install emulator graphics runtime dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libpulse0 libnss3 libnspr4 libxcomposite1 libxcursor1 libxi6 libxdamage1 libxtst6 libxrandr2 libx11-xcb1 libxkbcommon0 libxkbcommon-x11-0 libxcb-cursor0 libglu1-mesa
       - name: Download and verify existing signed Release APKs
         run: |
           mkdir -p "$RUNNER_TEMP/pleos-apks"

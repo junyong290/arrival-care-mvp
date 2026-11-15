@@ -74,6 +74,29 @@ def extract(archive, destination):
     archive.unlink()
 
 
+def diagnose(command, out, name):
+    """Always retain loader errors instead of hiding CalledProcessError.output."""
+    try:
+        result = subprocess.run(command, capture_output=True, text=True, timeout=30)
+    except (OSError, subprocess.TimeoutExpired) as error:
+        stdout = getattr(error, 'stdout', '') or ''
+        stderr = getattr(error, 'stderr', '') or ''
+        if isinstance(stdout, bytes):
+            stdout = stdout.decode(errors='replace')
+        if isinstance(stderr, bytes):
+            stderr = stderr.decode(errors='replace')
+        result = subprocess.CompletedProcess(command, -1, stdout, stderr + '\n' + str(error))
+    (out / f'{name}-stdout.txt').write_text(result.stdout, encoding='utf-8')
+    (out / f'{name}-stderr.txt').write_text(result.stderr, encoding='utf-8')
+    (out / f'{name}.txt').write_text(
+        f'exit_code={result.returncode}\ncommand={command!r}\n'
+        f'--- stdout ---\n{result.stdout}\n--- stderr ---\n{result.stderr}', encoding='utf-8')
+    print(f'{name}: exit {result.returncode}', flush=True)
+    if result.returncode:
+        print(result.stdout + result.stderr, flush=True)
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', required=True)
@@ -98,6 +121,32 @@ def main():
     metadata_path = out / 'environment.json'
     metadata_path.write_text(json.dumps(metadata, indent=2), encoding='utf-8')
 
+    # Fail fast on Linux loader/runtime or KVM problems before the 4 GB image.
+    emulator_zip = scratch / 'emulator-35.6.11.zip'
+    download(EMULATOR_URL, emulator_zip, EMULATOR_SIZE, 'sha256', EMULATOR_SHA256)
+    emulator_parent = scratch / 'emulator-host'
+    extract(emulator_zip, emulator_parent)
+    emulator = emulator_parent / 'emulator/emulator'
+    diagnose(['ldd', str(emulator)], out, 'ldd-emulator-launcher')
+    for filename in ['qemu-system-x86_64', 'qemu-system-x86_64-headless']:
+        qemu = emulator.parent / 'qemu/linux-x86_64' / filename
+        if qemu.is_file():
+            diagnose(['ldd', str(qemu)], out, 'ldd-' + filename)
+    # Direct ldd may report bundled libraries that the launcher adds to its
+    # search path. The real executable result below is the pass/fail criterion.
+    version = diagnose([str(emulator), '-version'], out, 'emulator-version')
+    if version.returncode:
+        raise RuntimeError(
+            f'Emulator -version exited {version.returncode}; see emulator-version-stderr.txt and ldd evidence')
+    if '35.6.11' not in version.stdout + version.stderr:
+        raise RuntimeError('Unexpected emulator executable version')
+    accel = diagnose([str(emulator), '-accel-check'], out, 'acceleration')
+    if accel.returncode:
+        raise RuntimeError('KVM acceleration is not available; see acceleration-stderr.txt')
+    metadata['emulator_version_verified'] = True
+    metadata['acceleration_verified'] = True
+    metadata_path.write_text(json.dumps(metadata, indent=2), encoding='utf-8')
+
     with fetch(PLEOS_XML) as response:
         document = ET.fromstring(response.read())
     package = next(node for node in document.iter()
@@ -119,20 +168,6 @@ def main():
             raise RuntimeError(f'Incomplete official image: {required}')
     if 'Pleos Connect v2.1.0' not in (image / 'devices.xml').read_text():
         raise RuntimeError('Unexpected Pleos device definition')
-
-    emulator_zip = scratch / 'emulator-35.6.11.zip'
-    download(EMULATOR_URL, emulator_zip, EMULATOR_SIZE, 'sha256', EMULATOR_SHA256)
-    emulator_parent = scratch / 'emulator-host'
-    extract(emulator_zip, emulator_parent)
-    emulator = emulator_parent / 'emulator/emulator'
-    version = subprocess.check_output([str(emulator), '-version'], text=True, stderr=subprocess.STDOUT)
-    if '35.6.11' not in version:
-        raise RuntimeError('Unexpected emulator executable version')
-    (out / 'emulator-version.txt').write_text(version)
-    accel = subprocess.run([str(emulator), '-accel-check'], capture_output=True, text=True)
-    (out / 'acceleration.txt').write_text(accel.stdout + accel.stderr)
-    if accel.returncode:
-        raise RuntimeError('KVM acceleration is not available')
 
     avd_home = scratch / 'avd'
     avd_dir = avd_home / 'ArrivalCarePleosCI.avd'
