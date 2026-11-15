@@ -21,6 +21,7 @@ p.add_argument('--out', required=True)
 p.add_argument('--boot-timeout', type=int, default=900)
 p.add_argument('--version', default='0.3.0')
 p.add_argument('--variant', choices=['all', 'pleos', 'demo'], default='all')
+p.add_argument('--settle-seconds', type=int, default=120)
 a = p.parse_args()
 out = pathlib.Path(a.out)
 out.mkdir(parents=True, exist_ok=True)
@@ -243,6 +244,18 @@ try:
         time.sleep(10)
     else:
         raise RuntimeError('Pleos image did not reach a stable boot; no app success claimed')
+    # sys.boot_completed precedes the Pleos launcher/navigation startup sequence.
+    # In the first two cold boots, the OEM launcher opened Navigation ~1 minute
+    # later and obscured the app (also with no NaviHelper initialization). Let
+    # the real OS finish startup, retaining and checking its process stability.
+    # This does not force-stop OEM apps or override the vehicle's safety state.
+    result['system_settle_seconds'] = a.settle_seconds
+    settle_until = time.monotonic() + a.settle_seconds
+    while time.monotonic() < settle_until:
+        assert adb('shell', 'getprop', 'sys.boot_completed') == '1'
+        assert adb('shell', 'pidof', 'system_server') == stable[-1], 'System restarted during startup settling'
+        print('Waiting for Pleos launcher startup:', round(settle_until - time.monotonic()), 'seconds remaining', flush=True)
+        time.sleep(min(10, max(0, settle_until - time.monotonic())))
     props = {k: adb('shell', 'getprop', k) for k in [
         'ro.build.fingerprint', 'ro.build.version.sdk', 'ro.product.cpu.abilist',
         'ro.product.manufacturer', 'ro.product.model', 'sys.boot_completed']}
