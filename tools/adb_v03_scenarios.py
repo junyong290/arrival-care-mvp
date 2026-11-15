@@ -6,7 +6,7 @@ import argparse,json,pathlib,re,struct,subprocess,time,xml.etree.ElementTree as 
 p=argparse.ArgumentParser()
 p.add_argument('--adb',default='adb');p.add_argument('--serial',required=True)
 p.add_argument('--package',default='ai.arrivalcare.app.demo');p.add_argument('--out',required=True)
-p.add_argument('--only',choices=['all','happy','markers','rotate','movie'],default='all')
+p.add_argument('--only',choices=['all','happy','markers','rotate','movie','missing','night'],default='all')
 p.add_argument('--orientation',choices=['portrait','landscape','current'],default='portrait')
 p.add_argument('--tap-tape',help='Save observed taps/swipes for replay on the SAME emulator geometry')
 p.add_argument('--start-at',type=int,default=0,help='Resume all cases at a zero-based index; preserves earlier results')
@@ -69,8 +69,19 @@ def setup_change(*labels):
     for label in labels:tap(label)
     tap('조건 적용')
 def sim(label):tap('시뮬레이터');tap(label)
+def assert_exit_controls_visible(extra=False):
+    root=tree()
+    density=int(re.findall(r'(?:Physical|Override) density: (\d+)',adb('shell','wm','density'))[-1])
+    labels=['안전하게 정차·주차했어요','보호자와 동승자가 모두 내렸어요']
+    if extra:labels.append('모든 문이 닫힌 것을 직접 확인했어요')
+    for label in labels:
+        node=match(root,label)
+        assert node is not None,'Safety control requires scrolling: '+label
+        rect=bounds(node)
+        assert rect[3]-rect[1]>=48*density/160,'Safety control is clipped: '+label
+
 def to_exit():
-    tap('이 계획으로 안내 시작');tap('동의하고 시연 경로 요청');time.sleep(1);tap('[시연] 하차 지점 도착');expect('모두 내렸나요')
+    tap('이 계획으로 안내 시작');tap('동의하고 시연 경로 요청');time.sleep(1);tap('[시연] 하차 지점 도착');expect('모두 내렸나요');assert_exit_controls_visible()
 def happy():
     layout();shot('01-plan');to_exit();shot('02-exit')
     tap('안전하게 정차·주차했어요');tap('보호자와 동승자가 모두 내렸어요');tap('확인하고 주차장 안내')
@@ -100,7 +111,7 @@ def doors():
     to_exit();sim('도어 열림');tap('안전하게 정차·주차했어요');tap('보호자와 동승자가 모두 내렸어요')
     find('확인하고 주차장 안내',False);sim('도어 닫힘');expect('모두 내렸나요');find('확인하고 주차장 안내',True)
 def missing():
-    to_exit();sim('차량 연결 실패');tap('안전하게 정차·주차했어요');tap('보호자와 동승자가 모두 내렸어요')
+    to_exit();sim('차량 연결 실패');assert_exit_controls_visible(True);tap('안전하게 정차·주차했어요');tap('보호자와 동승자가 모두 내렸어요')
     find('확인하고 주차장 안내',False);tap('모든 문이 닫힌 것을 직접 확인했어요');find('확인하고 주차장 안내',True);shot('07-manual-fallback')
 def driving():
     sim('주행 상태');expect('주행 중에는 안내에 집중해 주세요')
@@ -118,6 +129,11 @@ def wheelchair():
     tap('주차를 마치고 안전하게 내릴 수 있어요');tap('주차 완료 · 만남 장소 보기')
     expect('1층 승강기 앞 만남 공간');expect('휠체어 이동 전');shot('11-wheelchair')
 def markers():
+    initial=bounds(find('D 마커 상세'))
+    tap('지도 확대');enlarged=bounds(find('D 마커 상세'));assert initial!=enlarged,'Zoom must reposition markers'
+    shot('12-map-zoom')
+    tap('지도 축소');assert bounds(find('D 마커 상세'))==initial
+    tap('지도 확대');tap('전체 동선 보기');assert bounds(find('D 마커 상세'))==initial
     for letter,title in [('D','하차'),('P','주차'),('M','재합류')]:
         tap(letter+' 마커 상세');expect(letter+' · '+title+' 지점');expect('UI 시연용 가상 위치');shot('12-marker-'+letter);tap('확인')
     expect('목적지 변경')
@@ -189,13 +205,17 @@ def movie():
     start();setup_change('휠체어 이용자','별도 보호자 없음');sim('접근성 정보 누락 시연')
     find('도착 계획 보류',False);shot('21-movie-accessibility')
     start();retry();shot('22-movie-retry-recovered')
+    tap('[시연] 하차 지점 도착');sim('도어 신호 누락')
+    tap('안전하게 정차·주차했어요');tap('보호자와 동승자가 모두 내렸어요')
+    find('확인하고 주차장 안내',False);tap('모든 문이 닫힌 것을 직접 확인했어요')
+    find('확인하고 주차장 안내',True);shot('23-movie-door-recovered')
 
 original={k:adb('shell','settings','get','system',k).strip() for k in ['accelerometer_rotation','user_rotation']}
 results=json.loads((out/'ui-results.json').read_text(encoding='utf-8')) if a.start_at and (out/'ui-results.json').exists() else []
 cases=[('parents_hospital_end_to_end',happy),('sole_caregiver_skips_dropoff',alone),('door_cycle_never_auto_completes',doors),
        ('disconnected_door_manual_fallback',missing),('driving_restriction',driving),('navigation_retry',retry),
        ('late_callback_ignored',late),('mall_wheelchair_conditions',wheelchair),('marker_details',markers),('window_configuration_preserves_unconfirmed_stage',rotation),('missing_accessibility_holds_plan',missing_accessibility),('real_venue_has_no_invented_DPM',actual_venue),('dark_light_theme',night),('background_requires_fresh_safety_checks',background),('route_requires_explicit_consent',no_implicit_route)]
-selected=cases[a.start_at:] if a.only=='all' else ([('three_scenario_movie',movie)] if a.only=='movie' else [cases[{'happy':0,'markers':8,'rotate':9}[a.only]]])
+selected=cases[a.start_at:] if a.only=='all' else ([('three_scenario_movie',movie)] if a.only=='movie' else [cases[{'happy':0,'markers':8,'rotate':9,'missing':3,'night':12}[a.only]]])
 try:
     if a.orientation!='current':rotate(0 if a.orientation=='portrait' else 1)
     metadata={}

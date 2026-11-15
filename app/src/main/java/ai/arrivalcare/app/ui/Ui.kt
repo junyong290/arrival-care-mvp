@@ -66,8 +66,15 @@ class Ui(val context:Context) {
             };false
         }
     }
-    fun iconButton(name:String,icon:String,action:()->Unit)=ImageButton(context).apply{
-        contentDescription=name;tooltipText=name;setImageDrawable(IconDrawable(context,icon,Palette.navy))
+    fun iconButton(name:String,icon:String,action:()->Unit)=object:ImageButton(context){
+        private val glyph=IconDrawable(context,icon,Palette.navy)
+        override fun onDraw(canvas:Canvas){
+            super.onDraw(canvas)
+            glyph.setBounds(paddingLeft,paddingTop,width-paddingRight,height-paddingBottom)
+            glyph.draw(canvas)
+        }
+    }.apply{
+        contentDescription=name;tooltipText=name
         background=RippleDrawable(ColorStateList.valueOf(Palette.blueSoft),shape(Palette.surface,16),null)
         setPadding(dp(13),dp(13),dp(13),dp(13));setOnClickListener{action()}
     }

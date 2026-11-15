@@ -104,6 +104,13 @@ class MapPanel(context:Context,private val onPoint:(Waypoint?)->Unit,private val
         updateCaption()
     }
     fun vehicle(point:GeoPoint?){if(!scene.venue.simulated)renderer?.setVehicle(point)}
+    override fun onSizeChanged(w:Int,h:Int,oldw:Int,oldh:Int){
+        super.onSizeChanged(w,h,oldw,oldh)
+        // Compact safety-confirmation panes keep their markers, without clipped map controls.
+        controls.visibility=if(h<ui.dp(180))GONE else VISIBLE
+        caption.visibility=if(h<ui.dp(180))GONE else VISIBLE
+        badge.visibility=if(h<ui.dp(100))GONE else VISIBLE
+    }
     fun resume(){foreground=true;renderer?.resume();if(renderer!=null&&!realMapReady){handler.removeCallbacks(timeout);handler.postDelayed(timeout,15000)}}
     fun pause(){foreground=false;handler.removeCallbacks(timeout);renderer?.pause()}
     fun close(){disposed=true;epoch++;handler.removeCallbacksAndMessages(null);renderer?.close();renderer=null}
@@ -145,7 +152,15 @@ private class CareMap(context:Context,private val click:(Waypoint?)->Unit):Frame
         backgroundView.layout(0,0,width,height)
         val compact=height<ui.dp(235)
         val points=if(compact)listOf(.24f to .60f,.49f to .74f,.72f to .52f)else listOf(.28f to .47f,.66f to .72f,.70f to .34f)
-        pins.entries.forEachIndexed{i,(p,v)->val size=ui.dp(54);val x=(width*(.5f+(points[i].first-.5f)*zoom)).toInt().coerceIn(size/2,width-size/2);val y=(height*(.5f+(points[i].second-.5f)*zoom)).toInt().coerceIn(minOf(ui.dp(65),height/2),maxOf(height/2,height-ui.dp(45)));v.layout(x-size/2,y-size/2,x+size/2,y+size/2);val label=labels.getValue(p);label.layout(x-label.measuredWidth/2,y+size/2+ui.dp(3),x+label.measuredWidth/2,y+size/2+ui.dp(3)+label.measuredHeight)}
+        pins.entries.forEachIndexed{i,(p,v)->
+            val size=ui.dp(54);val x=(width*(.5f+(points[i].first-.5f)*zoom)).toInt().coerceIn(size/2,width-size/2)
+            val minY=minOf(ui.dp(70),maxOf(size/2,height-size/2))
+            val maxY=maxOf(minY,height-ui.dp(if(height<ui.dp(160))30 else 55))
+            val y=(height*(.5f+(points[i].second-.5f)*zoom)).toInt().coerceIn(minY,maxY)
+            v.layout(x-size/2,y-size/2,x+size/2,y+size/2)
+            val label=labels.getValue(p);label.visibility=if(scene.venue.simulated&&height>=ui.dp(160))VISIBLE else GONE
+            label.layout(x-label.measuredWidth/2,y+size/2+ui.dp(3),x+label.measuredWidth/2,y+size/2+ui.dp(3)+label.measuredHeight)
+        }
         hospital.layout(width/2-ui.dp(40),height/2-ui.dp(28),width/2+ui.dp(40),height/2+ui.dp(28))
     }
 }

@@ -185,6 +185,28 @@ class MainActivity:Activity(){
     private fun recommendation()=ArrivalRecommendationEngine.recommend(journey.state.conditions,accessibilityAvailable)
     private fun setup(){
         val c=journey.state.conditions;val v=VenueRepository.get(c.facilityId);val r=recommendation()
+        val wide=ResponsivePolicy.sideBySide(resources.configuration.screenWidthDp-24,resources.configuration.screenHeightDp-100)
+        if(!wide){
+            val destination=ui.row().apply{
+                background=android.graphics.drawable.RippleDrawable(android.content.res.ColorStateList.valueOf(Palette.blueSoft),ui.shape(Palette.paper,18),null)
+                setPadding(ui.dp(12),ui.dp(6),ui.dp(12),ui.dp(6));minimumHeight=ui.dp(52)
+                contentDescription="목적지 변경";setOnClickListener{showVenues()}
+            }
+            destination.addView(ui.iconTile(if(c.facilityId=="mall")"mall" else "hospital",size=40))
+            val text=ui.column();ui.label(text,v.name,18,Palette.navy,true,2)
+            ui.label(text,if(!r.canStart)r.title else "시연 장소 · 목적지 변경  ›",12,if(r.canStart)Palette.muted else Palette.amber,false,0).apply{maxLines=1;ellipsize=android.text.TextUtils.TruncateAt.END}
+            destination.addView(text,LinearLayout.LayoutParams(0,-2,1f).apply{leftMargin=ui.dp(10)})
+            content.addView(destination,LinearLayout.LayoutParams(-1,-2).apply{bottomMargin=ui.dp(6)})
+            val row=ui.row()
+            val companion=ui.button(c.passengers.joinToString(" · "){it.label}+" · "+if(c.caregiver)"보호자 동행" else "함께 이동",icon="person"){showConditions()}.apply{
+                contentDescription="동행 조건 변경";maxLines=1;ellipsize=android.text.TextUtils.TruncateAt.END;minHeight=ui.dp(48);minimumHeight=ui.dp(48);gravity=Gravity.START or Gravity.CENTER_VERTICAL
+            }
+            row.addView(companion,LinearLayout.LayoutParams(0,ui.dp(48),1f))
+            row.addView(ui.iconButton(if(r.canStart)"추천 이유와 전체 계획 보기" else "확인이 필요한 정보 보기","info"){showPlan()},LinearLayout.LayoutParams(ui.dp(48),ui.dp(48)))
+            content.addView(row,LinearLayout.LayoutParams(-1,ui.dp(48)))
+            primary(if(r.canStart)"이 계획으로 안내 시작" else "도착 계획 보류",r.canStart,note=if(v.simulated)"가상 장소 시연 · 실제 경로 안내와 별개" else "실제 승하차·접근성 정보 확인 필요"){recommendation().plan?.let{journey.begin(it,true)}}
+            return
+        }
         val destination=ui.card(content,if(c.facilityId=="mall")"mall" else "hospital",v.name,if(v.simulated)"시연 장소 · 목적지 변경  ›" else v.address+"  ›")
         destination.contentDescription="목적지 변경";destination.isClickable=true;destination.setOnClickListener{showVenues()}
         content.addView(ui.button(c.passengers.joinToString(" · "){it.label}+"  ·  "+if(c.caregiver)"보호자 동행  ›" else "함께 이동  ›",icon="person"){showConditions()}.apply{contentDescription="동행 조건 변경";gravity=Gravity.START or Gravity.CENTER_VERTICAL},LinearLayout.LayoutParams(-1,-2))

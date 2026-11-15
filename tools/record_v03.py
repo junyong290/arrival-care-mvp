@@ -30,5 +30,5 @@ for attempt in range(8):
     time.sleep(1)
 else:raise RuntimeError('No fresh final hierarchy')
 xml=run('shell','cat','/sdcard/arrival-v03-record.xml');out.with_suffix('.xml').write_bytes(xml)
-assert any(n.get('content-desc')=='[시연] 하차 지점 도착' for n in ET.fromstring(xml).iter('node')),'Final retry recovery was not reached'
-print('Three-scenario replay complete; final route recovery verified',flush=True)
+assert any(n.get('content-desc')=='확인하고 주차장 안내' and n.get('enabled')=='true' for n in ET.fromstring(xml).iter('node')),'Final explicit door fallback was not reached'
+print('Three-scenario replay complete; final route and manual-door recovery verified',flush=True)
