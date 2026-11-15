@@ -12,6 +12,8 @@ interface NavigationGateway {
 interface VehicleGateway {
     val description: String
     fun connect(onDoor: (Door) -> Unit, onRestriction: (Boolean, Boolean) -> Unit)
+    fun onForeground() {}
+    fun onBackground() {}
     fun close()
 }
 class MockNavigationGateway : NavigationGateway {

@@ -1,0 +1,4 @@
+<resources>
+    <item name="map_panel" type="id" />
+    <item name="guide_panel" type="id" />
+</resources>

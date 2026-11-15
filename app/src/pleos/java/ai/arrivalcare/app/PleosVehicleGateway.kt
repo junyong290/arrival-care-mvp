@@ -22,6 +22,8 @@ class PleosVehicleGateway(private val context:Context):VehicleGateway {
     private var ux:AutomotiveUxObserver?=null
     @Volatile private var closed=false
     private var initializing=true
+    private var foreground=true
+    private val pollTask=Runnable{poll()}
     private val worker=ThreadPoolExecutor(1,1,0,TimeUnit.SECONDS,ArrayBlockingQueue(8),
         { task -> Thread(task,"ArrivalCare-Vehicle").apply{isDaemon=true} })
     private var generation=0L
@@ -52,7 +54,8 @@ class PleosVehicleGateway(private val context:Context):VehicleGateway {
     }
     private fun fail(e:Exception){if(!closed){++generation;status="연결·조회 실패: ${e.javaClass.simpleName}";callback?.invoke(Door.DISCONNECTED);Log.w("ArrivalCareSDK",status)}}
     private fun poll(){
-        if(closed)return
+        if(closed || !foreground)return
+        handler.removeCallbacks(pollTask)
         val epoch=++generation
         // A response for an older polling cycle cannot overwrite fresher data.
         handler.postDelayed({if(!closed && epoch==generation){status="도어 응답 시간 초과";callback?.invoke(Door.UNKNOWN)}},2500)
@@ -86,8 +89,10 @@ class PleosVehicleGateway(private val context:Context):VehicleGateway {
                 }
             },onFailed={e->handler.post{if(epoch==generation)fail(e)}})
         },{if(epoch==generation)fail(it)})
-        handler.postDelayed({poll()},3000)
+        handler.postDelayed(pollTask,3000)
     }
+    override fun onBackground(){foreground=false;++generation;handler.removeCallbacks(pollTask)}
+    override fun onForeground(){val wasActive=foreground;foreground=true;if(!wasActive && !initializing && !closed)poll()}
     override fun close(){
         closed=true;++generation;handler.removeCallbacksAndMessages(null);ux?.close();callback=null
         worker.shutdownNow()

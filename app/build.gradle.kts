@@ -2,6 +2,10 @@ import java.util.Properties
 plugins { id("com.android.application"); id("org.jetbrains.kotlin.android") }
 val signingFile = rootProject.file("signing.properties")
 val localSigning = Properties().apply { if (signingFile.exists()) signingFile.inputStream().use { load(it) } }
+val localConfig = Properties().apply { rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use { load(it) } }
+val mapKey = providers.gradleProperty("KAKAO_MAP_NATIVE_KEY").orNull
+    ?: System.getenv("KAKAO_MAP_NATIVE_KEY") ?: localConfig.getProperty("KAKAO_MAP_NATIVE_KEY", "")
+require(mapKey.isEmpty() || mapKey.matches(Regex("[A-Za-z0-9_-]+"))) { "KAKAO_MAP_NATIVE_KEY contains invalid characters" }
 
 android {
     namespace = "ai.arrivalcare.app"
@@ -11,14 +15,21 @@ android {
         applicationId = "ai.arrivalcare.app"
         minSdk = 28
         targetSdk = 34
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
+        buildConfigField("String", "KAKAO_MAP_NATIVE_KEY", "\"$mapKey\"")
         testInstrumentationRunner = "android.test.InstrumentationTestRunner"
     }
-    flavorDimensions += "integration"
+    flavorDimensions += listOf("integration", "mapEngine")
     productFlavors {
         create("demo") { dimension = "integration"; applicationIdSuffix = ".demo"; buildConfigField("boolean", "PLEOS", "false") }
         create("pleos") { dimension = "integration"; applicationIdSuffix = ".pleos"; buildConfigField("boolean", "PLEOS", "true") }
+        create("offline") { dimension = "mapEngine"; buildConfigField("boolean", "KAKAO_INCLUDED", "false") }
+        create("kakao") {
+            dimension = "mapEngine"
+            buildConfigField("boolean", "KAKAO_INCLUDED", "true")
+            ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a") }
+        }
     }
     if (signingFile.exists()) signingConfigs.create("contest") {
         storeFile = file(localSigning.getProperty("storeFile"))
@@ -39,4 +50,5 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     "pleosImplementation"("ai.pleos.playground:Vehicle:2.3.2")
     "pleosImplementation"("ai.pleos.playground:NaviHelper:3.0.5")
+    "kakaoImplementation"("com.kakao.maps.open:android:2.15.2")
 }

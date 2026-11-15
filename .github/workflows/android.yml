@@ -17,11 +17,11 @@ jobs:
           distribution: temurin
           java-version: '17'
       - run: chmod +x gradlew
-      - run: ./gradlew :app:testDemoDebugUnitTest :app:lintDemoDebug :app:assembleDemoDebug --no-daemon
+      - run: ./gradlew :app:testDemoOfflineDebugUnitTest :app:lintDemoOfflineDebug :app:assembleDemoOfflineRelease :app:assembleDemoKakaoRelease --no-daemon
       - uses: actions/upload-artifact@v4
         with:
-          name: arrivalcare-demo-debug
-          path: app/build/outputs/apk/demo/debug/*.apk
+          name: demo-unsigned
+          path: app/build/outputs/apk/**/release/*.apk
   pleos-compile:
     runs-on: ubuntu-latest
     steps:
@@ -31,4 +31,8 @@ jobs:
           distribution: temurin
           java-version: '17'
       - run: chmod +x gradlew
-      - run: ./gradlew :app:assemblePleosDebug --no-daemon
+      - run: ./gradlew :app:assemblePleosOfflineRelease :app:assemblePleosKakaoRelease --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pleos-unsigned
+          path: app/build/outputs/apk/**/release/*.apk

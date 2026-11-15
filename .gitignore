@@ -7,6 +7,9 @@ local.properties
 signing.properties
 captures/
 evidence/*.mp4
+evidence/**/*.mp4
+evidence/**/*-logcat.txt
+evidence/**/*failure.xml
 evidence/*-logcat.txt
 evidence/*failure.xml
 *.iml
