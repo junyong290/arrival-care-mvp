@@ -31,7 +31,7 @@ class PleosVehicleGateway(private val context:Context):VehicleGateway {
         ux=AutomotiveUxObserver(context,onRestriction).also{it.start()}
         try{sdk=Vehicle(context.applicationContext).also{it.initialize()};poll()}catch(e:Exception){fail(e)}
     }
-    private fun fail(e:Exception){if(!closed){status="연결·조회 실패: ${e.javaClass.simpleName}";callback?.invoke(Door.DISCONNECTED);Log.w("ArrivalCareSDK",status)}}
+    private fun fail(e:Exception){if(!closed){++generation;status="연결·조회 실패: ${e.javaClass.simpleName}";callback?.invoke(Door.DISCONNECTED);Log.w("ArrivalCareSDK",status)}}
     private fun poll(){
         if(closed)return
         val epoch=++generation
