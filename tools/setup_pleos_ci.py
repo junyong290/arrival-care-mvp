@@ -5,13 +5,18 @@ The proprietary image, its archive, and AVD userdata stay in RUNNER_TEMP.
 The caller verifies boot and actual APK behavior; process launch is not success.
 """
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
+import http.client
 import json
 import os
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
+import threading
 import time
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
@@ -34,6 +39,8 @@ def fetch(url):
 
 
 def download(url, path, size, algorithm, expected):
+    if size > 1024 ** 3 and download_parallel(url, path, size, algorithm, expected):
+        return
     for attempt in range(3):
         digest = hashlib.new(algorithm)
         total = 0
@@ -56,6 +63,130 @@ def download(url, path, size, algorithm, expected):
             if attempt == 2:
                 raise
             time.sleep(3)
+
+
+def download_parallel(url, path, size, algorithm, expected, chunk_size=128 * 1024 ** 2):
+    """Four bounded Range transfers, then verify the complete pinned artifact.
+
+    Complete parts survive another part's transient retry, only in this invocation.
+    An HTTP 200 probe means Range is unsupported; other errors never fall back.
+    """
+    etag = '"' + expected + '"'
+
+    def request(start, end):
+        return urllib.request.Request(url, headers={
+            'User-Agent': 'ArrivalCare-Pleos-Verification',
+            'Range': f'bytes={start}-{end}', 'If-Match': etag,
+        })
+
+    def validate(response, start, end):
+        required = f'bytes {start}-{end}/{size}'
+        if response.status != 206 or response.headers.get('Content-Range') != required:
+            raise RuntimeError(f'Unexpected Range response: {response.status}, {response.headers.get("Content-Range")!r}')
+        declared = response.headers.get('Content-Length')
+        if declared is not None and int(declared) != end - start + 1:
+            raise RuntimeError('Range Content-Length differs from requested part')
+        actual_etag = response.headers.get('ETag')
+        if actual_etag is not None and actual_etag != etag:
+            raise RuntimeError('Official artifact ETag differs from pinned checksum')
+
+    with urllib.request.urlopen(request(0, 0), timeout=60) as response:
+        if response.status == 200:
+            print(f'{path.name}: server ignored Range; using serial transfer', flush=True)
+            return False
+        validate(response, 0, 0)
+        if len(response.read(2)) != 1:
+            raise RuntimeError('Invalid one-byte Range probe body')
+
+    parent = path.parent.resolve()
+    required_free = 2 * size + 64 * 1024 ** 2
+    if shutil.disk_usage(parent).free < required_free:
+        raise RuntimeError(f'Insufficient disk for Range parts and assembly: requires {required_free} bytes')
+    parts = Path(tempfile.mkdtemp(prefix=f'.{path.name}.parts-', dir=parent)).resolve()
+    if parts.parent != parent:
+        raise RuntimeError('Part directory outside intended archive parent')
+    ranges = [(start, min(size - 1, start + chunk_size - 1)) for start in range(0, size, chunk_size)]
+    stopped = threading.Event()
+    assembly = parts / 'assembled.zip'
+
+    def part_path(index, partial=False):
+        return parts / f'{index:04d}.{ "partial" if partial else "part" }'
+
+    def transfer(index, bounds):
+        start, end = bounds
+        length = end - start + 1
+        complete, pending = part_path(index), part_path(index, True)
+        if complete.is_file() and complete.stat().st_size == length:
+            return length
+        for attempt in range(3):
+            if stopped.is_set():
+                raise RuntimeError('Another part failed; transfer stopped')
+            try:
+                total = 0
+                with urllib.request.urlopen(request(start, end), timeout=60) as response:
+                    validate(response, start, end)
+                    with pending.open('wb') as target:
+                        while total < length:
+                            if stopped.is_set():
+                                raise RuntimeError('Another part failed; transfer stopped')
+                            block = response.read(min(4 * 1024 ** 2, length - total))
+                            if not block:
+                                raise EOFError('Range body ended before requested part was complete')
+                            target.write(block)
+                            total += len(block)
+                        if response.read(1):
+                            raise RuntimeError('Range body exceeds requested part')
+                if pending.stat().st_size != length:
+                    raise RuntimeError('Part length verification failed')
+                pending.replace(complete)
+                return length
+            except urllib.error.HTTPError:
+                # Do not retry authentication, rate limits, or other HTTP denials.
+                raise
+            except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead, EOFError) as error:
+                pending.unlink(missing_ok=True)
+                if attempt == 2 or stopped.is_set():
+                    raise
+                print(f'{path.name}: part {index + 1}/{len(ranges)} network retry {attempt + 1}: {type(error).__name__}', flush=True)
+                time.sleep(2)
+
+    executor = ThreadPoolExecutor(max_workers=4)
+    futures = []
+    try:
+        print(f'{path.name}: Range confirmed; 4 workers, {len(ranges)} parts of at most {chunk_size // 1024 ** 2} MiB', flush=True)
+        futures = [executor.submit(transfer, index, bounds) for index, bounds in enumerate(ranges)]
+        downloaded = 0
+        for count, future in enumerate(as_completed(futures), 1):
+            downloaded += future.result()
+            print(f'{path.name}: complete parts {count}/{len(ranges)}, {downloaded / 1e9:.2f}/{size / 1e9:.2f} GB', flush=True)
+        digest = hashlib.new(algorithm)
+        total = 0
+        with assembly.open('wb') as target:
+            for index, (start, end) in enumerate(ranges):
+                part = part_path(index)
+                if part.stat().st_size != end - start + 1:
+                    raise RuntimeError('Completed part length changed before assembly')
+                with part.open('rb') as source:
+                    while block := source.read(4 * 1024 ** 2):
+                        target.write(block)
+                        digest.update(block)
+                        total += len(block)
+        if total != size or digest.hexdigest() != expected:
+            raise RuntimeError(f'{path.name}: assembled size/checksum differs from pinned official artifact')
+        assembly.replace(path)
+        print(f'{path.name}: assembled {algorithm} and size verified', flush=True)
+        return True
+    finally:
+        stopped.set()
+        for future in futures:
+            future.cancel()
+        executor.shutdown(wait=True, cancel_futures=True)
+        # Remove only this invocation's known files, never recurse into other paths.
+        for index in range(len(ranges)):
+            part_path(index).unlink(missing_ok=True)
+            part_path(index, True).unlink(missing_ok=True)
+        assembly.unlink(missing_ok=True)
+        parts.rmdir()
 
 
 def extract(archive, destination):
