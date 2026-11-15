@@ -55,15 +55,30 @@ def screenshot(folder, name):
     (folder / (name + '.png')).write_bytes(data)
 
 
-def tree():
+def tree(deadline=None):
+    last_error = None
     for _ in range(4):
-        response = adb('shell', 'uiautomator', 'dump', '--compressed', '/sdcard/arrival-pleos-check.xml', timeout=35)
-        if 'dumped to' in response:
-            xml = adb('shell', 'cat', '/sdcard/arrival-pleos-check.xml')
+        def remaining_timeout(limit):
+            if deadline is None:
+                return limit
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise TimeoutError('UI observation deadline expired')
+            return min(limit, remaining)
+        try:
+            response = adb('shell', 'uiautomator', 'dump', '--compressed', '/sdcard/arrival-pleos-check.xml', timeout=remaining_timeout(35))
+            if 'dumped to' not in response:
+                raise RuntimeError('UI dump did not confirm fresh output: ' + response)
+            xml = adb('shell', 'cat', '/sdcard/arrival-pleos-check.xml', timeout=remaining_timeout(30))
+            root = ET.fromstring(xml)
             (current / 'last-ui.xml').write_text(xml, encoding='utf-8')
-            return ET.fromstring(xml)
-        time.sleep(1)
-    raise RuntimeError('No fresh UI hierarchy')
+            return root
+        except (RuntimeError, subprocess.TimeoutExpired, ET.ParseError, TimeoutError) as e:
+            last_error = e
+            if deadline is not None and time.monotonic() >= deadline:
+                break
+            time.sleep(min(1, max(0, deadline - time.monotonic())) if deadline is not None else 1)
+    raise RuntimeError('No fresh UI hierarchy: ' + str(last_error)) from last_error
 
 
 def rect(node):
@@ -78,7 +93,7 @@ def lookup(root, label):
                 return n
 
 
-def find(label, enabled=None, scroll=True):
+def find(label, enabled=None, scroll=True, optional=False):
     for attempt in range(6 if scroll else 1):
         root = tree()
         n = lookup(root, label)
@@ -93,6 +108,8 @@ def find(label, enabled=None, scroll=True):
         lo, hi = (y2 - 24, y1 + 24) if attempt < 3 else (y1 + 24, y2 - 24)
         adb('shell', 'input', 'swipe', str(x2 - 20), str(lo), str(x2 - 20), str(hi), '450')
         time.sleep(.5)
+    if optional:
+        return None
     raise AssertionError('UI element not found: ' + label)
 
 
@@ -107,7 +124,21 @@ def start():
     adb('shell', 'am', 'force-stop', package)
     launch = adb('shell', 'am', 'start', '-W', '-n', package + '/ai.arrivalcare.app.MainActivity', timeout=90)
     (current / 'launch.txt').write_text(launch, encoding='utf-8')
-    time.sleep(4)
+    # Car UX service readiness is asynchronous; observe it without overriding it.
+    deadline = time.monotonic() + 45
+    last_observation = 'No unlocked planning UI observed'
+    while time.monotonic() < deadline:
+        try:
+            root = tree(deadline=deadline)
+            button = lookup(root, '이 계획으로 안내 시작')
+            if button is not None and button.get('enabled') == 'true':
+                return
+            labels = [n.get('text') for n in root.iter('node') if n.get('text')]
+            last_observation = ' | '.join(labels)
+        except RuntimeError as e:
+            last_observation = str(e)
+        time.sleep(min(1, max(0, deadline - time.monotonic())))
+    raise AssertionError('Planning input did not become ready within 45 seconds: ' + last_observation)
 
 
 def happy():
@@ -120,7 +151,9 @@ def happy():
     screenshot(current, '02-exit-unconfirmed')
     tap('안전하게 정차·주차했어요')
     tap('보호자와 동승자가 모두 내렸어요')
-    manual = lookup(tree(), '모든 문이 닫힌 것을 직접 확인했어요')
+    # The extra confirmation can be below the visible region in a Pleos window.
+    # Only absence is optional: dump/ADB errors still propagate as test failures.
+    manual = find('모든 문이 닫힌 것을 직접 확인했어요', optional=True)
     if manual is not None:
         tap('모든 문이 닫힌 것을 직접 확인했어요')
     tap('확인하고 주차장 안내')
