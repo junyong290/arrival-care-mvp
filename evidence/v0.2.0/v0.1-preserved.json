@@ -1,0 +1,50 @@
+{
+  "tag": "v0.1.0",
+  "commit": "48221a5d13537f6699d4000d0f1d2ae8c9940bcf",
+  "release_id": 445819360,
+  "result": "UNCHANGED",
+  "assets": [
+    {
+      "id": 749872954,
+      "name": "arrivalcare-pleos-probe-0.1.0.apk",
+      "size": 8637962,
+      "digest": "sha256:614f3164051b3ac1b53bc2486295928e828846cacf5a53d57cc95703e9c89704"
+    },
+    {
+      "id": 749872955,
+      "name": "arrivalcare-demo-0.1.0.apk",
+      "size": 2096569,
+      "digest": "sha256:367402c54ac0bd4d0d0078ed14c4778af2552f6a3dd9f781cf80e6f718dc63c2"
+    },
+    {
+      "id": 749872957,
+      "name": "VERIFICATION.md",
+      "size": 9781,
+      "digest": "sha256:56ecc3cd35821ebe39ada5dffb16035f090ada6530290b6132ad7ee5482aef70"
+    },
+    {
+      "id": 749872958,
+      "name": "arrivalcare-source-0.1.0.zip",
+      "size": 1257468,
+      "digest": "sha256:3a49cf2f79939390eba0873db2799668801538cef4dad5e31382dc754890a844"
+    },
+    {
+      "id": 749872959,
+      "name": "arrivalcare-demo-78s.mp4",
+      "size": 906360,
+      "digest": "sha256:8f4024d1c517fc5d0bc4935a33a162492aafee86813830c93273110db7360e5b"
+    },
+    {
+      "id": 749872973,
+      "name": "SHA256SUMS.txt",
+      "size": 548,
+      "digest": "sha256:de4bb4e94e59e21f09b056c23eacf20a63f6158f122ae91821cddbb18fb63ebe"
+    },
+    {
+      "id": 749872993,
+      "name": "START_HERE.txt",
+      "size": 1587,
+      "digest": "sha256:059afe59a4c217d85af7ac2e444f68e714d6488c7950067582e36eb1c64c26a6"
+    }
+  ]
+}

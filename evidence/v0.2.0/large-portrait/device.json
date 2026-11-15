@@ -1,0 +1,15 @@
+{
+  "model": "Android SDK built for x86_64",
+  "android": "9",
+  "api": "28",
+  "abi": "x86_64",
+  "emulator": "1",
+  "display": "Physical size: 720x1280",
+  "package": "ai.arrivalcare.app.demo",
+  "requested_orientation": "landscape",
+  "observed_screenshot_size": [
+    720,
+    1280
+  ],
+  "observed_orientation": "portrait"
+}

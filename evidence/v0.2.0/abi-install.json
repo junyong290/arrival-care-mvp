@@ -1,0 +1,11 @@
+{
+  "environment": "AOSP API 28 x86_64",
+  "apk": "arrivalcare-demo-kakao-arm-0.2.0.apk",
+  "exit_code": 1,
+  "native_abis": [
+    "arm64-v8a",
+    "armeabi-v7a"
+  ],
+  "expected_result": "INSTALL_FAILED_NO_MATCHING_ABIS",
+  "observed_output": "Performing Streamed Install\r\nadb.exe: failed to install arrivalcare-demo-kakao-arm-0.2.0.apk: Failure [INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]\r\n\r\n"
+}

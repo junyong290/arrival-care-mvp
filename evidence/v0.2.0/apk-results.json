@@ -1,0 +1,39 @@
+{
+  "application_commit": "6c828bb3114757ba3da75fc487f8cad31e1a5702",
+  "apks": [
+    {
+      "name": "arrivalcare-demo-kakao-arm-0.2.0.apk",
+      "size": 40499308,
+      "sha256": "2c9ff161c8981a0152e4ea37690d36ca1f464272ee5645c2f77e7ceb1f4a2a7d",
+      "native_abis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ],
+      "signature": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): false\nVerified using v3 scheme (APK Signature Scheme v3): true\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: CN=ArrivalCare MVP, O=ArrivalCare, C=KR\nSigner #1 certificate SHA-256 digest: 8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289\nSigner #1 certificate SHA-1 digest: 551ae77429e17263e2b3a128d24c5ac07a0d2735\nSigner #1 certificate MD5 digest: 8a479e92b26a4faefa488e167ebe1ea9\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 3072\nSigner #1 public key SHA-256 digest: f95de40ef9d9bca861974ab2bb401540c68ad581a0a0cb7a78186f71f07a6429\nSigner #1 public key SHA-1 digest: a5cafeade92ac3754ebe2d8ca37efa29fcc45856\nSigner #1 public key MD5 digest: 10c2de8db9f06c4e61b3fb878df0e3dd\n"
+    },
+    {
+      "name": "arrivalcare-demo-offline-0.2.0.apk",
+      "size": 2159912,
+      "sha256": "e8559401f5755908d6fff5575b71ac4af2d1e122e2cab445ba136a000d9808a8",
+      "native_abis": [],
+      "signature": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): false\nVerified using v3 scheme (APK Signature Scheme v3): true\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: CN=ArrivalCare MVP, O=ArrivalCare, C=KR\nSigner #1 certificate SHA-256 digest: 8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289\nSigner #1 certificate SHA-1 digest: 551ae77429e17263e2b3a128d24c5ac07a0d2735\nSigner #1 certificate MD5 digest: 8a479e92b26a4faefa488e167ebe1ea9\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 3072\nSigner #1 public key SHA-256 digest: f95de40ef9d9bca861974ab2bb401540c68ad581a0a0cb7a78186f71f07a6429\nSigner #1 public key SHA-1 digest: a5cafeade92ac3754ebe2d8ca37efa29fcc45856\nSigner #1 public key MD5 digest: 10c2de8db9f06c4e61b3fb878df0e3dd\n"
+    },
+    {
+      "name": "arrivalcare-pleos-kakao-arm-0.2.0.apk",
+      "size": 47037205,
+      "sha256": "c5d16a6c56e333fdf06726e0e8732c66f89421e1a51a4f53610da731d591f9a9",
+      "native_abis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ],
+      "signature": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): false\nVerified using v3 scheme (APK Signature Scheme v3): true\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: CN=ArrivalCare MVP, O=ArrivalCare, C=KR\nSigner #1 certificate SHA-256 digest: 8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289\nSigner #1 certificate SHA-1 digest: 551ae77429e17263e2b3a128d24c5ac07a0d2735\nSigner #1 certificate MD5 digest: 8a479e92b26a4faefa488e167ebe1ea9\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 3072\nSigner #1 public key SHA-256 digest: f95de40ef9d9bca861974ab2bb401540c68ad581a0a0cb7a78186f71f07a6429\nSigner #1 public key SHA-1 digest: a5cafeade92ac3754ebe2d8ca37efa29fcc45856\nSigner #1 public key MD5 digest: 10c2de8db9f06c4e61b3fb878df0e3dd\n"
+    },
+    {
+      "name": "arrivalcare-pleos-offline-0.2.0.apk",
+      "size": 8693713,
+      "sha256": "306a5527115b783b74db9f4a8ec4b7f00751baadcbb2494f58908a7dc46ae974",
+      "native_abis": [],
+      "signature": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): false\nVerified using v3 scheme (APK Signature Scheme v3): true\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: CN=ArrivalCare MVP, O=ArrivalCare, C=KR\nSigner #1 certificate SHA-256 digest: 8f5e15e33f376db205af85636df6d596c64a262d5ad3261ea80e56a5f817f289\nSigner #1 certificate SHA-1 digest: 551ae77429e17263e2b3a128d24c5ac07a0d2735\nSigner #1 certificate MD5 digest: 8a479e92b26a4faefa488e167ebe1ea9\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 3072\nSigner #1 public key SHA-256 digest: f95de40ef9d9bca861974ab2bb401540c68ad581a0a0cb7a78186f71f07a6429\nSigner #1 public key SHA-1 digest: a5cafeade92ac3754ebe2d8ca37efa29fcc45856\nSigner #1 public key MD5 digest: 10c2de8db9f06c4e61b3fb878df0e3dd\n"
+    }
+  ]
+}

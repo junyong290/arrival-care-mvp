@@ -1,0 +1,43 @@
+[
+  {
+    "scenario": "parents_hospital_end_to_end",
+    "result": "PASS"
+  },
+  {
+    "scenario": "sole_caregiver_skips_dropoff",
+    "result": "PASS"
+  },
+  {
+    "scenario": "door_cycle_never_auto_completes",
+    "result": "PASS"
+  },
+  {
+    "scenario": "disconnected_door_manual_fallback",
+    "result": "PASS"
+  },
+  {
+    "scenario": "driving_restriction",
+    "result": "PASS"
+  },
+  {
+    "scenario": "navigation_retry",
+    "result": "PASS"
+  },
+  {
+    "scenario": "late_callback_ignored",
+    "result": "PASS"
+  },
+  {
+    "scenario": "mall_wheelchair_conditions",
+    "result": "PASS"
+  },
+  {
+    "scenario": "marker_details",
+    "result": "PASS"
+  },
+  {
+    "scenario": "user_rotation_request",
+    "result": "NOT_VERIFIED",
+    "reason": "Requested rotation did not change actual screenshot dimensions; superseded by explicit window-configuration test"
+  }
+]

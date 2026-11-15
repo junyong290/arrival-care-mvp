@@ -1,0 +1,17 @@
+{
+  "source": "local Gradle JUnit XML; same tests re-executed in CI 43687362639",
+  "suites": [
+    {
+      "name": "ai.arrivalcare.app.domain.JourneyTest",
+      "tests": "22",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "ai.arrivalcare.app.ui.ResponsivePolicyTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0"
+    }
+  ]
+}

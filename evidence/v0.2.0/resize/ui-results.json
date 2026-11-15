@@ -1,0 +1,6 @@
+[
+  {
+    "scenario": "window_configuration_preserves_unconfirmed_stage",
+    "result": "PASS"
+  }
+]

@@ -20,9 +20,11 @@
 
 APK 파일에서도 확인할 수 있습니다. Android SDK와 JDK 17을 설치하고 다음 명령을 실행하세요.
 
-    python tools/kakao_key_hash.py path/to/arrivalcare-demo-kakao-0.2.0.apk --sdk C:/Android/Sdk
+    python tools/kakao_key_hash.py path/to/arrivalcare-demo-kakao-arm-0.2.0.apk --sdk C:/Android/Sdk
 
 이 도구는 APK의 공개 서명 인증서만 읽습니다. 키스토어 비밀번호나 개인 키를 요구하지 않습니다. Debug와 Release는 일반적으로 다른 인증서를 사용하므로 각각 등록해야 합니다.
+
+이번 v0.2.0 Release APK의 키 해시: **VRrndCnhcmPis6Eo0kxawHoNJzU=**. 로컬에서 다른 인증서로 다시 빌드했다면 그 APK의 해시를 별도로 등록하세요.
 
 ## 3. 로컬 키 설정과 빌드
 

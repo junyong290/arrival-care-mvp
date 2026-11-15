@@ -1,0 +1,17 @@
+{
+  "map": [
+    12,
+    144,
+    738,
+    664
+  ],
+  "guide": [
+    754,
+    144,
+    1268,
+    664
+  ],
+  "density": 160,
+  "layout": "side_by_side",
+  "result": "PASS"
+}
