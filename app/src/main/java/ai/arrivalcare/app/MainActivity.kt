@@ -262,7 +262,7 @@ class MainActivity:Activity(){
         val s=journey.state;val p=s.plan!!
         val door=when(s.door){Door.CLOSED->"도어 닫힘";Door.OPEN->"도어 열림";Door.UNKNOWN->"도어 신호 없음";Door.DISCONNECTED->"차량 연결 끊김"}
         val wide=ResponsivePolicy.sideBySide(resources.configuration.screenWidthDp-24,resources.configuration.screenHeightDp-100)
-        val status=ui.pill(door,if(s.door==Door.CLOSED)Palette.green else Palette.amber,if(s.door==Door.CLOSED)Palette.greenSoft else Palette.amberSoft)
+        val status=ui.pill(door,if(s.door==Door.CLOSED)Palette.positiveText else Palette.amber,if(s.door==Door.CLOSED)Palette.greenSoft else Palette.amberSoft)
         if(wide){
             heading("01 · 하차 확인","모두 내렸나요","정차와 동승자 하차를 직접 확인해 주세요.")
             ui.label(content,p.facility.drop,16,Palette.ink,true,10)
@@ -339,6 +339,7 @@ class MainActivity:Activity(){
     private fun showPoint(point:Waypoint?){
         if(point==null){showPlan();return}
         if(!journey.state.inputAllowed)return
+        if(journey.state.plan==null&&!recommendation().canStart){showPlan();return}
         val f=journey.state.plan?.facility?:recommendation().plan?.facility?:DemoFacilities.get(journey.state.conditions.facilityId)
         val title=when(point){Waypoint.DROP->f.drop;Waypoint.PARK->f.parking;Waypoint.MEET->f.meeting}
         dialog=AlertDialog.Builder(this).setTitle(point.letter+" · "+point.title+" 지점")

@@ -20,6 +20,8 @@ object Palette {
     val paper get()=if(night)Color.rgb(15,23,35) else Color.rgb(244,247,250)
     val line get()=if(night)Color.rgb(49,65,85) else Color.rgb(225,232,242)
     val green=Color.rgb(17,130,108)
+    val positiveText get()=if(night)Color.rgb(126,224,197) else green
+    val accentText get()=if(night)Color.rgb(145,180,255) else blue
     val greenSoft get()=if(night)Color.rgb(24,62,55) else Color.rgb(231,246,239)
     val amber get()=if(night)Color.rgb(255,199,116) else Color.rgb(145,90,15)
     val amberSoft get()=if(night)Color.rgb(64,48,27) else Color.rgb(255,246,226)
@@ -43,7 +45,7 @@ class Ui(val context:Context) {
         parent.addView(v,LinearLayout.LayoutParams(-1,-2).apply{bottomMargin=dp(bottom)})
         return v
     }
-    fun pill(value:String,color:Int=Palette.blue,fill:Int=Palette.blueSoft)=text(value,12,color,true).apply{
+    fun pill(value:String,color:Int=Palette.accentText,fill:Int=Palette.blueSoft)=text(value,12,color,true).apply{
         background=shape(fill,30);setPadding(dp(10),dp(6),dp(10),dp(6));gravity=Gravity.CENTER
     }
     fun button(value:String,primary:Boolean=false,selected:Boolean=false,enabled:Boolean=true,icon:String?=null,action:()->Unit)=Button(context).apply{
@@ -53,7 +55,7 @@ class Ui(val context:Context) {
         setPadding(dp(14),dp(10),dp(14),dp(10));gravity=Gravity.CENTER
         isEnabled=enabled;isSelected=selected
         val fill=when{!enabled->Palette.line;primary->Palette.blue;selected->Palette.blueSoft;else->Palette.surface}
-        val foreground=when{!enabled->Palette.muted;primary->Color.WHITE;selected->Palette.blue;else->Palette.ink}
+        val foreground=when{!enabled->Palette.muted;primary->Color.WHITE;selected->Palette.accentText;else->Palette.ink}
         setTextColor(foreground)
         background=RippleDrawable(ColorStateList.valueOf(Color.argb(40,60,110,220)),shape(fill,16,if(selected&&!primary)Palette.blue else null),null)
         stateListAnimator=null
@@ -79,7 +81,7 @@ class Ui(val context:Context) {
         setPadding(dp(13),dp(13),dp(13),dp(13));setOnClickListener{action()}
     }
     fun iconTile(icon:String,color:Int=Palette.blue,fill:Int=Palette.blueSoft,size:Int=48)=ImageView(context).apply{
-        setImageDrawable(IconDrawable(context,icon,color));setPadding(dp(12),dp(12),dp(12),dp(12))
+        setImageDrawable(IconDrawable(context,icon,when(color){Palette.blue->Palette.accentText;Palette.green->Palette.positiveText;else->color}));setPadding(dp(12),dp(12),dp(12),dp(12))
         background=shape(fill,16);layoutParams=LinearLayout.LayoutParams(dp(size),dp(size))
         importantForAccessibility=View.IMPORTANT_FOR_ACCESSIBILITY_NO
     }

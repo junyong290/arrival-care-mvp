@@ -172,6 +172,7 @@ def rotation():
 def missing_accessibility():
     setup_change('휠체어 이용자','별도 보호자 없음')
     sim('접근성 정보 누락 시연');find('도착 계획 보류',False);shot('16-accessibility-hold')
+    tap('D 마커 상세');expect('무단차 연결 정보가 없어');tap('확인')
     tap('확인이 필요한 정보 보기');expect('무단차 연결 정보가 없어');tap('확인')
     sim('가상 접근성 정보 복원');tap('이 계획으로 안내 시작')
     expect('모두 함께 주차해요');expect('P4 · 승강기 연결 주차장');shot('17-together-plan')
@@ -182,7 +183,9 @@ def actual_venue():
 
 def night():
     tap('화면 테마');tap('다크');time.sleep(2);expect('목적지 변경');shot('19-night')
-    tap('화면 테마');tap('라이트');time.sleep(2);expect('목적지 변경')
+    to_exit();tap('안전하게 정차·주차했어요');tap('보호자와 동승자가 모두 내렸어요');shot('19-night-exit')
+    tap('화면 테마');tap('라이트');time.sleep(2);expect('모두 내렸나요')
+    tap('새 여정');tap('새 여정 시작');expect('목적지 변경')
 
 def background():
     to_exit();tap('안전하게 정차·주차했어요');tap('보호자와 동승자가 모두 내렸어요')
