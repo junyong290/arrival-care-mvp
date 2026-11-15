@@ -1,0 +1,29 @@
+[
+  {
+    "step": "boot",
+    "result": "sys.boot_completed=1"
+  },
+  {
+    "step": "demo-install.txt",
+    "result": "TIMEOUT"
+  },
+  {
+    "step": "pleos-install.txt",
+    "result": "TIMEOUT"
+  },
+  {
+    "step": "system-logcat.txt",
+    "exit": 0,
+    "bytes": 31037
+  },
+  {
+    "step": "demo-installed-apk",
+    "sha256_matches_v02": true,
+    "device_sha256": "e8559401f5755908d6fff5575b71ac4af2d1e122e2cab445ba136a000d9808a8"
+  },
+  {
+    "step": "pleos-installed-apk",
+    "sha256_matches_v02": true,
+    "device_sha256": "306a5527115b783b74db9f4a8ec4b7f00751baadcbb2494f58908a7dc46ae974"
+  }
+]

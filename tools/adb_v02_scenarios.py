@@ -62,6 +62,7 @@ def start():
     adb('shell','am','force-stop',a.package)
     adb('shell','am','start','-W','-n',a.package+'/ai.arrivalcare.app.MainActivity')
     time.sleep(1.2)
+    expect('어디로 함께 갈까요?')
 def setup_change(*labels):
     tap('동행 조건 변경')
     for label in labels:tap(label)
