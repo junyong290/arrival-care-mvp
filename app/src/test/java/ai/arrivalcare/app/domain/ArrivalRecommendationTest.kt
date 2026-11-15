@@ -3,6 +3,8 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class ArrivalRecommendationTest{
+    @Test fun realVenueCannotFallBackToLegacyDemoPlan(){val j=Journey();j.configure(Conditions(facilityId="asan"));j.begin();assertEquals(Stage.SETUP,j.state.stage);assertNull(j.state.request)}
+    @Test fun repeatedBeginDoesNotDuplicateRoute(){val j=Journey();val p=ArrivalRecommendationEngine.recommend(j.state.conditions).plan;j.begin(p,true);val first=j.state.request;j.begin(p,true);assertEquals(first,j.state.request)}
     @Test fun familyChangesAllThreePlaces(){val a=ArrivalRecommendationEngine.recommend(Conditions()).plan!!;val b=ArrivalRecommendationEngine.recommend(Conditions(passengers=setOf(Passenger.CHILD))).plan!!;assertNotEquals(a.facility.drop,b.facility.drop);assertNotEquals(a.facility.parking,b.facility.parking);assertNotEquals(a.facility.meeting,b.facility.meeting)}
     @Test fun wheelchairChoosesLevelFixture(){assertEquals("level",ArrivalRecommendationEngine.recommend(Conditions(passengers=setOf(Passenger.WHEELCHAIR))).variant)}
     @Test fun missingStepFreeEvidenceHoldsRecommendation(){assertFalse(ArrivalRecommendationEngine.recommend(Conditions(passengers=setOf(Passenger.WHEELCHAIR)),false).canStart)}

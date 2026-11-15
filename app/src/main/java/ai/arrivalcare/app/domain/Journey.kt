@@ -59,6 +59,8 @@ class Journey(initial: State = State()) {
     fun setDoor(door: Door) { if (door != state.door) update(state.copy(door = door, manualDoorCheck = false)) }
     fun begin(recommended:Plan?=null,requireApproval:Boolean=false) {
         if (state.stage != Stage.SETUP || !state.inputAllowed) return
+        // Legacy demo callers may omit a recommendation; a real venue may not.
+        if(recommended==null&&!VenueRepository.get(state.conditions.facilityId).simulated)return
         val p = recommended?:Plan.create(state.conditions)
         if(p.conditions!=state.conditions)return
         update(state.copy(plan = p, parked = false, exited = false, manualDoorCheck = false, notice = null,requireRouteApproval=requireApproval))
